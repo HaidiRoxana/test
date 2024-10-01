@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MySql" database="MySql" id="Project-17ff" >
+	<schema name="football" >
+		<table name="clubs" prior="tbl" generator_rows="100" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="name" type="VARCHAR" length="100" jt="12" regexp="(Che|Uni|Pop)(lsi|rom|avi)" />
+			<column name="created_date" type="DATE" jt="91" />
+			<column name="address" type="VARCHAR" length="100" jt="12" />
+			<column name="phone_number" type="VARCHAR" length="20" jt="12" regexp="((\([0-9]{3}\) )|([0-9]{3}-))[0-9]{3}-[0-9]{4}" />
+			<index name="pk_clubs" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="persons" prior="tbl" generator_rows="100" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="firstname" type="VARCHAR" length="100" jt="12" />
+			<column name="lastname" type="VARCHAR" length="100" jt="12" />
+			<column name="role" type="ENUM" jt="12" >
+				<enumeration><![CDATA['PLAYER','COACH','DOCTOR','STAFF']]></enumeration>
+			</column>
+			<column name="birthdate" type="DATE" jt="91" />
+			<column name="phone_number" type="VARCHAR" length="20" jt="12" />
+			<index name="pk_persons" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="team_players" prior="tbl" generator_rows="225" >
+			<column name="team_id" type="INT" jt="4" mandatory="y" />
+			<column name="person_id" prior="player_id" type="INT" jt="4" mandatory="y" />
+			<index name="pk_team_players" unique="PRIMARY_KEY" >
+				<column name="team_id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="teams" prior="tbl" generator_rows="150" >
+			<comment><![CDATA[this will be only the national teams kk]]></comment>
+			<column name="name" type="VARCHAR" length="100" jt="12" />
+			<column name="lot_no" type="DECIMAL" length="20" decimal="0" jt="3" />
+			<column name="equipment" type="VARCHAR" length="10" jt="12" />
+			<column name="continent" type="VARCHAR" length="15" jt="12" />
+			<column name="team_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="coach" type="VARCHAR" length="50" jt="12" />
+			<index name="pk_teams" unique="PRIMARY_KEY" >
+				<column name="team_id" />
+			</index>
+			<index name="unq_teams_name" unique="UNIQUE_KEY" >
+				<column name="name" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<schema name="sakila" >
+		<table name="actor" row_count="300" spec="" >
+			<comment><![CDATA[Details about actors. More details. Sample3a]]></comment>
+			<column name="actor_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="first_name" type="VARCHAR" length="45" jt="12" mandatory="y" />
+			<column name="last_name" type="VARCHAR" length="45" jt="12" mandatory="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_actor" unique="PRIMARY_KEY" >
+				<column name="actor_id" />
+			</index>
+			<index name="idx_actor_last_name" unique="NORMAL" >
+				<column name="last_name" />
+			</index>
+			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=301 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Details about actors.']]></options>
+		</table>
+		<table name="address" row_count="311" spec="" >
+			<comment><![CDATA[The store addresses.]]></comment>
+			<column name="address_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="address" type="VARCHAR" length="50" jt="12" mandatory="y" />
+			<column name="address2" type="VARCHAR" length="50" jt="12" />
+			<column name="district" type="VARCHAR" length="20" jt="12" mandatory="y" />
+			<column name="city_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="postal_code" type="VARCHAR" length="10" jt="12" />
+			<column name="location" type="VARCHAR" jt="12" mandatory="y" />
+			<column name="phone" type="VARCHAR" length="20" jt="12" mandatory="y" >
+				<comment><![CDATA[The phone number]]></comment>
+			</column>
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_address" unique="PRIMARY_KEY" >
+				<column name="address_id" />
+			</index>
+			<index name="idx_fk_city_id" unique="NORMAL" >
+				<column name="city_id" />
+			</index>
+			<index name="idx_location" unique="NORMAL" >
+				<column name="location" />
+			</index>
+			<fk name="fk_address_city" to_schema="sakila" to_table="city" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="city_id" pk="city_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=329 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Some comment']]></options>
+		</table>
+		<table name="category" row_count="116" spec="" >
+			<comment><![CDATA[The movie categories]]></comment>
+			<column name="category_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+				<comment><![CDATA[The category identifier.]]></comment>
+			</column>
+			<column name="name" type="VARCHAR" length="25" jt="12" mandatory="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_category" unique="PRIMARY_KEY" >
+				<column name="category_id" />
+			</index>
+			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="city" row_count="750" spec="" >
+			<column name="city_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="city" type="VARCHAR" length="50" jt="12" mandatory="y" />
+			<column name="country_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_city" unique="PRIMARY_KEY" >
+				<column name="city_id" />
+			</index>
+			<index name="idx_fk_country_id" unique="NORMAL" >
+				<column name="country_id" />
+			</index>
+			<fk name="fk_city_country" to_schema="sakila" to_table="country" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="country_id" pk="country_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=751 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="country" row_count="209" spec="" >
+			<comment><![CDATA[The countries]]></comment>
+			<column name="country_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="country" type="VARCHAR" length="50" jt="12" mandatory="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_country" unique="PRIMARY_KEY" >
+				<column name="country_id" />
+			</index>
+			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='The countries']]></options>
+		</table>
+		<table name="customer" row_count="599" spec="" >
+			<comment><![CDATA[Details about the customers. Sample
+0: correct
+1:incorrect]]></comment>
+			<column name="customer_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+				<comment><![CDATA[column comment is:
+0: correct
+1: inccorect]]></comment>
+			</column>
+			<column name="store_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" />
+			<column name="first_name" type="VARCHAR" length="45" jt="12" mandatory="y" />
+			<column name="last_name" type="VARCHAR" length="45" jt="12" mandatory="y" />
+			<column name="email" type="VARCHAR" length="50" jt="12" />
+			<column name="address_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="active" type="BOOLEAN" jt="16" mandatory="y" >
+				<defo><![CDATA['1']]></defo>
+			</column>
+			<column name="create_date" type="DATETIME" jt="93" mandatory="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_customer" unique="PRIMARY_KEY" >
+				<column name="customer_id" />
+			</index>
+			<index name="idx_fk_store_id" unique="NORMAL" >
+				<column name="store_id" />
+			</index>
+			<index name="idx_fk_address_id" unique="NORMAL" >
+				<column name="address_id" />
+			</index>
+			<index name="idx_last_name" unique="NORMAL" >
+				<column name="last_name" />
+			</index>
+			<fk name="fk_customer_store" to_schema="sakila" to_table="store" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="store_id" pk="store_id" />
+			</fk>
+			<fk name="fk_customer_address" to_schema="sakila" to_table="address" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="address_id" pk="address_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=600 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="film" row_count="167" spec="" >
+			<comment><![CDATA[This table shows the 
+different movies available 
+in a store. More comments2.
+
+second comment
+modified2
+added now]]></comment>
+			<column name="film_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="title" type="VARCHAR" length="128" jt="12" mandatory="y" >
+				<comment><![CDATA[The movie title 
+among with the other details]]></comment>
+			</column>
+			<column name="description" type="TEXT" jt="-1" >
+				<comment><![CDATA[This is some comment.]]></comment>
+			</column>
+			<column name="release_year" type="YEAR" jt="4" />
+			<column name="language_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" />
+			<column name="original_language_id" type="TINYINT" jt="-6" unsigned="y" />
+			<column name="rental_duration" type="TINYINT" jt="-6" mandatory="y" unsigned="y" >
+				<defo><![CDATA['3']]></defo>
+			</column>
+			<column name="rental_rate" type="DECIMAL" length="4" decimal="2" jt="3" mandatory="y" >
+				<defo><![CDATA['4.99']]></defo>
+			</column>
+			<column name="length" type="SMALLINT" jt="5" unsigned="y" />
+			<column name="replacement_cost" type="DECIMAL" length="5" decimal="2" jt="3" mandatory="y" >
+				<defo><![CDATA['19.99']]></defo>
+			</column>
+			<column name="rating" type="ENUM" jt="12" >
+				<defo><![CDATA['G']]></defo>
+				<enumeration><![CDATA['G','PG','PG-13','R','NC-17']]></enumeration>
+			</column>
+			<column name="special_features" type="SET" jt="12" >
+				<enumeration><![CDATA['Trailers','Commentaries','Deleted Scenes','Behind the Scenes']]></enumeration>
+			</column>
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_film" unique="PRIMARY_KEY" >
+				<column name="film_id" />
+			</index>
+			<index name="idx_title" unique="NORMAL" >
+				<column name="title" />
+			</index>
+			<index name="idx_fk_language_id" unique="NORMAL" >
+				<column name="language_id" />
+			</index>
+			<index name="idx_fk_original_language_id" unique="NORMAL" >
+				<column name="original_language_id" />
+			</index>
+			<fk name="fk_film_language" to_schema="sakila" to_table="language" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="language_id" pk="language_id" />
+			</fk>
+			<fk name="fk_film_language_original" to_schema="sakila" to_table="language" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="original_language_id" pk="language_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='This table shows the \ndifferent movies available \nin a store.']]></options>
+		</table>
+		<table name="film_actor" row_count="225" spec="" >
+			<column name="actor_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="film_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_film_actor" unique="PRIMARY_KEY" >
+				<column name="actor_id" />
+				<column name="film_id" />
+			</index>
+			<index name="idx_fk_film_id" unique="NORMAL" >
+				<column name="film_id" />
+			</index>
+			<fk name="fk_film_actor_actor" to_schema="sakila" to_table="actor" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="actor_id" pk="actor_id" />
+			</fk>
+			<fk name="fk_film_actor_film" to_schema="sakila" to_table="film" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="film_id" pk="film_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="film_category" row_count="225" spec="" >
+			<comment><![CDATA[The categories for each film.]]></comment>
+			<column name="film_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="category_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_film_category" unique="PRIMARY_KEY" >
+				<column name="film_id" />
+				<column name="category_id" />
+			</index>
+			<index name="fk_film_category_category" unique="NORMAL" >
+				<column name="category_id" />
+			</index>
+			<fk name="fk_film_category_category" to_schema="sakila" to_table="category" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="category_id" pk="category_id" />
+			</fk>
+			<fk name="fk_film_category_film" to_schema="sakila" to_table="film" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="film_id" pk="film_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Some comment']]></options>
+		</table>
+		<table name="film_text" row_count="167" spec="" >
+			<comment><![CDATA[Sample comment]]></comment>
+			<column name="film_id" type="SMALLINT" jt="5" mandatory="y" />
+			<column name="title" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="description" type="TEXT" jt="-1" />
+			<index name="pk_film_text" unique="PRIMARY_KEY" >
+				<column name="film_id" />
+			</index>
+			<index name="idx_title_description" unique="INDEX1" >
+				<column name="title" />
+				<column name="description" />
+			</index>
+			<options><![CDATA[ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="inventory" row_count="0" spec="" >
+			<comment><![CDATA[The inventory.]]></comment>
+			<column name="inventory_id" type="MEDIUMINT" jt="4" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="film_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="store_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_inventory" unique="PRIMARY_KEY" >
+				<column name="inventory_id" />
+			</index>
+			<index name="idx_fk_film_id" unique="NORMAL" >
+				<column name="film_id" />
+			</index>
+			<index name="idx_store_id_film_id" unique="NORMAL" >
+				<column name="store_id" />
+				<column name="film_id" />
+			</index>
+			<fk name="fk_inventory_film" to_schema="sakila" to_table="film" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="film_id" pk="film_id" />
+			</fk>
+			<fk name="fk_inventory_store" to_schema="sakila" to_table="store" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="store_id" pk="store_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="language" row_count="100" spec="" >
+			<comment><![CDATA[The different languages abbreviations.]]></comment>
+			<column name="language_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="name" type="CHAR" length="20" jt="1" mandatory="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_language" unique="PRIMARY_KEY" >
+				<column name="language_id" />
+			</index>
+			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="payment" row_count="0" spec="" >
+			<column name="payment_id" prior="payment_id1" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="customer_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="staff_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" />
+			<column name="rental_id" type="INT" jt="4" />
+			<column name="amount" type="DECIMAL" length="5" decimal="2" jt="3" mandatory="y" />
+			<column name="payment_date" type="DATETIME" jt="93" mandatory="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="idx_fk_staff_id" unique="NORMAL" >
+				<column name="staff_id" />
+			</index>
+			<index name="idx_fk_customer_id" unique="NORMAL" >
+				<column name="customer_id" />
+			</index>
+			<index name="fk_payment_rental" unique="NORMAL" >
+				<column name="rental_id" />
+			</index>
+			<index name="pk_payment" unique="PRIMARY_KEY" >
+				<column name="payment_id" />
+			</index>
+			<fk name="fk_payment_customer" to_schema="sakila" to_table="customer" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="customer_id" pk="customer_id" />
+			</fk>
+			<fk name="fk_payment_rental" to_schema="sakila" to_table="rental" delete_action="setNull" update_action="cascade" options="" >
+				<fk_column name="rental_id" pk="rental_id" />
+			</fk>
+			<fk name="fk_payment_staff" to_schema="sakila" to_table="staff" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="staff_id" pk="staff_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="rental" row_count="0" spec="" >
+			<comment><![CDATA[This is about rentals]]></comment>
+			<column name="rental_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="rental_date" type="DATETIME" jt="93" mandatory="y" />
+			<column name="inventory_id" type="MEDIUMINT" jt="4" mandatory="y" unsigned="y" />
+			<column name="customer_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="return_date" type="DATETIME" jt="93" />
+			<column name="staff_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_rental" unique="PRIMARY_KEY" >
+				<column name="rental_id" />
+			</index>
+			<index name="rental_date" unique="UNIQUE_KEY" >
+				<column name="rental_date" />
+				<column name="inventory_id" />
+				<column name="customer_id" />
+			</index>
+			<index name="idx_fk_inventory_id" unique="NORMAL" >
+				<column name="inventory_id" />
+			</index>
+			<index name="idx_fk_customer_id" unique="NORMAL" >
+				<column name="customer_id" />
+			</index>
+			<index name="idx_fk_staff_id" unique="NORMAL" >
+				<column name="staff_id" />
+			</index>
+			<fk name="fk_rental_customer" to_schema="sakila" to_table="customer" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="customer_id" pk="customer_id" />
+			</fk>
+			<fk name="fk_rental_inventory" to_schema="sakila" to_table="inventory" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="inventory_id" pk="inventory_id" />
+			</fk>
+			<fk name="fk_rental_staff" to_schema="sakila" to_table="staff" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="staff_id" pk="staff_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
+		</table>
+		<table name="staff" row_count="0" spec="" >
+			<comment><![CDATA[The staff members are listed here.]]></comment>
+			<column name="staff_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+				<comment><![CDATA[The pk in staff.]]></comment>
+			</column>
+			<column name="first_name" type="VARCHAR" length="45" jt="12" mandatory="y" >
+				<comment><![CDATA[last_name aa --> bb]]></comment>
+			</column>
+			<column name="last_name" type="VARCHAR" length="45" jt="12" mandatory="y" >
+				<comment><![CDATA[The last name]]></comment>
+			</column>
+			<column name="address_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="picture" type="BLOB" jt="2004" />
+			<column name="email" type="VARCHAR" length="50" jt="12" />
+			<column name="store_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" />
+			<column name="active" type="BOOLEAN" jt="16" mandatory="y" >
+				<defo><![CDATA['1']]></defo>
+			</column>
+			<column name="username" type="VARCHAR" length="16" jt="12" mandatory="y" />
+			<column name="password" type="VARCHAR" length="40" jt="12" >
+				<column_options><![CDATA[CHARACTER SET utf8mb4 COLLATE utf8mb4_bin]]></column_options>
+			</column>
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_staff" unique="PRIMARY_KEY" >
+				<column name="staff_id" />
+			</index>
+			<index name="idx_fk_store_id" unique="NORMAL" >
+				<column name="store_id" />
+			</index>
+			<index name="idx_fk_address_id" unique="NORMAL" >
+				<column name="address_id" />
+			</index>
+			<fk name="fk_staff_address" to_schema="sakila" to_table="address" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="address_id" pk="address_id" />
+			</fk>
+			<fk name="fk_staff_store" to_schema="sakila" to_table="store" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="store_id" pk="store_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='The staff members are listed here2.']]></options>
+		</table>
+		<table name="store" row_count="0" spec="" >
+			<comment><![CDATA[The store is here.]]></comment>
+			<column name="store_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="manager_staff_id" type="TINYINT" jt="-6" mandatory="y" unsigned="y" />
+			<column name="address_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" />
+			<column name="last_update" type="TIMESTAMP" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
+				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
+			</column>
+			<index name="pk_store" unique="PRIMARY_KEY" >
+				<column name="store_id" />
+			</index>
+			<index name="idx_unique_manager" unique="UNIQUE_KEY" >
+				<column name="manager_staff_id" />
+			</index>
+			<index name="idx_fk_address_id" unique="NORMAL" >
+				<column name="address_id" />
+			</index>
+			<fk name="fk_store_address" to_schema="sakila" to_table="address" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="address_id" pk="address_id" />
+			</fk>
+			<fk name="fk_store_staff" to_schema="sakila" to_table="staff" delete_action="restrict" update_action="cascade" options="" >
+				<fk_column name="manager_staff_id" pk="staff_id" />
+			</fk>
+			<options><![CDATA[ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='ariba']]></options>
+		</table>
+		<view name="actor_info" >
+			<comment><![CDATA[VIEW]]></comment>
+			<view_script><![CDATA[CREATE VIEW ${nameWithSchemaName} AS select `a`.`actor_id` AS `actor_id`,`a`.`first_name` AS `first_name`,`a`.`last_name` AS `last_name`,group_concat(distinct concat(`c`.`name`,': ',(select group_concat(`f`.`title` order by `f`.`title` ASC separator ', ') from ((`sakila`.`film` `f` join `sakila`.`film_category` `fc` on((`f`.`film_id` = `fc`.`film_id`))) join `sakila`.`film_actor` `fa` on((`f`.`film_id` = `fa`.`film_id`))) where ((`fc`.`category_id` = `c`.`category_id`) and (`fa`.`actor_id` = `a`.`actor_id`)))) order by `c`.`name` ASC separator '; ') AS `film_info` from (((`sakila`.`actor` `a` left join `sakila`.`film_actor` `fa` on((`a`.`actor_id` = `fa`.`actor_id`))) left join `sakila`.`film_category` `fc` on((`fa`.`film_id` = `fc`.`film_id`))) left join `sakila`.`category` `c` on((`fc`.`category_id` = `c`.`category_id`))) group by `a`.`actor_id`,`a`.`first_name`,`a`.`last_name`]]></view_script>
+			<column name="actor_id" type="SMALLINT" />
+			<column name="first_name" type="VARCHAR" />
+			<column name="last_name" type="VARCHAR" />
+			<column name="film_info" type="TEXT" />
+		</view>
+		<view name="customer_list" >
+			<comment><![CDATA[VIEW]]></comment>
+			<view_script><![CDATA[CREATE VIEW ${nameWithSchemaName} AS select `cu`.`customer_id` AS `ID`,concat(`cu`.`first_name`,' ',`cu`.`last_name`) AS `name`,`a`.`address` AS `address`,`a`.`postal_code` AS `zip code`,`a`.`phone` AS `phone`,`sakila`.`city`.`city` AS `city`,`sakila`.`country`.`country` AS `country`,if(`cu`.`active`,'active','') AS `notes`,`cu`.`store_id` AS `SID` from (((`sakila`.`customer` `cu` join `sakila`.`address` `a` on((`cu`.`address_id` = `a`.`address_id`))) join `sakila`.`city` on((`a`.`city_id` = `sakila`.`city`.`city_id`))) join `sakila`.`country` on((`sakila`.`city`.`country_id` = `sakila`.`country`.`country_id`)))]]></view_script>
+			<column name="ID" type="SMALLINT" >
+				<comment><![CDATA[column comment]]></comment>
+			</column>
+			<column name="name" type="VARCHAR" />
+			<column name="address" type="VARCHAR" />
+			<column name="zip code" type="VARCHAR" />
+			<column name="phone" type="VARCHAR" >
+				<comment><![CDATA[The phone number]]></comment>
+			</column>
+			<column name="city" type="VARCHAR" />
+			<column name="country" type="VARCHAR" />
+			<column name="notes" type="VARCHAR" />
+			<column name="SID" type="TINYINT" />
+		</view>
+		<view name="film_list" >
+			<comment><![CDATA[VIEW]]></comment>
+			<view_script><![CDATA[CREATE VIEW ${nameWithSchemaName} AS select `sakila`.`film`.`film_id` AS `FID`,`sakila`.`film`.`title` AS `title`,`sakila`.`film`.`description` AS `description`,`sakila`.`category`.`name` AS `category`,`sakila`.`film`.`rental_rate` AS `price`,`sakila`.`film`.`length` AS `length`,`sakila`.`film`.`rating` AS `rating`,group_concat(concat(`sakila`.`actor`.`first_name`,' ',`sakila`.`actor`.`last_name`) separator ', ') AS `actors` from ((((`sakila`.`category` left join `sakila`.`film_category` on((`sakila`.`category`.`category_id` = `sakila`.`film_category`.`category_id`))) left join `sakila`.`film` on((`sakila`.`film_category`.`film_id` = `sakila`.`film`.`film_id`))) join `sakila`.`film_actor` on((`sakila`.`film`.`film_id` = `sakila`.`film_actor`.`film_id`))) join `sakila`.`actor` on((`sakila`.`film_actor`.`actor_id` = `sakila`.`actor`.`actor_id`))) group by `sakila`.`film`.`film_id`,`sakila`.`category`.`name`]]></view_script>
+			<column name="FID" type="SMALLINT" />
+			<column name="title" type="VARCHAR" >
+				<comment><![CDATA[The movie title 
+among with the other details]]></comment>
+			</column>
+			<column name="description" type="TEXT" >
+				<comment><![CDATA[This is some comment.]]></comment>
+			</column>
+			<column name="category" type="VARCHAR" />
+			<column name="price" type="DECIMAL" />
+			<column name="length" type="SMALLINT" />
+			<column name="rating" type="ENUM" />
+			<column name="actors" type="TEXT" />
+		</view>
+		<view name="nicer_but_slower_film_list" >
+			<comment><![CDATA[VIEW]]></comment>
+			<view_script><![CDATA[CREATE VIEW ${nameWithSchemaName} AS select `sakila`.`film`.`film_id` AS `FID`,`sakila`.`film`.`title` AS `title`,`sakila`.`film`.`description` AS `description`,`sakila`.`category`.`name` AS `category`,`sakila`.`film`.`rental_rate` AS `price`,`sakila`.`film`.`length` AS `length`,`sakila`.`film`.`rating` AS `rating`,group_concat(concat(concat(upper(substr(`sakila`.`actor`.`first_name`,1,1)),lower(substr(`sakila`.`actor`.`first_name`,2,length(`sakila`.`actor`.`first_name`))),' ',concat(upper(substr(`sakila`.`actor`.`last_name`,1,1)),lower(substr(`sakila`.`actor`.`last_name`,2,length(`sakila`.`actor`.`last_name`)))))) separator ', ') AS `actors` from ((((`sakila`.`category` left join `sakila`.`film_category` on((`sakila`.`category`.`category_id` = `sakila`.`film_category`.`category_id`))) left join `sakila`.`film` on((`sakila`.`film_category`.`film_id` = `sakila`.`film`.`film_id`))) join `sakila`.`film_actor` on((`sakila`.`film`.`film_id` = `sakila`.`film_actor`.`film_id`))) join `sakila`.`actor` on((`sakila`.`film_actor`.`actor_id` = `sakila`.`actor`.`actor_id`))) group by `sakila`.`film`.`film_id`,`sakila`.`category`.`name`]]></view_script>
+			<column name="FID" type="SMALLINT" />
+			<column name="title" type="VARCHAR" >
+				<comment><![CDATA[The movie title 
+among with the other details]]></comment>
+			</column>
+			<column name="description" type="TEXT" >
+				<comment><![CDATA[This is some comment.]]></comment>
+			</column>
+			<column name="category" type="VARCHAR" />
+			<column name="price" type="DECIMAL" />
+			<column name="length" type="SMALLINT" />
+			<column name="rating" type="ENUM" />
+			<column name="actors" type="TEXT" />
+		</view>
+		<view name="sales_by_film_category" >
+			<comment><![CDATA[VIEW]]></comment>
+			<view_script><![CDATA[CREATE VIEW ${nameWithSchemaName} AS select `c`.`name` AS `category`,sum(`p`.`amount`) AS `total_sales` from (((((`sakila`.`payment` `p` join `sakila`.`rental` `r` on((`p`.`rental_id` = `r`.`rental_id`))) join `sakila`.`inventory` `i` on((`r`.`inventory_id` = `i`.`inventory_id`))) join `sakila`.`film` `f` on((`i`.`film_id` = `f`.`film_id`))) join `sakila`.`film_category` `fc` on((`f`.`film_id` = `fc`.`film_id`))) join `sakila`.`category` `c` on((`fc`.`category_id` = `c`.`category_id`))) group by `c`.`name` order by `total_sales` desc]]></view_script>
+			<column name="category" type="VARCHAR" />
+			<column name="total_sales" type="DECIMAL" />
+		</view>
+		<view name="sales_by_store" >
+			<comment><![CDATA[VIEW]]></comment>
+			<view_script><![CDATA[CREATE VIEW ${nameWithSchemaName} AS select concat(`c`.`city`,',',`cy`.`country`) AS `store`,concat(`m`.`first_name`,' ',`m`.`last_name`) AS `manager`,sum(`p`.`amount`) AS `total_sales` from (((((((`sakila`.`payment` `p` join `sakila`.`rental` `r` on((`p`.`rental_id` = `r`.`rental_id`))) join `sakila`.`inventory` `i` on((`r`.`inventory_id` = `i`.`inventory_id`))) join `sakila`.`store` `s` on((`i`.`store_id` = `s`.`store_id`))) join `sakila`.`address` `a` on((`s`.`address_id` = `a`.`address_id`))) join `sakila`.`city` `c` on((`a`.`city_id` = `c`.`city_id`))) join `sakila`.`country` `cy` on((`c`.`country_id` = `cy`.`country_id`))) join `sakila`.`staff` `m` on((`s`.`manager_staff_id` = `m`.`staff_id`))) group by `s`.`store_id` order by `cy`.`country`,`c`.`city`]]></view_script>
+			<column name="store" type="VARCHAR" />
+			<column name="manager" type="VARCHAR" />
+			<column name="total_sales" type="DECIMAL" />
+		</view>
+		<view name="staff_list" >
+			<comment><![CDATA[VIEW]]></comment>
+			<view_script><![CDATA[CREATE VIEW ${nameWithSchemaName} AS select `s`.`staff_id` AS `ID`,concat(`s`.`first_name`,' ',`s`.`last_name`) AS `name`,`a`.`address` AS `address`,`a`.`postal_code` AS `zip code`,`a`.`phone` AS `phone`,`sakila`.`city`.`city` AS `city`,`sakila`.`country`.`country` AS `country`,`s`.`store_id` AS `SID` from (((`sakila`.`staff` `s` join `sakila`.`address` `a` on((`s`.`address_id` = `a`.`address_id`))) join `sakila`.`city` on((`a`.`city_id` = `sakila`.`city`.`city_id`))) join `sakila`.`country` on((`sakila`.`city`.`country_id` = `sakila`.`country`.`country_id`)))]]></view_script>
+			<column name="ID" type="TINYINT" />
+			<column name="name" type="VARCHAR" />
+			<column name="address" type="VARCHAR" />
+			<column name="zip code" type="VARCHAR" />
+			<column name="phone" type="VARCHAR" >
+				<comment><![CDATA[The phone number]]></comment>
+			</column>
+			<column name="city" type="VARCHAR" />
+			<column name="country" type="VARCHAR" />
+			<column name="SID" type="TINYINT" />
+		</view>
+		<procedure name="film_in_stock" id="Procedure-d23" isSystem="false" params_known="n" >
+			<string><![CDATA[CREATE  PROCEDURE `film_in_stock`(IN p_film_id INT, IN p_store_id INT, OUT p_film_count INT)
+    READS SQL DATA
+BEGIN
+     SELECT inventory_id
+     FROM inventory
+     WHERE film_id = p_film_id
+     AND store_id = p_store_id
+     AND inventory_in_stock(inventory_id);
+
+     SELECT COUNT(*)
+     FROM inventory
+     WHERE film_id = p_film_id
+     AND store_id = p_store_id
+     AND inventory_in_stock(inventory_id)
+     INTO p_film_count;
+END]]></string>
+		</procedure>
+		<procedure name="film_not_in_stock" id="Procedure-22a1" isSystem="false" params_known="n" >
+			<string><![CDATA[CREATE  PROCEDURE `film_not_in_stock`(IN p_film_id INT, IN p_store_id INT, OUT p_film_count INT)
+    READS SQL DATA
+BEGIN
+     SELECT inventory_id
+     FROM inventory
+     WHERE film_id = p_film_id
+     AND store_id = p_store_id
+     AND NOT inventory_in_stock(inventory_id);
+
+     SELECT COUNT(*)
+     FROM inventory
+     WHERE film_id = p_film_id
+     AND store_id = p_store_id
+     AND NOT inventory_in_stock(inventory_id)
+     INTO p_film_count;
+END]]></string>
+		</procedure>
+		<procedure name="rewards_report" id="Procedure-94d" isSystem="false" params_known="n" >
+			<string><![CDATA[CREATE  PROCEDURE `rewards_report`(
+    IN min_monthly_purchases TINYINT UNSIGNED
+    , IN min_dollar_amount_purchased DECIMAL(10,2)
+    , OUT count_rewardees INT
+)
+    READS SQL DATA
+    COMMENT 'Provides a customizable report on best customers'
+proc: BEGIN
+
+    DECLARE last_month_start DATE;
+    DECLARE last_month_end DATE;
+
+    /* Some sanity checks... */
+    IF min_monthly_purchases = 0 THEN
+        SELECT 'Minimum monthly purchases parameter must be > 0';
+        LEAVE proc;
+    END IF;
+    IF min_dollar_amount_purchased = 0.00 THEN
+        SELECT 'Minimum monthly dollar amount purchased parameter must be > $0.00';
+        LEAVE proc;
+    END IF;
+
+    /* Determine start and end time periods */
+    SET last_month_start = DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH);
+    SET last_month_start = STR_TO_DATE(CONCAT(YEAR(last_month_start),'-',MONTH(last_month_start),'-01'),'%Y-%m-%d');
+    SET last_month_end = LAST_DAY(last_month_start);
+
+    /*
+        Create a temporary storage area for
+        Customer IDs.
+    */
+    CREATE TEMPORARY TABLE tmpCustomer (customer_id SMALLINT UNSIGNED NOT NULL PRIMARY KEY);
+
+    /*
+        Find all customers meeting the
+        monthly purchase requirements
+    */
+    INSERT INTO tmpCustomer (customer_id)
+    SELECT p.customer_id
+    FROM payment AS p
+    WHERE DATE(p.payment_date) BETWEEN last_month_start AND last_month_end
+    GROUP BY customer_id
+    HAVING SUM(p.amount) > min_dollar_amount_purchased
+    AND COUNT(customer_id) > min_monthly_purchases;
+
+    /* Populate OUT parameter with count of found customers */
+    SELECT COUNT(*) FROM tmpCustomer INTO count_rewardees;
+
+    /*
+        Output ALL customer information of matching rewardees.
+        Customize output as needed.
+    */
+    SELECT c.*
+    FROM tmpCustomer AS t
+    INNER JOIN customer AS c ON t.customer_id = c.customer_id;
+
+    /* Clean up */
+    DROP TABLE tmpCustomer;
+END]]></string>
+		</procedure>
+		<function name="get_customer_balance" id="Function-12cb" isSystem="false" params_known="n" >
+			<string><![CDATA[CREATE  FUNCTION `get_customer_balance`(p_customer_id INT, p_effective_date DATETIME) RETURNS decimal(5,2)
+    READS SQL DATA
+    DETERMINISTIC
+BEGIN
+
+       #OK, WE NEED TO CALCULATE THE CURRENT BALANCE GIVEN A CUSTOMER_ID AND A DATE
+       #THAT WE WANT THE BALANCE TO BE EFFECTIVE FOR. THE BALANCE IS:
+       #   1) RENTAL FEES FOR ALL PREVIOUS RENTALS
+       #   2) ONE DOLLAR FOR EVERY DAY THE PREVIOUS RENTALS ARE OVERDUE
+       #   3) IF A FILM IS MORE THAN RENTAL_DURATION * 2 OVERDUE, CHARGE THE REPLACEMENT_COST
+       #   4) SUBTRACT ALL PAYMENTS MADE BEFORE THE DATE SPECIFIED
+
+  DECLARE v_rentfees DECIMAL(5,2); #FEES PAID TO RENT THE VIDEOS INITIALLY
+  DECLARE v_overfees INTEGER;      #LATE FEES FOR PRIOR RENTALS
+  DECLARE v_payments DECIMAL(5,2); #SUM OF PAYMENTS MADE PREVIOUSLY
+
+  SELECT IFNULL(SUM(film.rental_rate),0) INTO v_rentfees
+    FROM film, inventory, rental
+    WHERE film.film_id = inventory.film_id
+      AND inventory.inventory_id = rental.inventory_id
+      AND rental.rental_date <= p_effective_date
+      AND rental.customer_id = p_customer_id;
+
+  SELECT IFNULL(SUM(IF((TO_DAYS(rental.return_date) - TO_DAYS(rental.rental_date)) > film.rental_duration,
+        ((TO_DAYS(rental.return_date) - TO_DAYS(rental.rental_date)) - film.rental_duration),0)),0) INTO v_overfees
+    FROM rental, inventory, film
+    WHERE film.film_id = inventory.film_id
+      AND inventory.inventory_id = rental.inventory_id
+      AND rental.rental_date <= p_effective_date
+      AND rental.customer_id = p_customer_id;
+
+
+  SELECT IFNULL(SUM(payment.amount),0) INTO v_payments
+    FROM payment
+
+    WHERE payment.payment_date <= p_effective_date
+    AND payment.customer_id = p_customer_id;
+
+  RETURN v_rentfees + v_overfees - v_payments;
+END]]></string>
+		</function>
+		<function name="inventory_held_by_customer" id="Function-b31" isSystem="false" params_known="n" >
+			<string><![CDATA[CREATE  FUNCTION `inventory_held_by_customer`(p_inventory_id INT) RETURNS int
+    READS SQL DATA
+BEGIN
+  DECLARE v_customer_id INT;
+  DECLARE EXIT HANDLER FOR NOT FOUND RETURN NULL;
+
+  SELECT customer_id INTO v_customer_id
+  FROM rental
+  WHERE return_date IS NULL
+  AND inventory_id = p_inventory_id;
+
+  RETURN v_customer_id;
+END]]></string>
+		</function>
+		<function name="inventory_in_stock" id="Function-1d7d" isSystem="false" params_known="n" >
+			<string><![CDATA[CREATE  FUNCTION `inventory_in_stock`(p_inventory_id INT) RETURNS tinyint(1)
+    READS SQL DATA
+BEGIN
+    DECLARE v_rentals INT;
+    DECLARE v_out     INT;
+
+    #AN ITEM IS IN-STOCK IF THERE ARE EITHER NO ROWS IN THE rental TABLE
+    #FOR THE ITEM OR ALL ROWS HAVE return_date POPULATED
+
+    SELECT COUNT(*) INTO v_rentals
+    FROM rental
+    WHERE inventory_id = p_inventory_id;
+
+    IF v_rentals = 0 THEN
+      RETURN TRUE;
+    END IF;
+
+    SELECT COUNT(rental_id) INTO v_out
+    FROM inventory LEFT JOIN rental USING(inventory_id)
+    WHERE inventory.inventory_id = p_inventory_id
+    AND rental.return_date IS NULL;
+
+    IF v_out > 0 THEN
+      RETURN FALSE;
+    ELSE
+      RETURN TRUE;
+    END IF;
+END]]></string>
+		</function>
+		<trigger name="customer_create_date" table="customer" id="Trigger-afc" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER ${nameWithSchemaName} BEFORE INSERT ON customer FOR EACH ROW SET NEW.create_date = NOW()]]></string>
+		</trigger>
+		<trigger name="del_film" table="film" id="Trigger-13da" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER ${nameWithSchemaName} AFTER DELETE ON film FOR EACH ROW BEGIN
+    DELETE FROM film_text WHERE film_id = old.film_id;
+  END]]></string>
+		</trigger>
+		<trigger name="ins_film" table="film" id="Trigger-1d32" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER ${nameWithSchemaName} AFTER INSERT ON film FOR EACH ROW BEGIN
+    INSERT INTO film_text (film_id, title, description)
+        VALUES (new.film_id, new.title, new.description);
+  END]]></string>
+		</trigger>
+		<trigger name="payment_date" table="payment" id="Trigger-22fe" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER ${nameWithSchemaName} BEFORE INSERT ON payment FOR EACH ROW SET NEW.${nameWithSchemaName} = NOW()]]></string>
+		</trigger>
+		<trigger name="rental_date" table="rental" id="Trigger-8f1" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER ${nameWithSchemaName} BEFORE INSERT ON rental FOR EACH ROW SET NEW.${nameWithSchemaName} = NOW()]]></string>
+		</trigger>
+		<trigger name="upd_film" table="film" id="Trigger-11ca" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER ${nameWithSchemaName} AFTER UPDATE ON film FOR EACH ROW BEGIN
+    IF (old.title != new.title) OR (old.description != new.description) OR (old.film_id != new.film_id)
+    THEN
+        UPDATE film_text
+            SET title=new.title,
+                description=new.description,
+                film_id=new.film_id
+        WHERE film_id=old.film_id;
+    END IF;
+  END]]></string>
+		</trigger>
+	</schema>
+	<layout name="Layout" id="Layout-1c0a" show_relation="name" >
+		<comment><![CDATA[Project Layout]]></comment>
+		<entity schema="sakila" name="actor" color="3986C1" x="496" y="80" />
+		<entity schema="sakila" name="address" color="3986C1" x="352" y="80" />
+		<entity schema="sakila" name="city" color="3986C1" x="48" y="48" />
+		<entity schema="sakila" name="country" color="3986C1" x="208" y="80" />
+		<entity schema="sakila" name="customer" color="3986C1" x="672" y="48" />
+		<entity schema="sakila" name="film" color="3986C1" x="96" y="128" />
+		<entity schema="sakila" name="inventory" color="3986C1" x="608" y="272" />
+		<entity schema="sakila" name="store" color="3986C1" x="736" y="256" />
+		<script name="SQL_Editor" id="Editor-26d6" language="SQL" >
+			<string><![CDATA[select address, a.city_id, location, c.city
+FROM sakila.address a
+JOIN sakila.city c ON (a.city_id=c.city_id)]]></string>
+		</script>
+		<browser id="Browse-d1f" name="country_id" confirm_updates="y" >
+			<browse_table schema="sakila" entity="country" x="20" y="20" width="270" height="208" />
+		</browser>
+	</layout>
+	<layout name="Layout_001" id="Layout-1680" show_relation="name" >
+		<entity schema="football" name="clubs" color="C1D8EE" x="704" y="48" />
+		<entity schema="football" name="persons" color="C1D8EE" x="48" y="48" />
+		<entity schema="football" name="team_players" color="C1D8EE" x="304" y="48" />
+		<entity schema="football" name="teams" color="C1D8EE" x="496" y="48" />
+		<script name="fk_teams_persons" id="Editor-1c67" language="SQL" >
+			<string><![CDATA[SELECT
+	s.id, s.firstname, s.lastname, s.role, s.birthdate, s.phone_number, m.id, m.name, m.team_id, m.doctor, m.coach
+FROM
+	football.persons s
+	INNER JOIN football.teams m ON ( m.doctor = s.id ) ;
+
+
+SELECT name from football.teams 
+where doctor=5
+
+UPDATE
+
+DELETE 
+INSERT
+
+]]></string>
+		</script>
+		<browser id="Browse-1477" name="teams" confirm_updates="y" >
+			<browse_table schema="football" entity="teams" x="20" y="20" width="450" height="440" />
+		</browser>
+		<browser id="Browse-1fe0" name="teams_001" confirm_updates="y" >
+			<browse_table schema="football" entity="teams" x="20" y="20" width="450" height="440" />
+		</browser>
+	</layout>
+</project>
