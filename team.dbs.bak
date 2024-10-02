@@ -498,6 +498,7 @@ among with the other details]]></comment>
 				<defo><![CDATA[CURRENT_TIMESTAMP]]></defo>
 				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
 			</column>
+			<column name="column" type="TEXT" jt="-1" />
 			<index name="pk_store" unique="PRIMARY_KEY" >
 				<column name="store_id" />
 			</index>
