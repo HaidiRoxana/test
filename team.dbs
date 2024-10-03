@@ -333,6 +333,7 @@ among with the other details]]></comment>
 				<column_options><![CDATA[ON UPDATE CURRENT_TIMESTAMP]]></column_options>
 			</column>
 			<column name="price" type="DECIMAL" length="65" jt="3" />
+			<column name="media" type="INT" jt="4" />
 			<index name="pk_inventory" unique="PRIMARY_KEY" >
 				<column name="inventory_id" />
 			</index>
