@@ -320,6 +320,10 @@
 			</fk>
 			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=16050 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
 		</table>
+		<table name="products" prior="tbl" >
+			<column name="id" type="INT" jt="4" />
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
 		<table name="rental" row_count="16419" spec="" >
 			<column name="rental_id" type="INT" jt="4" mandatory="y" >
 				<identity><![CDATA[AUTO_INCREMENT]]></identity>
@@ -737,6 +741,7 @@ END]]></string>
 		<entity schema="sakila" name="language" color="C7F4BE" x="2240" y="288" />
 		<entity schema="sakila" name="nicer_but_slower_film_list" color="BED3F4" x="48" y="1152" />
 		<entity schema="sakila" name="payment" color="F4DDBE" x="1104" y="800" />
+		<entity schema="sakila" name="products" color="C1D8EE" x="1808" y="752" />
 		<entity schema="sakila" name="rental" color="F4DDBE" x="1120" y="544" />
 		<entity schema="sakila" name="sales_by_film_category" color="BED3F4" x="304" y="1152" />
 		<entity schema="sakila" name="sales_by_store" color="BED3F4" x="544" y="1152" />
@@ -783,6 +788,7 @@ The layouts and the schema structure will be saved to the design model file.]]><
 			<entity schema="sakila" name="inventory" />
 			<entity schema="sakila" name="payment" />
 			<entity schema="sakila" name="rental" />
+			<entity schema="sakila" name="products" />
 		</group>
 	</layout>
 	<layout name="~Layout with Sample Tools" id="Layout-1125" show_column_type="y" show_relation="columns" >

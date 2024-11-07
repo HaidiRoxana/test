@@ -134,6 +134,13 @@
 			</fk>
 			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=600 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
 		</table>
+		<table name="customers" prior="tbl" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<index name="pk_customers" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
 		<table name="film" row_count="1000" spec="" >
 			<column name="film_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
 				<identity><![CDATA[AUTO_INCREMENT]]></identity>
@@ -732,6 +739,7 @@ END]]></string>
 		<entity schema="sakila" name="country" color="BEBEF4" x="976" y="1152" />
 		<entity schema="sakila" name="customer" color="F4DDBE" x="1568" y="224" />
 		<entity schema="sakila" name="customer_list" color="F4DDBE" x="1776" y="224" />
+		<entity schema="sakila" name="customers" color="C1D8EE" x="1680" y="784" />
 		<entity schema="sakila" name="film" color="C7F4BE" x="1984" y="288" />
 		<entity schema="sakila" name="film_actor" color="C7F4BE" x="1984" y="640" />
 		<entity schema="sakila" name="film_category" color="C7F4BE" x="2240" y="640" />
@@ -789,6 +797,7 @@ The layouts and the schema structure will be saved to the design model file.]]><
 			<entity schema="sakila" name="payment" />
 			<entity schema="sakila" name="rental" />
 			<entity schema="sakila" name="products" />
+			<entity schema="sakila" name="customers" />
 		</group>
 	</layout>
 	<layout name="~Layout with Sample Tools" id="Layout-1125" show_column_type="y" show_relation="columns" >
