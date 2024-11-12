@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="MySql" database="MySql" id="MySql-100d" >
-	<schema name="sales" catalogname="ECOMMERCE" options="ECOMMERCE.SALES" >
+	<schema name="sales" catalogname="ECOMMERCE" options="" >
 		<table name="categories" prior="CATEGORIES" spec=" or replace" >
 			<column name="categoryid" prior="CATEGORYID" type="INT" length="38" decimal="0" jt="4" mandatory="y" >
 				<identity><![CDATA[AUTOINCREMENT]]></identity>
@@ -260,7 +260,37 @@
 			</index>
 		</table>
 	</schema>
-	<schema name="ecommerce" />
+	<schema name="ecommerce" >
+		<table name="table1" prior="t" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<index name="pk_table1" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="vouchers" prior="tbl" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<index name="pk_vouchers" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_vouchers_vouchers_0" to_schema="ecommerce" to_table="vouchers_0" >
+				<fk_column name="id" pk="id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="vouchers_0" >
+			<column name="id" type="INT" jt="4" mandatory="y" >
+				<comment><![CDATA[This column contains sensitive informations]]></comment>
+			</column>
+			<index name="pk_vouchers_0" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_vouchers_0_table1" to_schema="ecommerce" to_table="table1" >
+				<fk_column name="id" pk="id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
 	<schema name="sakila" >
 		<table name="actor" row_count="0" spec="" >
 			<column name="actor_id" type="SMALLINT" jt="5" mandatory="y" unsigned="y" >
@@ -989,18 +1019,39 @@ END]]></string>
 		</trigger>
 	</schema>
 	<layout name="Layout" id="Layout-1b77" show_relation="columns" >
-		<entity schema="ECOMMERCE.sales" name="categories" color="3986C1" x="496" y="544" />
-		<entity schema="ECOMMERCE.sales" name="customers" color="3986C1" x="480" y="1024" />
-		<entity schema="ECOMMERCE.sales" name="departments" color="3986C1" x="256" y="48" />
-		<entity schema="ECOMMERCE.sales" name="discounts" color="3986C1" x="720" y="544" />
-		<entity schema="ECOMMERCE.sales" name="employees" color="3986C1" x="496" y="272" />
-		<entity schema="ECOMMERCE.sales" name="inventory" color="3986C1" x="1184" y="544" />
-		<entity schema="ECOMMERCE.sales" name="orderdetails" color="3986C1" x="272" y="1024" />
-		<entity schema="ECOMMERCE.sales" name="orders" color="3986C1" x="480" y="752" />
-		<entity schema="ECOMMERCE.sales" name="products" color="3986C1" x="960" y="544" />
-		<entity schema="ECOMMERCE.sales" name="promotions" color="3986C1" x="720" y="800" />
-		<entity schema="ECOMMERCE.sales" name="shippers" color="3986C1" x="272" y="480" />
-		<entity schema="ECOMMERCE.sales" name="suppliers" color="3986C1" x="48" y="752" />
-		<entity schema="ECOMMERCE.sales" name="warehouses" color="3986C1" x="720" y="304" />
+		<entity schema="ECOMMERCE.sales" name="categories" color="BED3F4" x="1008" y="352" />
+		<entity schema="ECOMMERCE.sales" name="customers" color="C7F4BE" x="512" y="352" />
+		<entity schema="ECOMMERCE.sales" name="departments" color="BED3F4" x="1008" y="80" />
+		<entity schema="ECOMMERCE.sales" name="discounts" color="C7F4BE" x="512" y="80" />
+		<entity schema="ECOMMERCE.sales" name="employees" color="BED3F4" x="800" y="80" />
+		<entity schema="ECOMMERCE.sales" name="inventory" color="C7F4BE" x="48" y="352" />
+		<entity schema="ECOMMERCE.sales" name="orderdetails" color="C7F4BE" x="368" y="560" />
+		<entity schema="ECOMMERCE.sales" name="orders" color="C7F4BE" x="272" y="352" />
+		<entity schema="ECOMMERCE.sales" name="products" color="C7F4BE" x="48" y="80" />
+		<entity schema="ECOMMERCE.sales" name="promotions" color="C7F4BE" x="272" y="80" />
+		<entity schema="ECOMMERCE.sales" name="shippers" color="BED3F4" x="784" y="352" />
+		<entity schema="ECOMMERCE.sales" name="suppliers" color="BED3F4" x="1008" y="624" />
+		<entity schema="ecommerce" name="table1" color="C1D8EE" x="160" y="656" />
+		<entity schema="ecommerce" name="vouchers" color="C1D8EE" x="208" y="592" />
+		<entity schema="ecommerce" name="vouchers_0" color="3986C1" x="64" y="608" />
+		<entity schema="ECOMMERCE.sales" name="warehouses" color="BED3F4" x="1232" y="352" />
+		<group name="departments" color="ECF0F7" >
+			<entity schema="ECOMMERCE.sales" name="departments" />
+			<entity schema="ECOMMERCE.sales" name="warehouses" />
+			<entity schema="ECOMMERCE.sales" name="shippers" />
+			<entity schema="ECOMMERCE.sales" name="employees" />
+			<entity schema="ECOMMERCE.sales" name="categories" />
+			<entity schema="ECOMMERCE.sales" name="suppliers" />
+		</group>
+		<group name="products" color="EEF7EC" >
+			<entity schema="ECOMMERCE.sales" name="products" />
+			<entity schema="ECOMMERCE.sales" name="promotions" />
+			<entity schema="ECOMMERCE.sales" name="inventory" />
+			<entity schema="ECOMMERCE.sales" name="discounts" />
+			<entity schema="ECOMMERCE.sales" name="customers" />
+			<entity schema="ECOMMERCE.sales" name="orders" />
+			<entity schema="ecommerce" name="table1" />
+			<entity schema="ECOMMERCE.sales" name="orderdetails" />
+		</group>
 	</layout>
 </project>
