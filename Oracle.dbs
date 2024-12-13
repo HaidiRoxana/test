@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Oracle" database="Oracle" id="Oracle-e33" >
+	<schema name="ORGANIZATION" >
+		<table name="ASSETS" row_count="0" >
+			<column name="ASSET_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="ASSET_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="PURCHASE_DATE" type="DATE" length="7" jt="91" />
+			<column name="COST" type="NUMBER" length="15" decimal="2" jt="2" />
+			<column name="LOCATION_ID" type="NUMBER" length="10" jt="2" />
+			<index name="SYS_C008418" unique="PRIMARY_KEY" >
+				<column name="ASSET_ID" />
+			</index>
+			<fk name="FK_ASSET_LOCATION" to_schema="ORGANIZATION" to_table="LOCATIONS" update_action="cascade" >
+				<fk_column name="LOCATION_ID" pk="LOCATION_ID" />
+			</fk>
+		</table>
+		<table name="ASSET_ASSIGNMENTS" row_count="0" >
+			<column name="ASSET_ASSIGNMENT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="ASSET_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="EMPLOYEE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="ASSIGNMENT_DATE" type="DATE" length="7" jt="91" />
+			<column name="RETURN_DATE" type="DATE" length="7" jt="91" />
+			<index name="SYS_C008422" unique="PRIMARY_KEY" >
+				<column name="ASSET_ASSIGNMENT_ID" />
+			</index>
+			<fk name="FK_ASSET" to_schema="ORGANIZATION" to_table="ASSETS" update_action="cascade" >
+				<fk_column name="ASSET_ID" pk="ASSET_ID" />
+			</fk>
+			<fk name="FK_ASSET_EMPLOYEE" to_schema="ORGANIZATION" to_table="EMPLOYEES" update_action="cascade" >
+				<fk_column name="EMPLOYEE_ID" pk="EMPLOYEE_ID" />
+			</fk>
+		</table>
+		<table name="AWARDS" row_count="0" >
+			<column name="AWARD_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="AWARD_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="DESCRIPTION" type="VARCHAR2" length="500" jt="12" />
+			<column name="DATE_AWARDED" type="DATE" length="7" jt="91" />
+			<index name="SYS_C008472" unique="PRIMARY_KEY" >
+				<column name="AWARD_ID" />
+			</index>
+		</table>
+		<table name="BENEFITS" row_count="0" >
+			<column name="BENEFIT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="BENEFIT_NAME" type="VARCHAR2" length="100" jt="12" mandatory="y" />
+			<column name="DESCRIPTION" type="VARCHAR2" length="300" jt="12" />
+			<column name="COST" type="NUMBER" length="10" decimal="2" jt="2" />
+			<index name="SYS_C008450" unique="PRIMARY_KEY" >
+				<column name="BENEFIT_ID" />
+			</index>
+		</table>
+		<table name="CONTRACTS" row_count="0" >
+			<column name="CONTRACT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="CONTRACT_TITLE" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="START_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="END_DATE" type="DATE" length="7" jt="91" />
+			<column name="CUSTOMER_ID" type="NUMBER" length="10" jt="2" />
+			<index name="SYS_C008443" unique="PRIMARY_KEY" >
+				<column name="CONTRACT_ID" />
+			</index>
+			<fk name="FK_CONTRACT_CUSTOMER" to_schema="ORGANIZATION" to_table="CUSTOMERS" update_action="cascade" >
+				<fk_column name="CUSTOMER_ID" pk="CUSTOMER_ID" />
+			</fk>
+		</table>
+		<table name="CUSTOMERS" row_count="0" >
+			<column name="CUSTOMER_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="CUSTOMER_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="CONTACT_NAME" type="VARCHAR2" length="100" jt="12" />
+			<column name="PHONE" type="VARCHAR2" length="20" jt="12" />
+			<column name="EMAIL" type="VARCHAR2" length="100" jt="12" />
+			<column name="ADDRESS" type="VARCHAR2" length="200" jt="12" />
+			<index name="SYS_C008389" unique="PRIMARY_KEY" >
+				<column name="CUSTOMER_ID" />
+			</index>
+		</table>
+		<table name="DEPARTMENTS" row_count="0" >
+			<column name="DEPARTMENT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="DEPARTMENT_NAME" type="VARCHAR2" length="100" jt="12" mandatory="y" />
+			<column name="LOCATION" type="VARCHAR2" length="150" jt="12" />
+			<column name="MANAGER_ID" type="NUMBER" length="10" jt="2" />
+			<index name="SYS_C008371" unique="PRIMARY_KEY" >
+				<column name="DEPARTMENT_ID" />
+			</index>
+		</table>
+		<table name="EMPLOYEES" row_count="0" >
+			<column name="EMPLOYEE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="FIRST_NAME" type="VARCHAR2" length="50" jt="12" />
+			<column name="LAST_NAME" type="VARCHAR2" length="50" jt="12" mandatory="y" />
+			<column name="EMAIL" type="VARCHAR2" length="100" jt="12" />
+			<column name="PHONE_NUMBER" type="VARCHAR2" length="20" jt="12" />
+			<column name="HIRE_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="JOB_ID" type="NUMBER" length="10" jt="2" />
+			<column name="DEPARTMENT_ID" type="NUMBER" length="10" jt="2" />
+			<index name="SYS_C008374" unique="PRIMARY_KEY" >
+				<column name="EMPLOYEE_ID" />
+			</index>
+			<index name="SYS_C008375" unique="UNIQUE_KEY" >
+				<column name="EMAIL" />
+			</index>
+			<index name="UNQ_EMPLOYEES_JOB_ID" unique="UNIQUE_KEY" >
+				<column name="JOB_ID" />
+			</index>
+			<fk name="FK_DEPARTMENT" to_schema="ORGANIZATION" to_table="DEPARTMENTS" update_action="cascade" >
+				<fk_column name="DEPARTMENT_ID" pk="DEPARTMENT_ID" />
+			</fk>
+		</table>
+		<table name="EMPLOYEE_BENEFITS" row_count="0" >
+			<column name="EMPLOYEE_BENEFIT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="EMPLOYEE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="BENEFIT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="START_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="END_DATE" type="DATE" length="7" jt="91" />
+			<index name="SYS_C008454" unique="PRIMARY_KEY" >
+				<column name="EMPLOYEE_BENEFIT_ID" />
+			</index>
+			<fk name="FK_BENEFIT" to_schema="ORGANIZATION" to_table="BENEFITS" update_action="cascade" >
+				<fk_column name="BENEFIT_ID" pk="BENEFIT_ID" />
+			</fk>
+			<fk name="FK_EMPLOYEE_BENEFIT" to_schema="ORGANIZATION" to_table="EMPLOYEES" update_action="cascade" >
+				<fk_column name="EMPLOYEE_ID" pk="EMPLOYEE_ID" />
+			</fk>
+		</table>
+		<table name="EMPLOYEE_INSURANCES" row_count="0" >
+			<column name="EMPLOYEE_INSURANCE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="EMPLOYEE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="INSURANCE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="EFFECTIVE_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="EXPIRATION_DATE" type="DATE" length="7" jt="91" />
+			<index name="SYS_C008462" unique="PRIMARY_KEY" >
+				<column name="EMPLOYEE_INSURANCE_ID" />
+			</index>
+			<fk name="FK_EMPLOYEE_INSURANCE" to_schema="ORGANIZATION" to_table="EMPLOYEES" update_action="cascade" >
+				<fk_column name="EMPLOYEE_ID" pk="EMPLOYEE_ID" />
+			</fk>
+			<fk name="FK_INSURANCE" to_schema="ORGANIZATION" to_table="INSURANCES" update_action="cascade" >
+				<fk_column name="INSURANCE_ID" pk="INSURANCE_ID" />
+			</fk>
+		</table>
+		<table name="EMPLOYEE_TRAINING" row_count="0" >
+			<column name="EMPLOYEE_TRAINING_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PROGRAM_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="EMPLOYEE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="COMPLETION_STATUS" type="VARCHAR2" length="50" jt="12" />
+			<index name="SYS_C008429" unique="PRIMARY_KEY" >
+				<column name="EMPLOYEE_TRAINING_ID" />
+			</index>
+			<fk name="FK_TRAINING_EMPLOYEE" to_schema="ORGANIZATION" to_table="EMPLOYEES" update_action="cascade" >
+				<fk_column name="EMPLOYEE_ID" pk="EMPLOYEE_ID" />
+			</fk>
+			<fk name="FK_PROGRAM" to_schema="ORGANIZATION" to_table="TRAINING_PROGRAMS" update_action="cascade" >
+				<fk_column name="PROGRAM_ID" pk="PROGRAM_ID" />
+			</fk>
+		</table>
+		<table name="INSURANCES" row_count="0" >
+			<column name="INSURANCE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="INSURANCE_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="PROVIDER" type="VARCHAR2" length="150" jt="12" />
+			<column name="COVERAGE_AMOUNT" type="NUMBER" length="15" decimal="2" jt="2" />
+			<column name="PREMIUM" type="NUMBER" length="15" decimal="2" jt="2" />
+			<index name="SYS_C008458" unique="PRIMARY_KEY" >
+				<column name="INSURANCE_ID" />
+			</index>
+		</table>
+		<table name="INVOICES" row_count="0" >
+			<column name="INVOICE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="ORDER_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="INVOICE_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="TOTAL_AMOUNT" type="NUMBER" length="15" decimal="2" jt="2" />
+			<index name="SYS_C008411" unique="PRIMARY_KEY" >
+				<column name="INVOICE_ID" />
+			</index>
+			<fk name="FK_INVOICE_ORDER" to_schema="ORGANIZATION" to_table="ORDERS" update_action="cascade" >
+				<fk_column name="ORDER_ID" pk="ORDER_ID" />
+			</fk>
+		</table>
+		<table name="JOBS" row_count="0" >
+			<column name="JOB_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="JOB_TITLE" type="VARCHAR2" length="100" jt="12" mandatory="y" />
+			<column name="MIN_SALARY" type="NUMBER" length="10" decimal="2" jt="2" />
+			<column name="MAX_SALARY" type="NUMBER" length="10" decimal="2" jt="2" />
+			<index name="SYS_C008378" unique="PRIMARY_KEY" >
+				<column name="JOB_ID" />
+			</index>
+			<fk name="FK_JOBS_EMPLOYEES" to_schema="ORGANIZATION" to_table="EMPLOYEES" >
+				<fk_column name="JOB_ID" pk="JOB_ID" />
+			</fk>
+		</table>
+		<table name="LOCATIONS" row_count="0" >
+			<column name="LOCATION_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="STREET_ADDRESS" type="VARCHAR2" length="150" jt="12" />
+			<column name="CITY" type="VARCHAR2" length="100" jt="12" mandatory="y" />
+			<column name="STATE" type="VARCHAR2" length="100" jt="12" />
+			<column name="POSTAL_CODE" type="VARCHAR2" length="20" jt="12" />
+			<column name="COUNTRY" type="VARCHAR2" length="100" jt="12" />
+			<index name="SYS_C008380" unique="PRIMARY_KEY" >
+				<column name="LOCATION_ID" />
+			</index>
+		</table>
+		<table name="MEETINGS" row_count="0" >
+			<column name="MEETING_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="MEETING_TITLE" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="MEETING_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="DURATION" type="NUMBER" length="5" jt="2" />
+			<column name="LOCATION_ID" type="NUMBER" length="10" jt="2" />
+			<index name="SYS_C008434" unique="PRIMARY_KEY" >
+				<column name="MEETING_ID" />
+			</index>
+			<fk name="FK_MEETING_LOCATION" to_schema="ORGANIZATION" to_table="LOCATIONS" update_action="cascade" >
+				<fk_column name="LOCATION_ID" pk="LOCATION_ID" />
+			</fk>
+		</table>
+		<table name="MEETING_PARTICIPANTS" row_count="0" >
+			<column name="PARTICIPANT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="MEETING_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="EMPLOYEE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="ROLE" type="VARCHAR2" length="50" jt="12" />
+			<index name="SYS_C008438" unique="PRIMARY_KEY" >
+				<column name="PARTICIPANT_ID" />
+			</index>
+			<fk name="FK_MEETING_EMPLOYEE" to_schema="ORGANIZATION" to_table="EMPLOYEES" update_action="cascade" >
+				<fk_column name="EMPLOYEE_ID" pk="EMPLOYEE_ID" />
+			</fk>
+			<fk name="FK_MEETING" to_schema="ORGANIZATION" to_table="MEETINGS" update_action="cascade" >
+				<fk_column name="MEETING_ID" pk="MEETING_ID" />
+			</fk>
+		</table>
+		<table name="ORDERS" row_count="0" >
+			<column name="ORDER_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="CUSTOMER_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="ORDER_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="STATUS" type="VARCHAR2" length="50" jt="12" />
+			<column name="TOTAL_AMOUNT" type="NUMBER" length="15" decimal="2" jt="2" />
+			<index name="SYS_C008392" unique="PRIMARY_KEY" >
+				<column name="ORDER_ID" />
+			</index>
+			<fk name="FK_CUSTOMER" to_schema="ORGANIZATION" to_table="CUSTOMERS" update_action="cascade" >
+				<fk_column name="CUSTOMER_ID" pk="CUSTOMER_ID" />
+			</fk>
+		</table>
+		<table name="ORDER_DETAILS" row_count="0" >
+			<column name="ORDER_DETAIL_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="ORDER_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PRODUCT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="QUANTITY" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PRICE_PER_UNIT" type="NUMBER" length="10" decimal="2" jt="2" />
+			<index name="SYS_C008397" unique="PRIMARY_KEY" >
+				<column name="ORDER_DETAIL_ID" />
+			</index>
+			<fk name="FK_ORDER" to_schema="ORGANIZATION" to_table="ORDERS" update_action="cascade" >
+				<fk_column name="ORDER_ID" pk="ORDER_ID" />
+			</fk>
+		</table>
+		<table name="PAYMENTS" row_count="0" >
+			<column name="PAYMENT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="INVOICE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PAYMENT_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="AMOUNT" type="NUMBER" length="15" decimal="2" jt="2" />
+			<column name="PAYMENT_METHOD" type="VARCHAR2" length="50" jt="12" />
+			<index name="SYS_C008415" unique="PRIMARY_KEY" >
+				<column name="PAYMENT_ID" />
+			</index>
+			<fk name="FK_INVOICE" to_schema="ORGANIZATION" to_table="INVOICES" update_action="cascade" >
+				<fk_column name="INVOICE_ID" pk="INVOICE_ID" />
+			</fk>
+		</table>
+		<table name="PERFORMANCE_REVIEWS" row_count="0" >
+			<column name="REVIEW_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="EMPLOYEE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="REVIEW_DATE" type="DATE" length="7" jt="91" mandatory="y" />
+			<column name="RATING" type="NUMBER" length="2" jt="2" />
+			<column name="COMMENTS" type="VARCHAR2" length="500" jt="12" />
+			<index name="SYS_C008447" unique="PRIMARY_KEY" >
+				<column name="REVIEW_ID" />
+			</index>
+			<fk name="FK_REVIEW_EMPLOYEE" to_schema="ORGANIZATION" to_table="EMPLOYEES" update_action="cascade" >
+				<fk_column name="EMPLOYEE_ID" pk="EMPLOYEE_ID" />
+			</fk>
+		</table>
+		<table name="PRODUCTS" row_count="0" >
+			<column name="PRODUCT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PRODUCT_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="DESCRIPTION" type="VARCHAR2" length="500" jt="12" />
+			<column name="PRICE" type="NUMBER" length="10" decimal="2" jt="2" mandatory="y" />
+			<column name="STOCK_QUANTITY" type="NUMBER" length="10" jt="2" />
+			<index name="SYS_C008401" unique="PRIMARY_KEY" >
+				<column name="PRODUCT_ID" />
+			</index>
+		</table>
+		<table name="PROJECTS" row_count="0" >
+			<column name="PROJECT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PROJECT_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="START_DATE" type="DATE" length="7" jt="91" />
+			<column name="END_DATE" type="DATE" length="7" jt="91" />
+			<column name="BUDGET" type="NUMBER" length="15" decimal="2" jt="2" />
+			<index name="SYS_C008382" unique="PRIMARY_KEY" >
+				<column name="PROJECT_ID" />
+			</index>
+		</table>
+		<table name="PROJECT_ASSIGNMENTS" row_count="0" >
+			<column name="ASSIGNMENT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PROJECT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="EMPLOYEE_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="ASSIGNED_DATE" type="DATE" length="7" jt="91" />
+			<column name="ROLE" type="VARCHAR2" length="100" jt="12" />
+			<index name="SYS_C008385" unique="PRIMARY_KEY" >
+				<column name="ASSIGNMENT_ID" />
+			</index>
+			<fk name="FK_EMPLOYEE" to_schema="ORGANIZATION" to_table="EMPLOYEES" update_action="cascade" >
+				<fk_column name="EMPLOYEE_ID" pk="EMPLOYEE_ID" />
+			</fk>
+			<fk name="FK_PROJECT" to_schema="ORGANIZATION" to_table="PROJECTS" update_action="cascade" >
+				<fk_column name="PROJECT_ID" pk="PROJECT_ID" />
+			</fk>
+		</table>
+		<table name="SUPPLIERS" row_count="0" >
+			<column name="SUPPLIER_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="SUPPLIER_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="CONTACT_NAME" type="VARCHAR2" length="100" jt="12" />
+			<column name="PHONE" type="VARCHAR2" length="20" jt="12" />
+			<column name="EMAIL" type="VARCHAR2" length="100" jt="12" />
+			<column name="ADDRESS" type="VARCHAR2" length="200" jt="12" />
+			<index name="SYS_C008403" unique="PRIMARY_KEY" >
+				<column name="SUPPLIER_ID" />
+			</index>
+		</table>
+		<table name="SUPPLIER_PRODUCTS" row_count="0" >
+			<column name="SUPPLIER_PRODUCT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="SUPPLIER_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PRODUCT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PRICE" type="NUMBER" length="10" decimal="2" jt="2" />
+			<index name="SYS_C008406" unique="PRIMARY_KEY" >
+				<column name="SUPPLIER_PRODUCT_ID" />
+			</index>
+			<fk name="FK_PRODUCT" to_schema="ORGANIZATION" to_table="PRODUCTS" update_action="cascade" >
+				<fk_column name="PRODUCT_ID" pk="PRODUCT_ID" />
+			</fk>
+			<fk name="FK_SUPPLIER" to_schema="ORGANIZATION" to_table="SUPPLIERS" update_action="cascade" >
+				<fk_column name="SUPPLIER_ID" pk="SUPPLIER_ID" />
+			</fk>
+		</table>
+		<table name="TRAINING_PROGRAMS" row_count="0" >
+			<column name="PROGRAM_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="PROGRAM_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="START_DATE" type="DATE" length="7" jt="91" />
+			<column name="END_DATE" type="DATE" length="7" jt="91" />
+			<column name="TRAINER" type="VARCHAR2" length="100" jt="12" />
+			<index name="SYS_C008426" unique="PRIMARY_KEY" >
+				<column name="PROGRAM_ID" />
+			</index>
+		</table>
+		<table name="VENDORS" row_count="0" >
+			<column name="VENDOR_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="VENDOR_NAME" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="CONTACT_PERSON" type="VARCHAR2" length="100" jt="12" />
+			<column name="PHONE" type="VARCHAR2" length="20" jt="12" />
+			<column name="EMAIL" type="VARCHAR2" length="100" jt="12" />
+			<column name="ADDRESS" type="VARCHAR2" length="200" jt="12" />
+			<index name="SYS_C008466" unique="PRIMARY_KEY" >
+				<column name="VENDOR_ID" />
+			</index>
+		</table>
+		<table name="VENDOR_CONTRACTS" row_count="0" >
+			<column name="VENDOR_CONTRACT_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="VENDOR_ID" type="NUMBER" length="10" jt="2" mandatory="y" />
+			<column name="CONTRACT_TITLE" type="VARCHAR2" length="150" jt="12" mandatory="y" />
+			<column name="START_DATE" type="DATE" length="7" jt="91" />
+			<column name="END_DATE" type="DATE" length="7" jt="91" />
+			<column name="VALUE" type="NUMBER" length="15" decimal="2" jt="2" />
+			<index name="SYS_C008469" unique="PRIMARY_KEY" >
+				<column name="VENDOR_CONTRACT_ID" />
+			</index>
+			<fk name="FK_VENDOR" to_schema="ORGANIZATION" to_table="VENDORS" update_action="cascade" >
+				<fk_column name="VENDOR_ID" pk="VENDOR_ID" />
+			</fk>
+		</table>
+	</schema>
+	<layout name="Main Layout" id="Layout-26e3" show_relation="columns" >
+		<entity schema="ORGANIZATION" name="ASSETS" color="C7F4BE" x="848" y="528" />
+		<entity schema="ORGANIZATION" name="ASSET_ASSIGNMENTS" color="C7F4BE" x="1088" y="528" />
+		<entity schema="ORGANIZATION" name="AWARDS" color="BED3F4" x="64" y="752" />
+		<entity schema="ORGANIZATION" name="BENEFITS" color="C7F4BE" x="896" y="752" />
+		<entity schema="ORGANIZATION" name="CONTRACTS" color="F4DDBE" x="1328" y="304" />
+		<entity schema="ORGANIZATION" name="CUSTOMERS" color="F4DDBE" x="1088" y="304" />
+		<entity schema="ORGANIZATION" name="DEPARTMENTS" color="C7F4BE" x="672" y="528" />
+		<entity schema="ORGANIZATION" name="EMPLOYEES" color="C7F4BE" x="608" y="304" />
+		<entity schema="ORGANIZATION" name="EMPLOYEE_BENEFITS" color="C7F4BE" x="464" y="528" />
+		<entity schema="ORGANIZATION" name="EMPLOYEE_INSURANCES" color="C7F4BE" x="320" y="304" />
+		<entity schema="ORGANIZATION" name="EMPLOYEE_TRAINING" color="C7F4BE" x="304" y="48" />
+		<entity schema="ORGANIZATION" name="INSURANCES" color="C7F4BE" x="48" y="528" />
+		<entity schema="ORGANIZATION" name="INVOICES" color="F4DDBE" x="544" y="48" />
+		<entity schema="ORGANIZATION" name="JOBS" color="BED3F4" x="704" y="752" />
+		<entity schema="ORGANIZATION" name="LOCATIONS" color="C7F4BE" x="1088" y="752" />
+		<entity schema="ORGANIZATION" name="MEETINGS" color="C7F4BE" x="1328" y="752" />
+		<entity schema="ORGANIZATION" name="MEETING_PARTICIPANTS" color="C7F4BE" x="1296" y="528" />
+		<entity schema="ORGANIZATION" name="ORDERS" color="F4DDBE" x="848" y="304" />
+		<entity schema="ORGANIZATION" name="ORDER_DETAILS" color="F4DDBE" x="272" y="528" />
+		<entity schema="ORGANIZATION" name="PAYMENTS" color="F4DDBE" x="752" y="48" />
+		<entity schema="ORGANIZATION" name="PERFORMANCE_REVIEWS" color="C7F4BE" x="64" y="304" />
+		<entity schema="ORGANIZATION" name="PRODUCTS" color="BEBEF4" x="64" y="928" />
+		<entity schema="ORGANIZATION" name="PROJECTS" color="BED3F4" x="1184" y="48" />
+		<entity schema="ORGANIZATION" name="PROJECT_ASSIGNMENTS" color="BED3F4" x="976" y="48" />
+		<entity schema="ORGANIZATION" name="SUPPLIERS" color="BEBEF4" x="448" y="928" />
+		<entity schema="ORGANIZATION" name="SUPPLIER_PRODUCTS" color="BEBEF4" x="480" y="752" />
+		<entity schema="ORGANIZATION" name="TRAINING_PROGRAMS" color="C7F4BE" x="64" y="48" />
+		<entity schema="ORGANIZATION" name="VENDORS" color="D1BEF4" x="256" y="928" />
+		<entity schema="ORGANIZATION" name="VENDOR_CONTRACTS" color="D1BEF4" x="256" y="752" />
+	</layout>
+	<layout name="~Layout with Sample Tools" id="Layout-23c4" show_column_type="y" show_relation="columns" >
+		<entity schema="ORGANIZATION" name="ASSETS" color="C7F4BE" x="2480" y="1040" />
+		<entity schema="ORGANIZATION" name="ASSET_ASSIGNMENTS" color="C7F4BE" x="2784" y="1040" />
+		<entity schema="ORGANIZATION" name="AWARDS" color="BED3F4" x="1520" y="1040" />
+		<entity schema="ORGANIZATION" name="BENEFITS" color="C7F4BE" x="1776" y="272" />
+		<entity schema="ORGANIZATION" name="CONTRACTS" color="F4DDBE" x="3136" y="48" />
+		<entity schema="ORGANIZATION" name="CUSTOMERS" color="F4DDBE" x="2800" y="48" />
+		<entity schema="ORGANIZATION" name="DEPARTMENTS" color="C7F4BE" x="768" y="336" />
+		<entity schema="ORGANIZATION" name="EMPLOYEES" color="C7F4BE" x="1120" y="272" />
+		<entity schema="ORGANIZATION" name="EMPLOYEE_BENEFITS" color="C7F4BE" x="1440" y="272" />
+		<entity schema="ORGANIZATION" name="EMPLOYEE_INSURANCES" color="C7F4BE" x="1072" y="544" />
+		<entity schema="ORGANIZATION" name="EMPLOYEE_TRAINING" color="C7F4BE" x="1440" y="544" />
+		<entity schema="ORGANIZATION" name="INSURANCES" color="C7F4BE" x="1440" y="768" />
+		<entity schema="ORGANIZATION" name="INVOICES" color="F4DDBE" x="2480" y="272" />
+		<entity schema="ORGANIZATION" name="JOBS" color="BED3F4" x="1840" y="1040" />
+		<entity schema="ORGANIZATION" name="LOCATIONS" color="C7F4BE" x="2160" y="1040" />
+		<entity schema="ORGANIZATION" name="MEETINGS" color="C7F4BE" x="2480" y="1280" />
+		<entity schema="ORGANIZATION" name="MEETING_PARTICIPANTS" color="C7F4BE" x="2800" y="1280" />
+		<entity schema="ORGANIZATION" name="ORDERS" color="F4DDBE" x="2480" y="48" />
+		<entity schema="ORGANIZATION" name="ORDER_DETAILS" color="F4DDBE" x="2160" y="272" />
+		<entity schema="ORGANIZATION" name="PAYMENTS" color="F4DDBE" x="2800" y="480" />
+		<entity schema="ORGANIZATION" name="PERFORMANCE_REVIEWS" color="C7F4BE" x="816" y="48" />
+		<entity schema="ORGANIZATION" name="PRODUCTS" color="BEBEF4" x="1104" y="1040" />
+		<entity schema="ORGANIZATION" name="PROJECTS" color="BED3F4" x="2464" y="768" />
+		<entity schema="ORGANIZATION" name="PROJECT_ASSIGNMENTS" color="BED3F4" x="2160" y="768" />
+		<entity schema="ORGANIZATION" name="SUPPLIERS" color="BEBEF4" x="768" y="1248" />
+		<entity schema="ORGANIZATION" name="SUPPLIER_PRODUCTS" color="BEBEF4" x="768" y="1040" />
+		<entity schema="ORGANIZATION" name="TRAINING_PROGRAMS" color="C7F4BE" x="1792" y="544" />
+		<entity schema="ORGANIZATION" name="VENDORS" color="D1BEF4" x="48" y="1040" />
+		<entity schema="ORGANIZATION" name="VENDOR_CONTRACTS" color="D1BEF4" x="384" y="1040" />
+		<script name="SQL Editor" id="Editor-316" language="SQL" >
+			<string><![CDATA[SELECT
+	EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, DEPARTMENT_ID
+FROM
+	ORGANIZATION.EMPLOYEES S;]]></string>
+		</script>
+		<browser id="Browse-26a7" name="Relational Data Editor" confirm_updates="y" >
+			<browse_table schema="ORGANIZATION" entity="EMPLOYEES" x="20" y="20" width="270" height="-60" >
+				<browse_table schema="ORGANIZATION" entity="ASSET_ASSIGNMENTS" fk="FK_ASSET_EMPLOYEE" x="310" y="20" width="500" height="350" >
+					<browse_table schema="ORGANIZATION" entity="ASSETS" fk="FK_ASSET" x="830" y="20" width="500" height="350" record_view="y" />
+				</browse_table>
+			</browse_table>
+		</browser>
+		<query id="Query-1371" name="Query Builder" >
+			<query_table schema="ORGANIZATION" name="EMPLOYEES" alias="e" x="48" y="48" >
+				<column name="EMPLOYEE_ID" />
+				<column name="FIRST_NAME" />
+				<column name="LAST_NAME" />
+				<column name="EMAIL" />
+				<column name="PHONE_NUMBER" />
+				<column name="HIRE_DATE" />
+				<column name="JOB_ID" />
+				<column name="DEPARTMENT_ID" />
+				<query_table schema="ORGANIZATION" name="ASSET_ASSIGNMENTS" alias="aa" x="288" y="48" fk="FK_ASSET_EMPLOYEE" type="Inner Join" >
+					<column name="ASSET_ASSIGNMENT_ID" />
+					<column name="ASSET_ID" />
+					<column name="EMPLOYEE_ID" />
+					<column name="ASSIGNMENT_DATE" />
+					<column name="RETURN_DATE" />
+					<query_table schema="ORGANIZATION" name="ASSETS" alias="a" x="560" y="48" fk="FK_ASSET" type="Inner Join" >
+						<column name="ASSET_ID" />
+						<column name="ASSET_NAME" />
+						<column name="PURCHASE_DATE" />
+						<column name="COST" />
+						<column name="LOCATION_ID" />
+					</query_table>
+				</query_table>
+			</query_table>
+		</query>
+	</layout>
+</project>
