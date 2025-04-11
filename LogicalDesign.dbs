@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="LogicalDB_Countries" database="LogicalDesign" id="LogicalDesign-1ae9" >
+	<schema name="LogicalDB_Countries" >
+		<table name="Cities" prior="Entity" super_table_schema="LogicalDB_Countries" super_table="Countries" >
+			<column name="City ID" prior="CityID" type="INT" jt="4" mandatory="y" />
+			<column name="City Name" prior="CityName" type="VARCHAR" length="100" jt="12" />
+			<column name="Country ID" prior="CountryID" type="VARCHAR" length="3" jt="12" mandatory="y" />
+			<column name="Population" prior="POPULATION" type="INT" jt="4" />
+			<index name="pk_Cities" unique="PRIMARY_KEY" >
+				<column name="City ID" />
+				<column name="Country ID" />
+			</index>
+			<fk name="fk_Cities_Countries" to_schema="LogicalDB_Countries" to_table="Countries" type="NonIdentifying" mandatory="y" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="Country ID" pk="Country ID" />
+			</fk>
+		</table>
+		<table name="Countries" prior="Entity" >
+			<column name="Country ID" prior="CountryID" type="VARCHAR" length="3" jt="12" mandatory="y" />
+			<column name="Country Name" prior="CountryName" type="VARCHAR" length="100" jt="12" />
+			<column name="Continent" type="VARCHAR" length="50" jt="12" />
+			<column name="Phone Prefix" prior="PhonePrefix" type="VARCHAR" length="10" jt="12" />
+			<index name="pk_Countries" unique="PRIMARY_KEY" >
+				<column name="Country ID" />
+			</index>
+		</table>
+		<table name="CountryLanguages" prior="Entity" >
+			<column name="Country ID" prior="CountryID" type="VARCHAR" length="3" jt="12" mandatory="y" />
+			<column name="Language ID" prior="LanguageID" type="INT" jt="4" mandatory="y" />
+			<index name="pk_CountryLanguages" unique="PRIMARY_KEY" >
+				<column name="Country ID" />
+				<column name="Language ID" />
+			</index>
+			<fk name="fk_CountryLanguages_Countries" to_schema="LogicalDB_Countries" to_table="Countries" type="ManyToMany" mandatory="y" cardinality="ZeroMore" range_from="0" range_to="0" >
+				<fk_column name="Country ID" pk="Country ID" />
+			</fk>
+			<fk name="fk_CountryLanguages_Languages" to_schema="LogicalDB_Countries" to_table="Languages" type="ManyToMany" mandatory="y" cardinality="ZeroMore" range_from="0" range_to="0" >
+				<fk_column name="Language ID" pk="Language ID" />
+			</fk>
+		</table>
+		<table name="Languages" prior="Entity" >
+			<column name="Language ID" prior="LanguageID" type="INT" jt="4" mandatory="y" />
+			<column name="Language Name" prior="LanguageName" type="VARCHAR" length="50" jt="12" />
+			<index name="pk_Languages" unique="PRIMARY_KEY" >
+				<column name="Language ID" />
+			</index>
+		</table>
+		<table name="PhonePrefixes" prior="Phone Prefixes" >
+			<column name="Country ID" prior="CountryID" type="CHAR" length="3" jt="1" mandatory="y" />
+			<column name="Phone Prefix" prior="PhonePrefix" type="VARCHAR" length="3" jt="12" />
+			<index name="pk_PhonePrefixes" unique="PRIMARY_KEY" >
+				<column name="Country ID" />
+			</index>
+			<fk name="rel_PhonePrefixes_Countries" to_schema="LogicalDB_Countries" to_table="Countries" type="Identifying" mandatory="y" cardinality="One" range_from="0" range_to="0" >
+				<fk_column name="Country ID" pk="Country ID" />
+			</fk>
+		</table>
+		<table name="Residents" prior="Entity" >
+			<column name="Resident ID" prior="ResidentID" type="INT" jt="4" mandatory="y" />
+			<column name="Resident Name" prior="ResidentName" type="VARCHAR" length="100" jt="12" >
+				<comment><![CDATA[Full name of the resident, used for official documents and reports.]]></comment>
+			</column>
+			<column name="City ID" prior="CityID" type="INT" jt="4" mandatory="y" />
+			<column name="Birth Year" prior="BirthYear" type="INT" jt="4" />
+			<index name="pk_Residents" unique="PRIMARY_KEY" >
+				<column name="Resident ID" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Diagram" id="Diagram-55a" hide_fks="SubTable," joined_routing="y" show_column_type="y" show_relation="columns" >
+		<entity schema="LogicalDB_Countries" name="Cities" color="C1D8EE" x="380" y="57" />
+		<entity schema="LogicalDB_Countries" name="PhonePrefixes" color="C1D8EE" x="57" y="57" />
+		<entity schema="LogicalDB_Countries" name="Countries" color="C1D8EE" x="57" y="304" />
+		<entity schema="LogicalDB_Countries" name="CountryLanguages" color="C1D8EE" x="399" y="323" />
+		<entity schema="LogicalDB_Countries" name="Languages" color="C1D8EE" x="684" y="323" />
+		<entity schema="LogicalDB_Countries" name="Residents" color="C1D8EE" x="684" y="57" />
+	</layout>
+</project>
