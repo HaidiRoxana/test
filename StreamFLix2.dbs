@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MongoDb" database="MongoDb" id="786a9365-3b2d-41ec-95be-070f15c6223d" >
+	<schema name="StreamFlix" >
+		<table name="actors" generator_rows="100" virtual="y" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="birth_year" type="int" length="800" decimal="0" jt="4" mandatory="y" />
+			<column name="awards" type="array[object]" length="800" decimal="0" jt="4999545" mandatory="y" >
+				<column name="title" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+				<column name="year" type="int" length="800" decimal="0" jt="4" mandatory="y" />
+			</column>
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="contentRatings" generator_rows="150" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="movie_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="region" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="rating" type="enum" length="800" decimal="0" jt="12" mandatory="y" >
+				<enumeration><![CDATA['G','PG','PG-13','R','NC-17']]></enumeration>
+			</column>
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="devices" generator_rows="150" virtual="y" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="user_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="type" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="details" type="object" length="800" decimal="0" jt="4999544" mandatory="y" >
+				<column name="brand" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+				<column name="os" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			</column>
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_devices_users" virtual="y" to_schema="StreamFlix" to_table="users" >
+				<fk_column name="user_id" pk="_id" />
+			</fk>
+		</table>
+		<table name="directors" generator_rows="225" virtual="y" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="nationality" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="filmography" type="array[object]" length="800" decimal="0" jt="4999545" mandatory="y" >
+				<column name="title" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+				<column name="year" type="int" length="800" decimal="0" jt="4" mandatory="y" />
+			</column>
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_directors_devices" virtual="y" to_schema="StreamFlix" to_table="devices" >
+				<fk_column name="_id" pk="_id" />
+			</fk>
+		</table>
+		<table name="genres" generator_rows="100" virtual="y" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="description" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="movies" generator_rows="100" virtual="y" >
+			<comment><![CDATA[This is a movie collection]]></comment>
+			<comment_tag name="Drama" value="3" />
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="title" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="genre" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="releaseYear" type="int" length="800" decimal="0" jt="4" mandatory="y" >
+				<comment><![CDATA[The year must be greater than 2005!]]></comment>
+			</column>
+			<column name="duration" type="int" length="800" decimal="0" jt="4" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<index name="idx_movies" unique="NORMAL" >
+				<column name="title" />
+			</index>
+		</table>
+		<table name="notifications" generator_rows="100" virtual="y" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="user_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="type" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="message" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="createdAt" type="date" length="800" decimal="0" jt="91" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="payments" generator_rows="150" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="user_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" >
+				<comment><![CDATA[This field contains private information!]]></comment>
+			</column>
+			<column name="amount" type="double" length="800" decimal="0" jt="8" mandatory="y" />
+			<column name="method" type="enum" length="800" decimal="0" jt="12" mandatory="y" >
+				<enumeration><![CDATA['CreditCard','PayPal']]></enumeration>
+			</column>
+			<column name="date" type="date" length="800" decimal="0" jt="91" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_payments_users" virtual="y" to_schema="StreamFlix" to_table="users" >
+				<fk_column name="user_id" pk="_id" />
+			</fk>
+		</table>
+		<table name="plans" generator_rows="100" virtual="y" >
+			<column name="_id" type="object" length="800" decimal="0" jt="4999544" mandatory="y" />
+			<column name="price" type="double" length="800" decimal="0" jt="8" mandatory="y" />
+			<column name="resolution" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="regions" generator_rows="100" virtual="y" >
+			<column name="_id" type="object" length="800" decimal="0" jt="4999544" mandatory="y" />
+			<column name="label" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="reviews" generator_rows="150" virtual="y" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="user_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="movie_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="rating" type="int" length="800" decimal="0" jt="4" mandatory="y" />
+			<column name="comment" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_reviews_users" virtual="y" to_schema="StreamFlix" to_table="users" >
+				<fk_column name="user_id" pk="_id" />
+			</fk>
+			<fk name="fk_reviews_movies" virtual="y" to_schema="StreamFlix" to_table="movies" >
+				<fk_column name="movie_id" pk="_id" />
+			</fk>
+		</table>
+		<table name="subscriptions" generator_rows="100" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="user_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="plan" type="enum" length="800" decimal="0" jt="12" mandatory="y" >
+				<enumeration><![CDATA['Basic','Premium']]></enumeration>
+			</column>
+			<column name="status" type="enum" length="800" decimal="0" jt="12" >
+				<enumeration><![CDATA['Active','Paused','Cancelled']]></enumeration>
+			</column>
+			<column name="startDate" type="date" length="800" decimal="0" jt="91" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="supportTickets" generator_rows="100" virtual="y" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="user_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="status" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="created_at" type="date" length="800" decimal="0" jt="91" mandatory="y" />
+			<column name="messages" type="array[object]" length="800" decimal="0" jt="4999545" mandatory="y" >
+				<column name="sender" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+				<column name="text" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+				<column name="timestamp" type="date" length="800" decimal="0" jt="91" mandatory="y" />
+			</column>
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="users" generator_rows="100" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="email" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="watchlists" generator_rows="150" virtual="y" >
+			<column name="_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="user_id" type="objectId" length="800" decimal="0" jt="-8" mandatory="y" />
+			<column name="movies" type="array[objectid]" length="800" decimal="0" jt="2003" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_watchlists_movies" virtual="y" to_schema="StreamFlix" to_table="movies" >
+				<fk_column name="_id" pk="_id" />
+			</fk>
+		</table>
+	</schema>
+	<layout name="Diagram" id="e83ff574-2991-4c7f-a11f-4eb40a07ab17" show_relation="fk_name" />
+	<layout name="Main Diagram" id="8bbb872b-88ad-497d-b71f-d581d8d22e4f" joined_routing="y" show_column_type="y" show_relation="columns" >
+		<comment><![CDATA[Main Diagram]]></comment>
+		<entity schema="StreamFlix" name="actors" color="BED3F4" x="57" y="570" >
+			<column name="_id" />
+			<column name="name" />
+			<column name="birth_year" />
+			<column name="awards" expanded="y" />
+			<column name="awards.title" />
+			<column name="awards.year" />
+		</entity>
+		<entity schema="StreamFlix" name="genres" color="BED3F4" x="893" y="570" />
+		<entity schema="StreamFlix" name="supportTickets" color="BED3F4" x="1178" y="57" >
+			<column name="_id" />
+			<column name="user_id" />
+			<column name="status" />
+			<column name="created_at" />
+			<column name="messages" expanded="y" />
+			<column name="messages.sender" />
+			<column name="messages.text" />
+			<column name="messages.timestamp" />
+		</entity>
+		<entity schema="StreamFlix" name="plans" color="3986C1" x="1159" y="570" />
+		<entity schema="StreamFlix" name="watchlists" color="BED3F4" x="57" y="342" />
+		<entity schema="StreamFlix" name="devices" color="BED3F4" x="589" y="570" />
+		<entity schema="StreamFlix" name="directors" color="BED3F4" x="285" y="570" />
+		<entity schema="StreamFlix" name="notifications" color="BED3F4" x="1102" y="304" />
+		<entity schema="StreamFlix" name="users" color="BED3F4" x="551" y="57" />
+		<entity schema="StreamFlix" name="contentRatings" color="BED3F4" x="684" y="304" />
+		<entity schema="StreamFlix" name="regions" color="3986C1" x="950" y="304" />
+		<entity schema="StreamFlix" name="subscriptions" color="3986C1" x="855" y="57" />
+		<entity schema="StreamFlix" name="reviews" color="BED3F4" x="285" y="57" />
+		<entity schema="StreamFlix" name="movies" color="BED3F4" x="57" y="57" />
+		<entity schema="StreamFlix" name="payments" color="BED3F4" x="304" y="304" />
+		<script name="Query" id="7f36c187-6c91-4819-b404-3dabf3634891" language="SQL" >
+			<string><![CDATA[db.createCollection("contentRatings", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["movie_id", "region", "rating"],
+      properties: {
+        movie_id: { bsonType: "objectId" },
+        region: { bsonType: "string" },
+        rating: { enum: ["G", "PG", "PG-13", "R", "NC-17"] }
+      }
+    }
+  }
+});
+
+db.contentRatings.insertOne({
+  movie_id: ObjectId("64a1f1e1e1a9cd0012345670"),
+  region: "US",
+  rating: "PG-13"
+});
+]]></string>
+		</script>
+		<script name="Query_001" id="f4135841-6a6d-49df-aa9e-4863ffedf4e8" language="SQL" >
+			<string><![CDATA[db.createCollection("subscriptions", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["user_id", "plan"],
+      properties: {
+        user_id: { bsonType: "objectId" },
+        plan: { enum: ["Basic", "Premium"] },
+        status: { enum: ["Active", "Paused", "Cancelled"] },
+        startDate: { bsonType: "date" }
+      }
+    }
+  }
+});
+db.subscriptions.insertOne({
+  user_id: ObjectId("64a1f1e1e1a9cd0012345671"),
+  plan: "Premium",
+  status: "Active",
+  startDate: ISODate("2024-05-01T00:00:00Z")
+});
+]]></string>
+		</script>
+		<script name="Sample" id="2981fb7d-b5e1-40f3-b730-ed5e3b2787fb" language="SQL" >
+			<string><![CDATA[db.reviews.insertOne({
+  user_id: ObjectId("64a1f1e1e1a9cd0012345671"),
+  movie_id: ObjectId("64a1f1e1e1a9cd0012345670"),
+  rating: 5,
+  comment: "Absolutely loved it!"
+});
+]]></string>
+		</script>
+	</layout>
+</project>
