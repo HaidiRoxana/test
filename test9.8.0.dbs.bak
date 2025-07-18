@@ -51,12 +51,19 @@
 			</index>
 			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
 		</table>
+		<table name="tbl_model" prior="tbl_mode" >
+			<column name="id" type="INT" />
+			<column name="name" type="VARCHAR" length="100" />
+			<column name="date" type="DATE" />
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
 	</schema>
 	<layout name="Main Diagram" id="1033d7fe-b255-4f15-a6a0-7808a0f6fe72" show_column_type="y" show_relation="columns" >
 		<entity schema="company3" name="departments" color="BED3F4" x="57" y="57" />
 		<entity schema="company3" name="employee_project" color="BED3F4" x="342" y="57" />
 		<entity schema="company3" name="employees" color="BED3F4" x="57" y="285" />
 		<entity schema="company3" name="projects" color="BED3F4" x="342" y="285" />
+		<entity schema="company3" name="tbl_model" color="C1D8EE" x="760" y="57" />
 		<script name="SQL_Editor" id="491d11fc-aa13-4d3e-a45f-19cf720486d2" language="SQL" >
 			<string><![CDATA[ALTER TABLE company.employee_project
 ADD CONSTRAINT fk_employee_project_employee_id

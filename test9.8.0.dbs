@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="MySql" database="MySql" id="1f992585-5be2-4545-8867-09c84b0840af" >
 	<schema name="company3" >
+		<table name="beta18" prior="be" >
+			<column name="id" type="INT" />
+			<column name="name" type="VARCHAR" length="100" />
+			<column name="date" type="DATE" />
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
 		<table name="departments" row_count="3" spec="" >
 			<column name="department_id" type="BIGINT" mandatory="y" unsigned="y" >
 				<identity><![CDATA[AUTO_INCREMENT]]></identity>
@@ -64,6 +70,7 @@
 		<entity schema="company3" name="employees" color="BED3F4" x="57" y="285" />
 		<entity schema="company3" name="projects" color="BED3F4" x="342" y="285" />
 		<entity schema="company3" name="tbl_model" color="C1D8EE" x="760" y="57" />
+		<entity schema="company3" name="beta18" color="C1D8EE" x="760" y="361" />
 		<script name="SQL_Editor" id="491d11fc-aa13-4d3e-a45f-19cf720486d2" language="SQL" >
 			<string><![CDATA[ALTER TABLE company.employee_project
 ADD CONSTRAINT fk_employee_project_employee_id
