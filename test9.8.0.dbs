@@ -65,6 +65,10 @@
 			<column name="kfkfk" type="INT" />
 			<options><![CDATA[engine=InnoDB]]></options>
 		</table>
+		<table name="tbl_0" >
+			<column name="id" type="INT" />
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
 		<table name="tbl_model" prior="tbl_mode" >
 			<column name="id" type="INT" />
 			<column name="name" type="VARCHAR" length="100" />
@@ -73,14 +77,15 @@
 		</table>
 	</schema>
 	<layout name="Main Diagram" id="1033d7fe-b255-4f15-a6a0-7808a0f6fe72" show_column_type="y" show_relation="columns" >
-		<entity schema="company3" name="departments" color="BED3F4" x="646" y="342" />
-		<entity schema="company3" name="employee_project" color="BED3F4" x="646" y="570" />
-		<entity schema="company3" name="employees" color="BED3F4" x="57" y="57" />
-		<entity schema="company3" name="projects" color="BED3F4" x="323" y="570" />
-		<entity schema="company3" name="tbl_model" color="BED3F4" x="76" y="342" />
-		<entity schema="company3" name="beta18" color="BED3F4" x="361" y="342" />
-		<entity schema="company3" name="kotlin" color="C1D8EE" x="627" y="114" />
-		<entity schema="company3" name="tbl" color="C1D8EE" x="760" y="76" />
+		<entity schema="company3" name="departments" color="BED3F4" x="665" y="342" />
+		<entity schema="company3" name="employee_project" color="BED3F4" x="665" y="570" />
+		<entity schema="company3" name="employees" color="BED3F4" x="665" y="57" />
+		<entity schema="company3" name="projects" color="BED3F4" x="57" y="570" />
+		<entity schema="company3" name="tbl_model" color="BED3F4" x="380" y="114" />
+		<entity schema="company3" name="beta18" color="BED3F4" x="380" y="342" />
+		<entity schema="company3" name="kotlin" color="BED3F4" x="380" y="570" />
+		<entity schema="company3" name="tbl" color="BED3F4" x="152" y="380" />
+		<entity schema="company3" name="tbl_0" color="BED3F4" x="171" y="152" />
 		<script name="SQL_Editor" id="491d11fc-aa13-4d3e-a45f-19cf720486d2" language="SQL" >
 			<string><![CDATA[ALTER TABLE company.employee_project
 ADD CONSTRAINT fk_employee_project_employee_id
