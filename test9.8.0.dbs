@@ -61,6 +61,10 @@
 			</index>
 			<options><![CDATA[ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci]]></options>
 		</table>
+		<table name="tbl" >
+			<column name="kfkfk" type="INT" />
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
 		<table name="tbl_model" prior="tbl_mode" >
 			<column name="id" type="INT" />
 			<column name="name" type="VARCHAR" length="100" />
@@ -76,6 +80,7 @@
 		<entity schema="company3" name="tbl_model" color="BED3F4" x="76" y="342" />
 		<entity schema="company3" name="beta18" color="BED3F4" x="361" y="342" />
 		<entity schema="company3" name="kotlin" color="C1D8EE" x="627" y="114" />
+		<entity schema="company3" name="tbl" color="C1D8EE" x="760" y="76" />
 		<script name="SQL_Editor" id="491d11fc-aa13-4d3e-a45f-19cf720486d2" language="SQL" >
 			<string><![CDATA[ALTER TABLE company.employee_project
 ADD CONSTRAINT fk_employee_project_employee_id
