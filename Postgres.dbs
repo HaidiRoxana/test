@@ -2,11 +2,11 @@
 <project name="PostgreSQL" database="PostgreSQL" id="PostgreSQL-996" >
 	<schema name="company" >
 		<table name="attendance" generator_rows="150" row_count="30" spec="" >
-			<column name="attendance_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="employee_id" type="integer" length="32" jt="4" />
-			<column name="check_in_time" type="timestamp" jt="93" />
-			<column name="check_out_time" type="timestamp" jt="93" />
-			<column name="attendance_date" type="date" length="0" jt="91" />
+			<column name="attendance_id" type="integer" length="32" mandatory="y" />
+			<column name="employee_id" type="integer" length="32" />
+			<column name="check_in_time" type="timestamp" />
+			<column name="check_out_time" type="timestamp" />
+			<column name="attendance_date" type="date" length="0" />
 			<index name="pk_attendance" unique="PRIMARY_KEY" >
 				<column name="attendance_id" />
 			</index>
@@ -18,11 +18,11 @@
 			</fk>
 		</table>
 		<table name="campaign_results" generator_rows="150" row_count="10" spec="" >
-			<column name="result_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="campaign_id" type="integer" length="32" jt="4" />
-			<column name="total_spent" type="numeric" length="15" decimal="2" jt="2" />
-			<column name="leads_generated" type="integer" length="32" jt="4" />
-			<column name="sales_generated" type="integer" length="32" jt="4" />
+			<column name="result_id" type="integer" length="32" mandatory="y" />
+			<column name="campaign_id" type="integer" length="32" />
+			<column name="total_spent" type="decimal" length="15" decimal="2" />
+			<column name="leads_generated" type="integer" length="32" />
+			<column name="sales_generated" type="integer" length="32" />
 			<index name="pk_campaign_results" unique="PRIMARY_KEY" >
 				<column name="result_id" />
 			</index>
@@ -31,14 +31,14 @@
 			</fk>
 		</table>
 		<table name="contracts" generator_rows="225" row_count="30" spec="" >
-			<column name="contract_id" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="contract_id" type="integer" length="32" mandatory="y" >
 				<comment><![CDATA[This column contains private informations.]]></comment>
 			</column>
-			<column name="employee_id" type="integer" length="32" jt="4" />
-			<column name="contract_type" type="varchar" length="50" jt="12" />
-			<column name="start_date" type="date" length="0" jt="91" />
-			<column name="end_date" type="date" length="0" jt="91" />
-			<column name="salary" type="numeric" length="10" decimal="2" jt="2" />
+			<column name="employee_id" type="integer" length="32" />
+			<column name="contract_type" type="varchar" length="50" />
+			<column name="start_date" type="date" length="0" />
+			<column name="end_date" type="date" length="0" />
+			<column name="salary" type="decimal" length="10" decimal="2" />
 			<index name="pk_contracts" unique="PRIMARY_KEY" >
 				<column name="contract_id" />
 			</index>
@@ -53,13 +53,13 @@
 			</fk>
 		</table>
 		<table name="customers" generator_rows="225" row_count="26" spec="" >
-			<column name="customer_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="first_name" type="varchar" length="50" jt="12" />
-			<column name="last_name" type="varchar" length="50" jt="12" />
-			<column name="email" type="varchar" length="100" jt="12" />
-			<column name="phone_number" type="varchar" length="20" jt="12" />
-			<column name="address" type="varchar" length="255" jt="12" />
-			<column name="registration_date" type="date" length="0" jt="91" />
+			<column name="customer_id" type="integer" length="32" mandatory="y" />
+			<column name="first_name" type="varchar" length="50" />
+			<column name="last_name" type="varchar" length="50" />
+			<column name="email" type="varchar" length="100" />
+			<column name="phone_number" type="varchar" length="20" />
+			<column name="address" type="varchar" length="255" />
+			<column name="registration_date" type="date" length="0" />
 			<index name="pk_customers" unique="PRIMARY_KEY" >
 				<column name="customer_id" />
 			</index>
@@ -68,11 +68,11 @@
 			</fk>
 		</table>
 		<table name="departments" generator_rows="150" row_count="26" spec="" >
-			<column name="department_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="department_name" type="varchar" length="100" jt="12" />
-			<column name="location" type="varchar" length="100" jt="12" />
-			<column name="budget" type="numeric" length="15" decimal="2" jt="2" />
-			<column name="manager_id" type="integer" length="32" jt="4" />
+			<column name="department_id" type="integer" length="32" mandatory="y" />
+			<column name="department_name" type="varchar" length="100" />
+			<column name="location" type="varchar" length="100" />
+			<column name="budget" type="decimal" length="15" decimal="2" />
+			<column name="manager_id" type="integer" length="32" />
 			<index name="pk_departments" unique="PRIMARY_KEY" >
 				<column name="department_id" />
 			</index>
@@ -81,11 +81,11 @@
 			</fk>
 		</table>
 		<table name="employee_benefits" generator_rows="150" row_count="30" spec="" >
-			<column name="benefit_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="employee_id" type="integer" length="32" jt="4" />
-			<column name="benefit_type" type="varchar" length="50" jt="12" />
-			<column name="start_date" type="date" length="0" jt="91" />
-			<column name="end_date" type="date" length="0" jt="91" />
+			<column name="benefit_id" type="integer" length="32" mandatory="y" />
+			<column name="employee_id" type="integer" length="32" />
+			<column name="benefit_type" type="varchar" length="50" />
+			<column name="start_date" type="date" length="0" />
+			<column name="end_date" type="date" length="0" />
 			<index name="pk_employee_benefits" unique="PRIMARY_KEY" >
 				<column name="benefit_id" />
 			</index>
@@ -97,11 +97,11 @@
 			</fk>
 		</table>
 		<table name="employee_projects" generator_rows="505" row_count="10" spec="" >
-			<column name="employee_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="project_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="role" type="varchar" length="100" jt="12" />
-			<column name="start_date" type="date" length="0" jt="91" />
-			<column name="end_date" type="date" length="0" jt="91" />
+			<column name="employee_id" type="integer" length="32" mandatory="y" />
+			<column name="project_id" type="integer" length="32" mandatory="y" />
+			<column name="role" type="varchar" length="100" />
+			<column name="start_date" type="date" length="0" />
+			<column name="end_date" type="date" length="0" />
 			<index name="pk_employee_projects" unique="PRIMARY_KEY" >
 				<column name="employee_id" />
 				<column name="project_id" />
@@ -120,14 +120,14 @@
 			</fk>
 		</table>
 		<table name="employees" generator_rows="100" row_count="30" spec="" >
-			<column name="employee_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="first_name" type="varchar" length="50" jt="12" />
-			<column name="last_name" type="varchar" length="50" jt="12" />
-			<column name="email" type="varchar" length="100" jt="12" />
-			<column name="hire_date" type="date" length="0" jt="91" />
-			<column name="salary" type="numeric" length="10" decimal="2" jt="2" />
-			<column name="department_id" type="integer" length="32" jt="4" />
-			<column name="manager_id" type="integer" length="32" jt="4" />
+			<column name="employee_id" type="integer" length="32" mandatory="y" />
+			<column name="first_name" type="varchar" length="50" />
+			<column name="last_name" type="varchar" length="50" />
+			<column name="email" type="varchar" length="100" />
+			<column name="hire_date" type="date" length="0" />
+			<column name="salary" type="decimal" length="10" decimal="2" />
+			<column name="department_id" type="integer" length="32" />
+			<column name="manager_id" type="integer" length="32" />
 			<index name="pk_employees" unique="PRIMARY_KEY" >
 				<column name="employee_id" />
 			</index>
@@ -136,11 +136,11 @@
 			</index>
 		</table>
 		<table name="inventory" generator_rows="150" row_count="30" spec="" >
-			<column name="inventory_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="product_id" type="integer" length="32" jt="4" />
-			<column name="warehouse_location" type="varchar" length="100" jt="12" />
-			<column name="stock_quantity" type="integer" length="32" jt="4" />
-			<column name="reorder_level" type="integer" length="32" jt="4" />
+			<column name="inventory_id" type="integer" length="32" mandatory="y" />
+			<column name="product_id" type="integer" length="32" />
+			<column name="warehouse_location" type="varchar" length="100" />
+			<column name="stock_quantity" type="integer" length="32" />
+			<column name="reorder_level" type="integer" length="32" />
 			<index name="pk_inventory" unique="PRIMARY_KEY" >
 				<column name="inventory_id" />
 			</index>
@@ -152,21 +152,21 @@
 			</fk>
 		</table>
 		<table name="marketing_campaigns" generator_rows="100" row_count="10" spec="" >
-			<column name="campaign_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="campaign_name" type="varchar" length="100" jt="12" />
-			<column name="start_date" type="date" length="0" jt="91" />
-			<column name="end_date" type="date" length="0" jt="91" />
-			<column name="budget" type="numeric" length="15" decimal="2" jt="2" />
+			<column name="campaign_id" type="integer" length="32" mandatory="y" />
+			<column name="campaign_name" type="varchar" length="100" />
+			<column name="start_date" type="date" length="0" />
+			<column name="end_date" type="date" length="0" />
+			<column name="budget" type="decimal" length="15" decimal="2" />
 			<index name="pk_marketing_campaigns" unique="PRIMARY_KEY" >
 				<column name="campaign_id" />
 			</index>
 		</table>
 		<table name="order_items" generator_rows="100" row_count="30" spec="" >
-			<column name="order_item_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="order_id" type="integer" length="32" jt="4" />
-			<column name="product_id" type="integer" length="32" jt="4" />
-			<column name="quantity" type="integer" length="32" jt="4" />
-			<column name="price" type="numeric" length="10" decimal="2" jt="2" />
+			<column name="order_item_id" type="integer" length="32" mandatory="y" />
+			<column name="order_id" type="integer" length="32" />
+			<column name="product_id" type="integer" length="32" />
+			<column name="quantity" type="integer" length="32" />
+			<column name="price" type="decimal" length="10" decimal="2" />
 			<index name="pk_order_items" unique="PRIMARY_KEY" >
 				<column name="order_item_id" />
 			</index>
@@ -181,12 +181,12 @@
 			</fk>
 		</table>
 		<table name="orders" generator_rows="150" row_count="28" spec="" >
-			<column name="order_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="customer_id" type="integer" length="32" jt="4" />
-			<column name="order_date" type="date" length="0" jt="91" />
-			<column name="total_amount" type="numeric" length="15" decimal="2" jt="2" />
-			<column name="status" type="varchar" length="50" jt="12" />
-			<column name="shipping_address" type="varchar" length="255" jt="12" />
+			<column name="order_id" type="integer" length="32" mandatory="y" />
+			<column name="customer_id" type="integer" length="32" />
+			<column name="order_date" type="date" length="0" />
+			<column name="total_amount" type="decimal" length="15" decimal="2" />
+			<column name="status" type="varchar" length="50" />
+			<column name="shipping_address" type="varchar" length="255" />
 			<index name="pk_orders" unique="PRIMARY_KEY" >
 				<column name="order_id" />
 			</index>
@@ -198,11 +198,11 @@
 			</fk>
 		</table>
 		<table name="payment_methods" generator_rows="337" row_count="30" spec="" >
-			<column name="payment_method_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="customer_id" type="integer" length="32" jt="4" />
-			<column name="payment_type" type="varchar" length="50" jt="12" />
-			<column name="payment_details" type="varchar" length="255" jt="12" />
-			<column name="expiration_date" type="date" length="0" jt="91" />
+			<column name="payment_method_id" type="integer" length="32" mandatory="y" />
+			<column name="customer_id" type="integer" length="32" />
+			<column name="payment_type" type="varchar" length="50" />
+			<column name="payment_details" type="varchar" length="255" />
+			<column name="expiration_date" type="date" length="0" />
 			<index name="pk_payment_methods" unique="PRIMARY_KEY" >
 				<column name="payment_method_id" />
 			</index>
@@ -214,24 +214,24 @@
 			</fk>
 		</table>
 		<table name="products" generator_rows="100" row_count="10" spec="" >
-			<column name="product_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="product_name" type="varchar" length="100" jt="12" />
-			<column name="category" type="varchar" length="50" jt="12" />
-			<column name="price" type="numeric" length="10" decimal="2" jt="2" />
-			<column name="stock_quantity" type="integer" length="32" jt="4" />
-			<column name="supplier_id" type="integer" length="32" jt="4" />
+			<column name="product_id" type="integer" length="32" mandatory="y" />
+			<column name="product_name" type="varchar" length="100" />
+			<column name="category" type="varchar" length="50" />
+			<column name="price" type="decimal" length="10" decimal="2" />
+			<column name="stock_quantity" type="integer" length="32" />
+			<column name="supplier_id" type="integer" length="32" />
 			<index name="pk_products" unique="PRIMARY_KEY" >
 				<column name="product_id" />
 			</index>
 		</table>
 		<table name="projects" generator_rows="337" row_count="30" spec="" >
-			<column name="project_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="project_name" type="varchar" length="100" jt="12" />
-			<column name="department_id" type="integer" length="32" jt="4" />
-			<column name="start_date" type="date" length="0" jt="91" />
-			<column name="end_date" type="date" length="0" jt="91" />
-			<column name="budget" type="numeric" length="15" decimal="2" jt="2" />
-			<column name="status" type="varchar" length="50" jt="12" />
+			<column name="project_id" type="integer" length="32" mandatory="y" />
+			<column name="project_name" type="varchar" length="100" />
+			<column name="department_id" type="integer" length="32" />
+			<column name="start_date" type="date" length="0" />
+			<column name="end_date" type="date" length="0" />
+			<column name="budget" type="decimal" length="15" decimal="2" />
+			<column name="status" type="varchar" length="50" />
 			<index name="pk_projects" unique="PRIMARY_KEY" >
 				<column name="project_id" />
 			</index>
@@ -246,12 +246,12 @@
 			</fk>
 		</table>
 		<table name="reviews" generator_rows="337" row_count="30" spec="" >
-			<column name="review_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="product_id" type="integer" length="32" jt="4" />
-			<column name="customer_id" type="integer" length="32" jt="4" />
-			<column name="rating" type="integer" length="32" jt="4" />
-			<column name="review_date" type="date" length="0" jt="91" />
-			<column name="comments" type="text" jt="12" />
+			<column name="review_id" type="integer" length="32" mandatory="y" />
+			<column name="product_id" type="integer" length="32" />
+			<column name="customer_id" type="integer" length="32" />
+			<column name="rating" type="integer" length="32" />
+			<column name="review_date" type="date" length="0" />
+			<column name="comments" type="text" />
 			<index name="pk_reviews" unique="PRIMARY_KEY" >
 				<column name="review_id" />
 			</index>
@@ -266,11 +266,11 @@
 			</fk>
 		</table>
 		<table name="salaries" generator_rows="150" row_count="30" spec="" >
-			<column name="salary_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="employee_id" type="integer" length="32" jt="4" />
-			<column name="salary" type="numeric" length="10" decimal="2" jt="2" />
-			<column name="effective_date" type="date" length="0" jt="91" />
-			<column name="bonus" type="numeric" length="10" decimal="2" jt="2" />
+			<column name="salary_id" type="integer" length="32" mandatory="y" />
+			<column name="employee_id" type="integer" length="32" />
+			<column name="salary" type="decimal" length="10" decimal="2" />
+			<column name="effective_date" type="date" length="0" />
+			<column name="bonus" type="decimal" length="10" decimal="2" />
 			<index name="pk_salaries" unique="PRIMARY_KEY" >
 				<column name="salary_id" />
 			</index>
@@ -285,12 +285,12 @@
 			</fk>
 		</table>
 		<table name="shipping" generator_rows="100" row_count="10" spec="" >
-			<column name="shipping_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="order_id" type="integer" length="32" jt="4" />
-			<column name="shipping_date" type="date" length="0" jt="91" />
-			<column name="tracking_number" type="varchar" length="50" jt="12" />
-			<column name="shipping_method" type="varchar" length="50" jt="12" />
-			<column name="shipping_status" type="varchar" length="50" jt="12" />
+			<column name="shipping_id" type="integer" length="32" mandatory="y" />
+			<column name="order_id" type="integer" length="32" />
+			<column name="shipping_date" type="date" length="0" />
+			<column name="tracking_number" type="varchar" length="50" />
+			<column name="shipping_method" type="varchar" length="50" />
+			<column name="shipping_status" type="varchar" length="50" />
 			<index name="pk_shipping" unique="PRIMARY_KEY" >
 				<column name="shipping_id" />
 			</index>
@@ -299,12 +299,12 @@
 			</index>
 		</table>
 		<table name="suppliers" generator_rows="150" row_count="24" spec="" >
-			<column name="supplier_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="supplier_name" type="varchar" length="100" jt="12" />
-			<column name="contact_name" type="varchar" length="50" jt="12" />
-			<column name="contact_email" type="varchar" length="100" jt="12" />
-			<column name="phone_number" type="varchar" length="20" jt="12" />
-			<column name="address" type="varchar" length="255" jt="12" />
+			<column name="supplier_id" type="integer" length="32" mandatory="y" />
+			<column name="supplier_name" type="varchar" length="100" />
+			<column name="contact_name" type="varchar" length="50" />
+			<column name="contact_email" type="varchar" length="100" />
+			<column name="phone_number" type="varchar" length="20" />
+			<column name="address" type="varchar" length="255" />
 			<index name="pk_suppliers" unique="PRIMARY_KEY" >
 				<column name="supplier_id" />
 			</index>
@@ -313,11 +313,11 @@
 			</fk>
 		</table>
 		<table name="transactions" generator_rows="100" row_count="30" spec="" >
-			<column name="transaction_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="order_id" type="integer" length="32" jt="4" />
-			<column name="transaction_date" type="date" length="0" jt="91" />
-			<column name="amount" type="numeric" length="15" decimal="2" jt="2" />
-			<column name="payment_method_id" type="integer" length="32" jt="4" />
+			<column name="transaction_id" type="integer" length="32" mandatory="y" />
+			<column name="order_id" type="integer" length="32" />
+			<column name="transaction_date" type="date" length="0" />
+			<column name="amount" type="decimal" length="15" decimal="2" />
+			<column name="payment_method_id" type="integer" length="32" />
 			<index name="pk_transactions" unique="PRIMARY_KEY" >
 				<column name="transaction_id" />
 			</index>
@@ -334,9 +334,9 @@
 	<schema name="public" >
 		<comment><![CDATA[standard public schema]]></comment>
 		<table name="cities" row_count="0" spec="" >
-			<column name="id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="name" type="varchar" length="255" jt="12" mandatory="y" />
-			<column name="countryid" type="char" length="2" jt="1" mandatory="y" />
+			<column name="id" type="integer" length="32" mandatory="y" />
+			<column name="name" type="varchar" length="255" mandatory="y" />
+			<column name="countryid" type="char" length="2" mandatory="y" />
 			<index name="cities_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -345,38 +345,38 @@
 			</fk>
 		</table>
 		<table name="connection_alert_contents" row_count="1" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_content_id" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_content_id" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="is_open" type="boolean" jt="16" >
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="is_open" type="boolean" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="is_read" type="boolean" jt="16" >
+			<column name="is_read" type="boolean" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="end_time" type="timestamptz" jt="93" />
-			<column name="user_id" type="bigint" length="64" jt="-5" />
-			<column name="remark" type="text" jt="12" />
-			<column name="current_threshold_value" type="integer" length="32" jt="4" >
+			<column name="end_time" type="timestamptz" />
+			<column name="user_id" type="bigint" length="64" />
+			<column name="remark" type="text" />
+			<column name="current_threshold_value" type="integer" length="32" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="severity" type="integer" length="32" jt="4" >
+			<column name="severity" type="integer" length="32" >
 				<defo><![CDATA[1]]></defo>
 			</column>
-			<column name="manual_close_time" type="timestamptz" jt="93" />
-			<column name="current_return_value" type="numeric" jt="2" >
+			<column name="manual_close_time" type="timestamptz" />
+			<column name="current_return_value" type="decimal" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="current_alert_direction" type="boolean" jt="16" >
+			<column name="current_alert_direction" type="boolean" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="digest" type="text" jt="12" />
+			<column name="digest" type="text" />
 			<index name="connection_alert_contents_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -431,62 +431,62 @@
 			</index>
 		</table>
 		<table name="connection_alert_settings" row_count="0" spec="" >
-			<column name="id" type="bigserial" length="64" jt="-5" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="alert_inherit_parent" type="boolean" jt="16" mandatory="y" >
+			<column name="id" type="bigserial" length="64" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="alert_inherit_parent" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_type" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_type" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_direction" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_direction" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_warn_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_warn_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_warn_threshold" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_warn_threshold" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_critical_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_critical_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_critical_threshold" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_critical_threshold" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_length_minute" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_length_minute" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_sent_when_raise" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_when_raise" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_when_end" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_when_end" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_via_email" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_email" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_via_sms" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_sms" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_via_snmp" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_snmp" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_to_user_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_user_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_all" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_all" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_roles" type="text" jt="12" mandatory="y" />
-			<column name="alert_sent_alternative_email" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_roles" type="text" mandatory="y" />
+			<column name="alert_sent_alternative_email" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_emails" type="text" jt="12" />
-			<column name="alert_sent_via_slack" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_emails" type="text" />
+			<column name="alert_sent_via_slack" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
 			<index name="connection_alert_settings_pkey" unique="PRIMARY_KEY" >
@@ -498,10 +498,10 @@
 			</index>
 		</table>
 		<table name="connection_groups" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="group_name" type="text" jt="12" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="group_name" type="text" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
 			<index name="connection_groups_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -510,77 +510,77 @@
 			</index>
 		</table>
 		<table name="connections" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="conn_name" type="text" jt="12" mandatory="y" />
-			<column name="conn_ip" type="text" jt="12" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="conn_name" type="text" mandatory="y" />
+			<column name="conn_ip" type="text" mandatory="y" >
 				<defo><![CDATA['localhost'::text]]></defo>
 			</column>
-			<column name="conn_username" type="text" jt="12" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="conn_state" type="boolean" jt="16" mandatory="y" >
+			<column name="conn_username" type="text" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="conn_state" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="conn_port" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="conn_port" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="conn_encrypted_pass" type="text" jt="12" mandatory="y" />
-			<column name="conn_type" type="text" jt="12" mandatory="y" />
-			<column name="connection_group_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="conn_os" type="text" jt="12" mandatory="y" >
+			<column name="conn_encrypted_pass" type="text" mandatory="y" />
+			<column name="conn_type" type="text" mandatory="y" />
+			<column name="connection_group_id" type="integer" length="32" mandatory="y" />
+			<column name="conn_os" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="os_family" type="text" jt="12" mandatory="y" />
-			<column name="conn_suspend" type="boolean" jt="16" mandatory="y" >
+			<column name="os_family" type="text" mandatory="y" />
+			<column name="conn_suspend" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="version" type="text" jt="12" mandatory="y" >
+			<column name="version" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="gateway_is_ssh" type="boolean" jt="16" mandatory="y" >
+			<column name="gateway_is_ssh" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="gateway_ssh_ip" type="text" jt="12" mandatory="y" />
-			<column name="gateway_ssh_port" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="gateway_ssh_username" type="text" jt="12" mandatory="y" />
-			<column name="gateway_ssh_auth_method" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="gateway_ssh_ip" type="text" mandatory="y" />
+			<column name="gateway_ssh_port" type="integer" length="32" mandatory="y" />
+			<column name="gateway_ssh_username" type="text" mandatory="y" />
+			<column name="gateway_ssh_auth_method" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[1]]></defo>
 			</column>
-			<column name="gateway_ssh_encrypted_password" type="text" jt="12" mandatory="y" >
+			<column name="gateway_ssh_encrypted_password" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="gateway_ssh_private_key_path" type="text" jt="12" mandatory="y" />
-			<column name="gateway_ssh_encrypted_passphrase" type="text" jt="12" mandatory="y" >
+			<column name="gateway_ssh_private_key_path" type="text" mandatory="y" />
+			<column name="gateway_ssh_encrypted_passphrase" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="cpu_is_ssh" type="boolean" jt="16" mandatory="y" >
+			<column name="cpu_is_ssh" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="cpu_ssh_port" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="cpu_ssh_username" type="text" jt="12" mandatory="y" />
-			<column name="cpu_ssh_auth_method" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="cpu_ssh_port" type="integer" length="32" mandatory="y" />
+			<column name="cpu_ssh_username" type="text" mandatory="y" />
+			<column name="cpu_ssh_auth_method" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[1]]></defo>
 			</column>
-			<column name="cpu_ssh_encrypted_password" type="text" jt="12" mandatory="y" >
+			<column name="cpu_ssh_encrypted_password" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="cpu_ssh_private_key_path" type="text" jt="12" mandatory="y" />
-			<column name="cpu_ssh_encrypted_passphrase" type="text" jt="12" mandatory="y" >
+			<column name="cpu_ssh_private_key_path" type="text" mandatory="y" />
+			<column name="cpu_ssh_encrypted_passphrase" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="cpu_community" type="text" jt="12" mandatory="y" />
-			<column name="suspend_time" type="timestamptz" jt="93" />
-			<column name="initial_db" type="text" jt="12" />
-			<column name="use_ssl" type="boolean" jt="16" mandatory="y" >
+			<column name="cpu_community" type="text" mandatory="y" />
+			<column name="suspend_time" type="timestamptz" />
+			<column name="initial_db" type="text" />
+			<column name="use_ssl" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="gateway_private_key_id" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="gateway_private_key_id" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="cpu_private_key_id" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="cpu_private_key_id" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="ssl_id" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="ssl_id" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
 			<index name="connections_pkey" unique="PRIMARY_KEY" >
@@ -604,71 +604,71 @@
 			</fk>
 		</table>
 		<table name="countries" row_count="0" spec="" >
-			<column name="countryid" type="char" length="2" jt="1" mandatory="y" />
-			<column name="name" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="countryid" type="char" length="2" mandatory="y" />
+			<column name="name" type="varchar" length="255" mandatory="y" />
 			<index name="countries_pkey" unique="PRIMARY_KEY" >
 				<column name="countryid" />
 			</index>
 		</table>
 		<table name="custom_metric_alert_settings" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="db_type" type="integer" length="32" jt="4" />
-			<column name="alert_name" type="text" jt="12" mandatory="y" />
-			<column name="description" type="text" jt="12" />
-			<column name="alert_type" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="db_type" type="integer" length="32" />
+			<column name="alert_name" type="text" mandatory="y" />
+			<column name="description" type="text" />
+			<column name="alert_type" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_direction" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_direction" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_warn_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_warn_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_warn_threshold" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_warn_threshold" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_critical_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_critical_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_critical_threshold" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_critical_threshold" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_length_minute" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_length_minute" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_sent_when_raise" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_when_raise" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_when_end" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_when_end" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_via_email" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_email" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_via_slack" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_slack" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_via_sms" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_sms" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_via_snmp" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_snmp" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_user_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_user_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_to_all" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_all" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_to_roles" type="text" jt="12" mandatory="y" />
-			<column name="alert_sent_alternative_email" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_roles" type="text" mandatory="y" />
+			<column name="alert_sent_alternative_email" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_emails" type="text" jt="12" />
-			<column name="manager_note" type="text" jt="12" />
+			<column name="alert_sent_to_emails" type="text" />
+			<column name="manager_note" type="text" />
 			<index name="custom_metric_alert_settings_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -677,11 +677,11 @@
 			</index>
 		</table>
 		<table name="custom_metric_data" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="metric_id" type="integer" length="32" jt="4" />
-			<column name="data" type="numeric" jt="2" />
-			<column name="created_at" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="metric_id" type="integer" length="32" />
+			<column name="data" type="decimal" />
+			<column name="created_at" type="timestamptz" />
 			<index name="custom_metric_data_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -691,17 +691,17 @@
 			</index>
 		</table>
 		<table name="custom_metrics" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="name" type="text" jt="12" mandatory="y" />
-			<column name="desc" type="text" jt="12" />
-			<column name="db_type" type="integer" length="32" jt="4" />
-			<column name="connection_ids" type="text" jt="12" mandatory="y" />
-			<column name="group_ids" type="text" jt="12" mandatory="y" />
-			<column name="is_all_instances" type="boolean" jt="16" />
-			<column name="enable" type="boolean" jt="16" />
-			<column name="query" type="text" jt="12" />
-			<column name="is_delta" type="boolean" jt="16" />
-			<column name="alert_id" type="integer" length="32" jt="4" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="name" type="text" mandatory="y" />
+			<column name="desc" type="text" />
+			<column name="db_type" type="integer" length="32" />
+			<column name="connection_ids" type="text" mandatory="y" />
+			<column name="group_ids" type="text" mandatory="y" />
+			<column name="is_all_instances" type="boolean" />
+			<column name="enable" type="boolean" />
+			<column name="query" type="text" />
+			<column name="is_delta" type="boolean" />
+			<column name="alert_id" type="integer" length="32" />
 			<index name="custom_metrics_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -710,58 +710,58 @@
 			</index>
 		</table>
 		<table name="data_performance_analyses" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="query" type="text" jt="12" />
-			<column name="schema_name" type="text" jt="12" />
-			<column name="count" type="bigint" length="64" jt="-5" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="query" type="text" />
+			<column name="schema_name" type="text" />
+			<column name="count" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="time_total" type="numeric" jt="2" />
-			<column name="time_avg_ms" type="numeric" jt="2" />
-			<column name="save_time" type="timestamptz" jt="93" />
-			<column name="digest" type="text" jt="12" />
-			<column name="total_rows" type="bigint" length="64" jt="-5" >
+			<column name="time_total" type="decimal" />
+			<column name="time_avg_ms" type="decimal" />
+			<column name="save_time" type="timestamptz" />
+			<column name="digest" type="text" />
+			<column name="total_rows" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_physical_reads" type="bigint" length="64" jt="-5" >
+			<column name="total_physical_reads" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_logical_reads" type="bigint" length="64" jt="-5" >
+			<column name="total_logical_reads" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_logical_writes" type="bigint" length="64" jt="-5" >
+			<column name="total_logical_writes" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="row_affected_or_sent" type="bigint" length="64" jt="-5" >
+			<column name="row_affected_or_sent" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="row_examined" type="bigint" length="64" jt="-5" >
+			<column name="row_examined" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="temp_tables_created" type="bigint" length="64" jt="-5" >
+			<column name="temp_tables_created" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="full_tables_scan_join" type="bigint" length="64" jt="-5" >
+			<column name="full_tables_scan_join" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="rows_sorted" type="bigint" length="64" jt="-5" >
+			<column name="rows_sorted" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="plan_digest" type="text" jt="12" />
-			<column name="cpu_time" type="numeric" jt="2" >
+			<column name="plan_digest" type="text" />
+			<column name="cpu_time" type="decimal" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="shared_blks_hit" type="bigint" length="64" jt="-5" >
+			<column name="shared_blks_hit" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="shared_blks_read" type="bigint" length="64" jt="-5" >
+			<column name="shared_blks_read" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="shared_blks_dirtied" type="bigint" length="64" jt="-5" >
+			<column name="shared_blks_dirtied" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="shared_blks_written" type="bigint" length="64" jt="-5" >
+			<column name="shared_blks_written" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
 			<index name="data_performance_analyses_pkey" unique="PRIMARY_KEY" >
@@ -773,13 +773,13 @@
 			</index>
 		</table>
 		<table name="data_performance_analysis_files" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="file_path" type="text" jt="12" />
-			<column name="spent_time" type="numeric" jt="2" />
-			<column name="drive" type="text" jt="12" />
-			<column name="save_type" type="integer" length="32" jt="4" />
-			<column name="save_time" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="file_path" type="text" />
+			<column name="spent_time" type="decimal" />
+			<column name="drive" type="text" />
+			<column name="save_type" type="integer" length="32" />
+			<column name="save_time" type="timestamptz" />
 			<index name="data_performance_analysis_files_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -794,16 +794,16 @@
 			</index>
 		</table>
 		<table name="data_performance_analysis_infos" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="session_id" type="integer" length="32" jt="4" />
-			<column name="schema_id" type="integer" length="32" jt="4" />
-			<column name="program_id" type="integer" length="32" jt="4" />
-			<column name="machine_id" type="integer" length="32" jt="4" />
-			<column name="login_user_id" type="integer" length="32" jt="4" />
-			<column name="save_time" type="timestamptz" jt="93" />
-			<column name="digest" type="text" jt="12" />
-			<column name="count" type="integer" length="32" jt="4" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="session_id" type="integer" length="32" />
+			<column name="schema_id" type="integer" length="32" />
+			<column name="program_id" type="integer" length="32" />
+			<column name="machine_id" type="integer" length="32" />
+			<column name="login_user_id" type="integer" length="32" />
+			<column name="save_time" type="timestamptz" />
+			<column name="digest" type="text" />
+			<column name="count" type="integer" length="32" />
 			<index name="data_performance_analysis_infos_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -818,59 +818,59 @@
 			</index>
 		</table>
 		<table name="data_performance_analysis_minutes" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="query" type="text" jt="12" />
-			<column name="schema_name" type="text" jt="12" />
-			<column name="count" type="bigint" length="64" jt="-5" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="query" type="text" />
+			<column name="schema_name" type="text" />
+			<column name="count" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="time_total" type="numeric" jt="2" />
-			<column name="time_avg_ms" type="numeric" jt="2" />
-			<column name="save_time" type="timestamptz" jt="93" />
-			<column name="digest" type="text" jt="12" />
-			<column name="save_type" type="integer" length="32" jt="4" />
-			<column name="total_rows" type="bigint" length="64" jt="-5" >
+			<column name="time_total" type="decimal" />
+			<column name="time_avg_ms" type="decimal" />
+			<column name="save_time" type="timestamptz" />
+			<column name="digest" type="text" />
+			<column name="save_type" type="integer" length="32" />
+			<column name="total_rows" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_physical_reads" type="bigint" length="64" jt="-5" >
+			<column name="total_physical_reads" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_logical_reads" type="bigint" length="64" jt="-5" >
+			<column name="total_logical_reads" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_logical_writes" type="bigint" length="64" jt="-5" >
+			<column name="total_logical_writes" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="row_affected_or_sent" type="bigint" length="64" jt="-5" >
+			<column name="row_affected_or_sent" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="row_examined" type="bigint" length="64" jt="-5" >
+			<column name="row_examined" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="temp_tables_created" type="bigint" length="64" jt="-5" >
+			<column name="temp_tables_created" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="full_tables_scan_join" type="bigint" length="64" jt="-5" >
+			<column name="full_tables_scan_join" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="rows_sorted" type="bigint" length="64" jt="-5" >
+			<column name="rows_sorted" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="plan_digest" type="text" jt="12" />
-			<column name="cpu_time" type="numeric" jt="2" >
+			<column name="plan_digest" type="text" />
+			<column name="cpu_time" type="decimal" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="shared_blks_hit" type="bigint" length="64" jt="-5" >
+			<column name="shared_blks_hit" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="shared_blks_read" type="bigint" length="64" jt="-5" >
+			<column name="shared_blks_read" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="shared_blks_dirtied" type="bigint" length="64" jt="-5" >
+			<column name="shared_blks_dirtied" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="shared_blks_written" type="bigint" length="64" jt="-5" >
+			<column name="shared_blks_written" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
 			<index name="data_performance_analysis_minutes_pkey" unique="PRIMARY_KEY" >
@@ -883,13 +883,13 @@
 			</index>
 		</table>
 		<table name="data_performance_analysis_objects" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="object_name" type="text" jt="12" />
-			<column name="object_type" type="text" jt="12" />
-			<column name="wait_time" type="numeric" jt="2" />
-			<column name="save_type" type="integer" length="32" jt="4" />
-			<column name="save_time" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="object_name" type="text" />
+			<column name="object_type" type="text" />
+			<column name="wait_time" type="decimal" />
+			<column name="save_type" type="integer" length="32" />
+			<column name="save_time" type="timestamptz" />
 			<index name="data_performance_analysis_objects_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -904,10 +904,10 @@
 			</index>
 		</table>
 		<table name="data_performance_analysis_query_plans" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="query_plan" type="text" jt="12" />
-			<column name="plan_digest" type="text" jt="12" />
-			<column name="save_time" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="query_plan" type="text" />
+			<column name="plan_digest" type="text" />
+			<column name="save_time" type="timestamptz" />
 			<index name="data_performance_analysis_query_plans_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -919,17 +919,17 @@
 			</index>
 		</table>
 		<table name="data_performance_analysis_wait_types" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="schema_name" type="text" jt="12" />
-			<column name="time_total" type="numeric" jt="2" />
-			<column name="wait_type" type="text" jt="12" />
-			<column name="wait_time" type="numeric" jt="2" />
-			<column name="wait_time_percent" type="numeric" jt="2" />
-			<column name="save_time" type="timestamptz" jt="93" />
-			<column name="digest" type="text" jt="12" />
-			<column name="save_type" type="integer" length="32" jt="4" />
-			<column name="backend_type" type="text" jt="12" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="schema_name" type="text" />
+			<column name="time_total" type="decimal" />
+			<column name="wait_type" type="text" />
+			<column name="wait_time" type="decimal" />
+			<column name="wait_time_percent" type="decimal" />
+			<column name="save_time" type="timestamptz" />
+			<column name="digest" type="text" />
+			<column name="save_type" type="integer" length="32" />
+			<column name="backend_type" type="text" />
 			<index name="data_performance_analysis_wait_types_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -940,45 +940,45 @@
 			</index>
 		</table>
 		<table name="database_performance_postgres" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="db_size_b" type="bigint" length="64" jt="-5" />
-			<column name="backends" type="integer" length="32" jt="4" />
-			<column name="activity_count" type="integer" length="32" jt="4" />
-			<column name="idle_activity_count" type="integer" length="32" jt="4" />
-			<column name="max_connection" type="integer" length="32" jt="4" />
-			<column name="xact_commit_rate" type="numeric" jt="2" />
-			<column name="xact_rollback_rate" type="numeric" jt="2" />
-			<column name="tup_returned_rate" type="numeric" jt="2" />
-			<column name="tup_fetched_rate" type="numeric" jt="2" />
-			<column name="tup_inserted_rate" type="numeric" jt="2" />
-			<column name="tup_updated_rate" type="numeric" jt="2" />
-			<column name="tup_deleted_rate" type="numeric" jt="2" />
-			<column name="tup_write_rate" type="numeric" jt="2" />
-			<column name="table_num" type="integer" length="32" jt="4" />
-			<column name="table_rows_num" type="bigint" length="64" jt="-5" />
-			<column name="full_scan_percent" type="numeric" jt="2" />
-			<column name="dead_tuple_percent" type="numeric" jt="2" />
-			<column name="blks_read_rate" type="numeric" jt="2" />
-			<column name="blks_hit_rate" type="numeric" jt="2" />
-			<column name="blk_read_time" type="integer" length="32" jt="4" />
-			<column name="blk_write_time" type="integer" length="32" jt="4" />
-			<column name="hit_from_disk_rate" type="numeric" jt="2" />
-			<column name="hit_from_cache_rate" type="numeric" jt="2" />
-			<column name="temp_files_rate" type="numeric" jt="2" />
-			<column name="temp_bytes_rate" type="numeric" jt="2" />
-			<column name="conflicts_rate" type="numeric" jt="2" />
-			<column name="deadlocks_rate" type="numeric" jt="2" />
-			<column name="avg_wait_time_s" type="integer" length="32" jt="4" />
-			<column name="processes_blocked" type="integer" length="32" jt="4" />
-			<column name="lock_memory_b" type="integer" length="32" jt="4" />
-			<column name="frozen_databases" type="integer" length="32" jt="4" />
-			<column name="bad_checkpoints" type="boolean" jt="16" />
-			<column name="connection_percent" type="integer" length="32" jt="4" />
-			<column name="stats_reset" type="boolean" jt="16" />
-			<column name="log_enabled" type="boolean" jt="16" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="db_size_b" type="bigint" length="64" />
+			<column name="backends" type="integer" length="32" />
+			<column name="activity_count" type="integer" length="32" />
+			<column name="idle_activity_count" type="integer" length="32" />
+			<column name="max_connection" type="integer" length="32" />
+			<column name="xact_commit_rate" type="decimal" />
+			<column name="xact_rollback_rate" type="decimal" />
+			<column name="tup_returned_rate" type="decimal" />
+			<column name="tup_fetched_rate" type="decimal" />
+			<column name="tup_inserted_rate" type="decimal" />
+			<column name="tup_updated_rate" type="decimal" />
+			<column name="tup_deleted_rate" type="decimal" />
+			<column name="tup_write_rate" type="decimal" />
+			<column name="table_num" type="integer" length="32" />
+			<column name="table_rows_num" type="bigint" length="64" />
+			<column name="full_scan_percent" type="decimal" />
+			<column name="dead_tuple_percent" type="decimal" />
+			<column name="blks_read_rate" type="decimal" />
+			<column name="blks_hit_rate" type="decimal" />
+			<column name="blk_read_time" type="integer" length="32" />
+			<column name="blk_write_time" type="integer" length="32" />
+			<column name="hit_from_disk_rate" type="decimal" />
+			<column name="hit_from_cache_rate" type="decimal" />
+			<column name="temp_files_rate" type="decimal" />
+			<column name="temp_bytes_rate" type="decimal" />
+			<column name="conflicts_rate" type="decimal" />
+			<column name="deadlocks_rate" type="decimal" />
+			<column name="avg_wait_time_s" type="integer" length="32" />
+			<column name="processes_blocked" type="integer" length="32" />
+			<column name="lock_memory_b" type="integer" length="32" />
+			<column name="frozen_databases" type="integer" length="32" />
+			<column name="bad_checkpoints" type="boolean" />
+			<column name="connection_percent" type="integer" length="32" />
+			<column name="stats_reset" type="boolean" />
+			<column name="log_enabled" type="boolean" />
 			<index name="database_performance_postgres_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -988,386 +988,386 @@
 			</index>
 		</table>
 		<table name="database_performance_sql_servers" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="disk_size" type="integer" length="32" jt="4" />
-			<column name="disk_free" type="integer" length="32" jt="4" />
-			<column name="free_memory" type="bigint" length="64" jt="-5" />
-			<column name="total_memory" type="bigint" length="64" jt="-5" />
-			<column name="memory_usedby_sqlserver_mb" type="integer" length="32" jt="4" />
-			<column name="free_cpu" type="integer" length="32" jt="4" />
-			<column name="total_cpu" type="integer" length="32" jt="4" />
-			<column name="db_without_backup" type="integer" length="32" jt="4" />
-			<column name="database_engine_running" type="boolean" jt="16" />
-			<column name="read_latency" type="numeric" jt="2" />
-			<column name="write_latency" type="numeric" jt="2" />
-			<column name="overall_latency" type="numeric" jt="2" />
-			<column name="avg_bytes_per_read" type="numeric" jt="2" />
-			<column name="avg_bytes_per_write" type="numeric" jt="2" />
-			<column name="avg_bytes_per_transfer" type="numeric" jt="2" />
-			<column name="avg_io_stall_ms" type="numeric" jt="2" />
-			<column name="has_offline_database" type="boolean" jt="16" />
-			<column name="pending_disk_io" type="integer" length="32" jt="4" />
-			<column name="sqlserver_browser_enabled" type="boolean" jt="16" />
-			<column name="policy_not_checked" type="boolean" jt="16" />
-			<column name="is_sa_disabled" type="boolean" jt="16" />
-			<column name="encrypt_option" type="boolean" jt="16" />
-			<column name="table_num" type="integer" length="32" jt="4" />
-			<column name="table_rows_num" type="bigint" length="64" jt="-5" />
-			<column name="db_data_size" type="bigint" length="64" jt="-5" />
-			<column name="cmd_shell" type="boolean" jt="16" />
-			<column name="ad_hoc_distributed_queries" type="boolean" jt="16" />
-			<column name="clr_enabled" type="boolean" jt="16" />
-			<column name="cross_db_ownership_chaining" type="boolean" jt="16" />
-			<column name="database_mail_xps" type="boolean" jt="16" />
-			<column name="ole_automation_procedures" type="boolean" jt="16" />
-			<column name="scan_for_startup_procs" type="boolean" jt="16" />
-			<column name="user_connections" type="integer" length="32" jt="4" />
-			<column name="batch_request_rate" type="numeric" jt="2" />
-			<column name="data_files_size_kb" type="bigint" length="64" jt="-5" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="disk_size" type="integer" length="32" />
+			<column name="disk_free" type="integer" length="32" />
+			<column name="free_memory" type="bigint" length="64" />
+			<column name="total_memory" type="bigint" length="64" />
+			<column name="memory_usedby_sqlserver_mb" type="integer" length="32" />
+			<column name="free_cpu" type="integer" length="32" />
+			<column name="total_cpu" type="integer" length="32" />
+			<column name="db_without_backup" type="integer" length="32" />
+			<column name="database_engine_running" type="boolean" />
+			<column name="read_latency" type="decimal" />
+			<column name="write_latency" type="decimal" />
+			<column name="overall_latency" type="decimal" />
+			<column name="avg_bytes_per_read" type="decimal" />
+			<column name="avg_bytes_per_write" type="decimal" />
+			<column name="avg_bytes_per_transfer" type="decimal" />
+			<column name="avg_io_stall_ms" type="decimal" />
+			<column name="has_offline_database" type="boolean" />
+			<column name="pending_disk_io" type="integer" length="32" />
+			<column name="sqlserver_browser_enabled" type="boolean" />
+			<column name="policy_not_checked" type="boolean" />
+			<column name="is_sa_disabled" type="boolean" />
+			<column name="encrypt_option" type="boolean" />
+			<column name="table_num" type="integer" length="32" />
+			<column name="table_rows_num" type="bigint" length="64" />
+			<column name="db_data_size" type="bigint" length="64" />
+			<column name="cmd_shell" type="boolean" />
+			<column name="ad_hoc_distributed_queries" type="boolean" />
+			<column name="clr_enabled" type="boolean" />
+			<column name="cross_db_ownership_chaining" type="boolean" />
+			<column name="database_mail_xps" type="boolean" />
+			<column name="ole_automation_procedures" type="boolean" />
+			<column name="scan_for_startup_procs" type="boolean" />
+			<column name="user_connections" type="integer" length="32" />
+			<column name="batch_request_rate" type="decimal" />
+			<column name="data_files_size_kb" type="bigint" length="64" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="transactions_rate" type="numeric" jt="2" />
-			<column name="write_transactions_rate" type="numeric" jt="2" />
-			<column name="lock_memory_kb" type="bigint" length="64" jt="-5" />
-			<column name="processes_blocked" type="integer" length="32" jt="4" />
-			<column name="avg_wait_time_ratio" type="numeric" jt="2" />
-			<column name="longest_transaction_running_time" type="integer" length="32" jt="4" />
-			<column name="granted_workspace_memory_kb" type="integer" length="32" jt="4" />
-			<column name="maximum_workspace_memory_kb" type="bigint" length="64" jt="-5" />
-			<column name="memory_grants_pending" type="integer" length="32" jt="4" />
-			<column name="memory_grants_outstanding" type="integer" length="32" jt="4" />
-			<column name="connection_memory_kb" type="integer" length="32" jt="4" />
-			<column name="worktables_from_cache_base" type="integer" length="32" jt="4" />
-			<column name="target_server_memory_kb" type="bigint" length="64" jt="-5" />
-			<column name="total_server_memory_kb" type="bigint" length="64" jt="-5" />
-			<column name="temp_tables_for_destruction" type="integer" length="32" jt="4" />
-			<column name="active_temp_tables" type="integer" length="32" jt="4" />
-			<column name="log_remaining_for_undo" type="integer" length="32" jt="4" />
-			<column name="log_send_queue" type="integer" length="32" jt="4" />
-			<column name="recovery_queue" type="integer" length="32" jt="4" />
-			<column name="redo_bytes_remaining" type="integer" length="32" jt="4" />
-			<column name="total_log_requiring_undo" type="integer" length="32" jt="4" />
-			<column name="flow_control_time" type="integer" length="32" jt="4" />
-			<column name="page_life_expectancy" type="integer" length="32" jt="4" />
-			<column name="database_pages" type="bigint" length="64" jt="-5" />
-			<column name="target_pages" type="bigint" length="64" jt="-5" />
-			<column name="active_transactions" type="integer" length="32" jt="4" />
-			<column name="log_files_size_kb" type="bigint" length="64" jt="-5" />
-			<column name="log_files_used_size_kb" type="bigint" length="64" jt="-5" />
-			<column name="percent_log_used" type="integer" length="32" jt="4" />
-			<column name="log_growths" type="integer" length="32" jt="4" />
-			<column name="log_shrinks" type="integer" length="32" jt="4" />
-			<column name="user_connections_ratio" type="numeric" jt="2" />
-			<column name="total_latch_wait_time_ratio" type="numeric" jt="2" />
-			<column name="batch_requests_ratio" type="numeric" jt="2" />
-			<column name="sql_compilations_per_batch_requests_ratio" type="numeric" jt="2" />
-			<column name="sql_recompilations_per_batch_requests_ratio" type="numeric" jt="2" />
-			<column name="buffer_cache_hit_ratio" type="numeric" jt="2" />
-			<column name="worktables_from_cache_ratio" type="numeric" jt="2" />
-			<column name="logins_rate" type="numeric" jt="2" />
-			<column name="logouts_rate" type="numeric" jt="2" />
-			<column name="connection_resets_rate" type="numeric" jt="2" />
-			<column name="latch_waits_rate" type="numeric" jt="2" />
-			<column name="table_lock_escalations_rate" type="numeric" jt="2" />
-			<column name="sql_compilations_rate" type="numeric" jt="2" />
-			<column name="sql_recompilations_rate" type="numeric" jt="2" />
-			<column name="sql_attention_rate" type="numeric" jt="2" />
-			<column name="auto_param_attempts_rate" type="numeric" jt="2" />
-			<column name="failed_auto_params_rate" type="numeric" jt="2" />
-			<column name="safe_auto_params_rate" type="numeric" jt="2" />
-			<column name="unsafe_auto_params_rate" type="numeric" jt="2" />
-			<column name="forwarded_records_rate" type="numeric" jt="2" />
-			<column name="full_scans_rate" type="numeric" jt="2" />
-			<column name="index_searches_rate" type="numeric" jt="2" />
-			<column name="page_splits_rate" type="numeric" jt="2" />
-			<column name="workfiles_created_rate" type="numeric" jt="2" />
-			<column name="worktables_created_rate" type="numeric" jt="2" />
-			<column name="page_lookups_rate" type="numeric" jt="2" />
-			<column name="free_list_stalls_rate" type="numeric" jt="2" />
-			<column name="lazy_writes_rate" type="numeric" jt="2" />
-			<column name="checkpoint_pages_rate" type="numeric" jt="2" />
-			<column name="page_reads_rate" type="numeric" jt="2" />
-			<column name="page_writes_rate" type="numeric" jt="2" />
-			<column name="readahead_pages_ratio" type="numeric" jt="2" />
-			<column name="pages_allocated_rate" type="numeric" jt="2" />
-			<column name="extents_allocated_rate" type="numeric" jt="2" />
-			<column name="temp_tables_creation_rate" type="numeric" jt="2" />
-			<column name="file_bytes_received_rate" type="numeric" jt="2" />
-			<column name="log_bytes_received_rate" type="numeric" jt="2" />
-			<column name="redo_blocked_rate" type="numeric" jt="2" />
-			<column name="redone_bytes_rate" type="numeric" jt="2" />
-			<column name="bytes_received_from_replica_rate" type="numeric" jt="2" />
-			<column name="bytes_sent_to_replica_rate" type="numeric" jt="2" />
-			<column name="bytes_sent_to_transport_rate" type="numeric" jt="2" />
-			<column name="flow_control_rate" type="numeric" jt="2" />
-			<column name="resent_messages_rate" type="numeric" jt="2" />
-			<column name="sends_to_replica_rate" type="numeric" jt="2" />
-			<column name="sends_to_transport_rate" type="numeric" jt="2" />
-			<column name="errors_rate" type="numeric" jt="2" />
-			<column name="lock_waits_rate" type="numeric" jt="2" />
-			<column name="lock_requests_rate" type="numeric" jt="2" />
-			<column name="lock_timeouts_rate" type="numeric" jt="2" />
-			<column name="number_of_deadlocks_rate" type="numeric" jt="2" />
-			<column name="log_bytes_flushed_rate" type="numeric" jt="2" />
-			<column name="log_flush_waits_rate" type="numeric" jt="2" />
-			<column name="log_flush_rate" type="numeric" jt="2" />
-			<column name="mirrored_write_transactions_rate" type="numeric" jt="2" />
-			<column name="total_latch_wait_time_rate" type="numeric" jt="2" />
-			<column name="cluster_current_owner" type="text" jt="12" />
-			<column name="cluster_node_down" type="integer" length="32" jt="4" />
-			<column name="cluster_group_failed" type="boolean" jt="16" />
-			<column name="cluster_group_unhealthy" type="boolean" jt="16" />
-			<column name="cluster_group_not_ready_for_failover" type="boolean" jt="16" />
-			<column name="cluster_group_not_joined" type="boolean" jt="16" />
-			<column name="cluster_group_not_online" type="boolean" jt="16" />
-			<column name="audit_failed" type="boolean" jt="16" />
+			<column name="transactions_rate" type="decimal" />
+			<column name="write_transactions_rate" type="decimal" />
+			<column name="lock_memory_kb" type="bigint" length="64" />
+			<column name="processes_blocked" type="integer" length="32" />
+			<column name="avg_wait_time_ratio" type="decimal" />
+			<column name="longest_transaction_running_time" type="integer" length="32" />
+			<column name="granted_workspace_memory_kb" type="integer" length="32" />
+			<column name="maximum_workspace_memory_kb" type="bigint" length="64" />
+			<column name="memory_grants_pending" type="integer" length="32" />
+			<column name="memory_grants_outstanding" type="integer" length="32" />
+			<column name="connection_memory_kb" type="integer" length="32" />
+			<column name="worktables_from_cache_base" type="integer" length="32" />
+			<column name="target_server_memory_kb" type="bigint" length="64" />
+			<column name="total_server_memory_kb" type="bigint" length="64" />
+			<column name="temp_tables_for_destruction" type="integer" length="32" />
+			<column name="active_temp_tables" type="integer" length="32" />
+			<column name="log_remaining_for_undo" type="integer" length="32" />
+			<column name="log_send_queue" type="integer" length="32" />
+			<column name="recovery_queue" type="integer" length="32" />
+			<column name="redo_bytes_remaining" type="integer" length="32" />
+			<column name="total_log_requiring_undo" type="integer" length="32" />
+			<column name="flow_control_time" type="integer" length="32" />
+			<column name="page_life_expectancy" type="integer" length="32" />
+			<column name="database_pages" type="bigint" length="64" />
+			<column name="target_pages" type="bigint" length="64" />
+			<column name="active_transactions" type="integer" length="32" />
+			<column name="log_files_size_kb" type="bigint" length="64" />
+			<column name="log_files_used_size_kb" type="bigint" length="64" />
+			<column name="percent_log_used" type="integer" length="32" />
+			<column name="log_growths" type="integer" length="32" />
+			<column name="log_shrinks" type="integer" length="32" />
+			<column name="user_connections_ratio" type="decimal" />
+			<column name="total_latch_wait_time_ratio" type="decimal" />
+			<column name="batch_requests_ratio" type="decimal" />
+			<column name="sql_compilations_per_batch_requests_ratio" type="decimal" />
+			<column name="sql_recompilations_per_batch_requests_ratio" type="decimal" />
+			<column name="buffer_cache_hit_ratio" type="decimal" />
+			<column name="worktables_from_cache_ratio" type="decimal" />
+			<column name="logins_rate" type="decimal" />
+			<column name="logouts_rate" type="decimal" />
+			<column name="connection_resets_rate" type="decimal" />
+			<column name="latch_waits_rate" type="decimal" />
+			<column name="table_lock_escalations_rate" type="decimal" />
+			<column name="sql_compilations_rate" type="decimal" />
+			<column name="sql_recompilations_rate" type="decimal" />
+			<column name="sql_attention_rate" type="decimal" />
+			<column name="auto_param_attempts_rate" type="decimal" />
+			<column name="failed_auto_params_rate" type="decimal" />
+			<column name="safe_auto_params_rate" type="decimal" />
+			<column name="unsafe_auto_params_rate" type="decimal" />
+			<column name="forwarded_records_rate" type="decimal" />
+			<column name="full_scans_rate" type="decimal" />
+			<column name="index_searches_rate" type="decimal" />
+			<column name="page_splits_rate" type="decimal" />
+			<column name="workfiles_created_rate" type="decimal" />
+			<column name="worktables_created_rate" type="decimal" />
+			<column name="page_lookups_rate" type="decimal" />
+			<column name="free_list_stalls_rate" type="decimal" />
+			<column name="lazy_writes_rate" type="decimal" />
+			<column name="checkpoint_pages_rate" type="decimal" />
+			<column name="page_reads_rate" type="decimal" />
+			<column name="page_writes_rate" type="decimal" />
+			<column name="readahead_pages_ratio" type="decimal" />
+			<column name="pages_allocated_rate" type="decimal" />
+			<column name="extents_allocated_rate" type="decimal" />
+			<column name="temp_tables_creation_rate" type="decimal" />
+			<column name="file_bytes_received_rate" type="decimal" />
+			<column name="log_bytes_received_rate" type="decimal" />
+			<column name="redo_blocked_rate" type="decimal" />
+			<column name="redone_bytes_rate" type="decimal" />
+			<column name="bytes_received_from_replica_rate" type="decimal" />
+			<column name="bytes_sent_to_replica_rate" type="decimal" />
+			<column name="bytes_sent_to_transport_rate" type="decimal" />
+			<column name="flow_control_rate" type="decimal" />
+			<column name="resent_messages_rate" type="decimal" />
+			<column name="sends_to_replica_rate" type="decimal" />
+			<column name="sends_to_transport_rate" type="decimal" />
+			<column name="errors_rate" type="decimal" />
+			<column name="lock_waits_rate" type="decimal" />
+			<column name="lock_requests_rate" type="decimal" />
+			<column name="lock_timeouts_rate" type="decimal" />
+			<column name="number_of_deadlocks_rate" type="decimal" />
+			<column name="log_bytes_flushed_rate" type="decimal" />
+			<column name="log_flush_waits_rate" type="decimal" />
+			<column name="log_flush_rate" type="decimal" />
+			<column name="mirrored_write_transactions_rate" type="decimal" />
+			<column name="total_latch_wait_time_rate" type="decimal" />
+			<column name="cluster_current_owner" type="text" />
+			<column name="cluster_node_down" type="integer" length="32" />
+			<column name="cluster_group_failed" type="boolean" />
+			<column name="cluster_group_unhealthy" type="boolean" />
+			<column name="cluster_group_not_ready_for_failover" type="boolean" />
+			<column name="cluster_group_not_joined" type="boolean" />
+			<column name="cluster_group_not_online" type="boolean" />
+			<column name="audit_failed" type="boolean" />
 			<index name="database_performance_sql_servers_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
 		<table name="database_performances" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="conn_num" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="conn_num" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="max_conn_num" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="max_conn_num" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="query_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="query_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="bytes_received_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="bytes_received_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="bytes_sent_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="bytes_sent_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="qcache_hits_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="qcache_hits_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="com_select_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="com_select_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="com_insert_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="com_insert_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="com_update_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="com_update_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="com_delete_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="com_delete_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="read_query_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="read_query_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="write_query_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="write_query_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="table_num" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="table_num" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="table_rows_num" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="table_rows_num" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="db_data_size" type="bigint" length="64" jt="-5" mandatory="y" >
+			<column name="db_data_size" type="bigint" length="64" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="db_idx_size" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="db_idx_size" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_db_size" type="bigint" length="64" jt="-5" mandatory="y" >
+			<column name="total_db_size" type="bigint" length="64" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="db_idxfrac_size" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="db_idxfrac_size" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="select_scan_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="select_scan_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="select_full_join_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="select_full_join_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_buf_pool_size" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="innodb_buf_pool_size" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_buf_pool_free" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="innodb_buf_pool_free" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_buf_cache_hit" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_buf_cache_hit" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="query_cache_hit" type="numeric" jt="2" mandatory="y" >
+			<column name="query_cache_hit" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="myisam_key_cache_hit" type="numeric" jt="2" mandatory="y" >
+			<column name="myisam_key_cache_hit" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="thread_cache_hit" type="numeric" jt="2" mandatory="y" >
+			<column name="thread_cache_hit" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="conn_running" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="conn_running" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="conn_cached" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="conn_cached" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_open_table_against_table_cache" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="percent_open_table_against_table_cache" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="opened_table_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="opened_table_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="table_locks_immediate_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="table_locks_immediate_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="table_locks_waited_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="table_locks_waited_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="table_lock_wait_ratio" type="numeric" jt="2" mandatory="y" >
+			<column name="table_lock_wait_ratio" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="conn_attempt_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="conn_attempt_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="conn_aborted_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="conn_aborted_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="client_aborted_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="client_aborted_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="highest_concurrent_conn" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="highest_concurrent_conn" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_of_max_reached_conn" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_of_max_reached_conn" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_of_refused_conn" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_of_refused_conn" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="num_of_slow_launch_threads" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="num_of_slow_launch_threads" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_of_innodb_cache_write_wait" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_of_innodb_cache_write_wait" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_log_buffer_size" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="innodb_log_buffer_size" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_of_innodb_log_wait_required" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_of_innodb_log_wait_required" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_of_full_table_scan" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_of_full_table_scan" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="created_tmp_tables_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="created_tmp_tables_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="created_tmp_disk_tables_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="created_tmp_disk_tables_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="created_tmp_disk_ratio" type="numeric" jt="2" mandatory="y" >
+			<column name="created_tmp_disk_ratio" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_rows_deleted_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_rows_deleted_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_rows_inserted_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_rows_inserted_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_rows_read_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_rows_read_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_rows_updated_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_rows_updated_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_row_lock_current_waits" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="innodb_row_lock_current_waits" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_row_lock_time" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="innodb_row_lock_time" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_row_lock_time_avg" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="innodb_row_lock_time_avg" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_row_lock_time_max" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="innodb_row_lock_time_max" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_data_reads_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_data_reads_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_data_writes_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_data_writes_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="com_begin_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="com_begin_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="com_commit_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="com_commit_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="com_rollback_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="com_rollback_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="sort_merge_passes_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="sort_merge_passes_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="sort_range_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="sort_range_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="sort_scan_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="sort_scan_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="sort_rows_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="sort_rows_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="binlog_cache_use_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="binlog_cache_use_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="binlog_cache_disk_use_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="binlog_cache_disk_use_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_rows_returned" type="numeric" jt="2" mandatory="y" >
+			<column name="total_rows_returned" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="total_rows_returned_use_index" type="numeric" jt="2" mandatory="y" >
+			<column name="total_rows_returned_use_index" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_rows_use_index" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_rows_use_index" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_pruned_query" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_pruned_query" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_conn_usage" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_conn_usage" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_myisam_cache_usage" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_myisam_cache_usage" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_innodb_cache_usage" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_innodb_cache_usage" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="slow_query_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="slow_query_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_data_fsyncs_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_data_fsyncs_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="innodb_log_writes_rate" type="numeric" jt="2" mandatory="y" >
+			<column name="innodb_log_writes_rate" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="free_myisam_buffer_size" type="numeric" jt="2" mandatory="y" >
+			<column name="free_myisam_buffer_size" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="key_buffer_size" type="numeric" jt="2" mandatory="y" >
+			<column name="key_buffer_size" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="percent_of_slow_query" type="numeric" jt="2" mandatory="y" >
+			<column name="percent_of_slow_query" type="decimal" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
 			<index name="database_performances_pkey" unique="PRIMARY_KEY" >
@@ -1379,13 +1379,13 @@
 			</index>
 		</table>
 		<table name="deadlocks" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="time" type="timestamptz" jt="93" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="transaction1" type="text" jt="12" />
-			<column name="transaction2" type="text" jt="12" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="time" type="timestamptz" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="transaction1" type="text" />
+			<column name="transaction2" type="text" />
 			<index name="deadlocks_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1395,11 +1395,11 @@
 			</index>
 		</table>
 		<table name="dpa_login_names" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="deleted_at" type="timestamptz" jt="93" />
-			<column name="login_user" type="text" jt="12" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="deleted_at" type="timestamptz" />
+			<column name="login_user" type="text" />
 			<index name="dpa_login_names_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1408,11 +1408,11 @@
 			</index>
 		</table>
 		<table name="dpa_machine_names" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="deleted_at" type="timestamptz" jt="93" />
-			<column name="machine" type="text" jt="12" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="deleted_at" type="timestamptz" />
+			<column name="machine" type="text" />
 			<index name="dpa_machine_names_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1421,11 +1421,11 @@
 			</index>
 		</table>
 		<table name="dpa_program_names" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="deleted_at" type="timestamptz" jt="93" />
-			<column name="program" type="text" jt="12" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="deleted_at" type="timestamptz" />
+			<column name="program" type="text" />
 			<index name="dpa_program_names_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1434,11 +1434,11 @@
 			</index>
 		</table>
 		<table name="dpa_schema_names" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="deleted_at" type="timestamptz" jt="93" />
-			<column name="schema_name" type="text" jt="12" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="deleted_at" type="timestamptz" />
+			<column name="schema_name" type="text" />
 			<index name="dpa_schema_names_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1447,102 +1447,102 @@
 			</index>
 		</table>
 		<table name="general_settings" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="password_min_length" type="integer" length="32" jt="4" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="password_min_length" type="integer" length="32" >
 				<defo><![CDATA[6]]></defo>
 			</column>
-			<column name="different_from_username" type="boolean" jt="16" >
+			<column name="different_from_username" type="boolean" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="include_upper_lower_number" type="boolean" jt="16" >
+			<column name="include_upper_lower_number" type="boolean" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="at_least_one_symbol" type="boolean" jt="16" >
+			<column name="at_least_one_symbol" type="boolean" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="show_24_hour" type="boolean" jt="16" >
+			<column name="show_24_hour" type="boolean" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="ldap_ip" type="text" jt="12" />
-			<column name="ldap_port" type="integer" length="32" jt="4" />
-			<column name="ldap_encryption" type="text" jt="12" />
-			<column name="ldap_allow_anonymous" type="boolean" jt="16" />
-			<column name="ldap_user_search_base" type="text" jt="12" />
-			<column name="ldap_auth_username" type="text" jt="12" />
-			<column name="ldap_auth_password" type="text" jt="12" />
-			<column name="ldap_auth_mode" type="text" jt="12" />
-			<column name="ldap_user_search_attribute" type="text" jt="12" />
-			<column name="ad_ip" type="text" jt="12" />
-			<column name="ad_port" type="integer" length="32" jt="4" />
-			<column name="ad_encryption" type="text" jt="12" />
-			<column name="ad_allow_anonymous" type="boolean" jt="16" />
-			<column name="ad_user_search_base" type="text" jt="12" />
-			<column name="ad_auth_username" type="text" jt="12" />
-			<column name="ad_auth_password" type="text" jt="12" />
-			<column name="ad_auth_mode" type="text" jt="12" />
-			<column name="ad_user_search_attribute" type="text" jt="12" />
-			<column name="data_purging_alert_day" type="integer" length="32" jt="4" />
-			<column name="data_purging_performance_day" type="integer" length="32" jt="4" />
-			<column name="ldap_password_attr" type="text" jt="12" />
-			<column name="share_usage_data" type="boolean" jt="16" />
+			<column name="ldap_ip" type="text" />
+			<column name="ldap_port" type="integer" length="32" />
+			<column name="ldap_encryption" type="text" />
+			<column name="ldap_allow_anonymous" type="boolean" />
+			<column name="ldap_user_search_base" type="text" />
+			<column name="ldap_auth_username" type="text" />
+			<column name="ldap_auth_password" type="text" />
+			<column name="ldap_auth_mode" type="text" />
+			<column name="ldap_user_search_attribute" type="text" />
+			<column name="ad_ip" type="text" />
+			<column name="ad_port" type="integer" length="32" />
+			<column name="ad_encryption" type="text" />
+			<column name="ad_allow_anonymous" type="boolean" />
+			<column name="ad_user_search_base" type="text" />
+			<column name="ad_auth_username" type="text" />
+			<column name="ad_auth_password" type="text" />
+			<column name="ad_auth_mode" type="text" />
+			<column name="ad_user_search_attribute" type="text" />
+			<column name="data_purging_alert_day" type="integer" length="32" />
+			<column name="data_purging_performance_day" type="integer" length="32" />
+			<column name="ldap_password_attr" type="text" />
+			<column name="share_usage_data" type="boolean" />
 			<index name="general_settings_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
 		<table name="global_alert_settings" row_count="141" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="alert_type" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="alert_type" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_direction" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_direction" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_warn_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_warn_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_warn_threshold" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_warn_threshold" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_critical_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_critical_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_critical_threshold" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_critical_threshold" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_length_minute" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_length_minute" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_sent_when_raise" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_when_raise" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_when_end" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_when_end" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_via_email" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_email" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_via_sms" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_sms" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_via_snmp" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_snmp" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_to_user_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_user_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_to_all" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_all" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_to_roles" type="text" jt="12" mandatory="y" />
-			<column name="alert_sent_alternative_email" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_roles" type="text" mandatory="y" />
+			<column name="alert_sent_alternative_email" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_emails" type="text" jt="12" />
-			<column name="manager_note" type="text" jt="12" />
-			<column name="alert_sent_via_slack" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_emails" type="text" />
+			<column name="manager_note" type="text" />
+			<column name="alert_sent_via_slack" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
 			<index name="global_alert_settings_pkey" unique="PRIMARY_KEY" >
@@ -1553,62 +1553,62 @@
 			</index>
 		</table>
 		<table name="group_alert_settings" row_count="0" spec="" >
-			<column name="id" type="bigserial" length="64" jt="-5" mandatory="y" />
-			<column name="connection_group_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="alert_inherit_parent" type="boolean" jt="16" mandatory="y" >
+			<column name="id" type="bigserial" length="64" mandatory="y" />
+			<column name="connection_group_id" type="integer" length="32" mandatory="y" />
+			<column name="alert_inherit_parent" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_type" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_type" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_direction" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_direction" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_warn_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_warn_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_warn_threshold" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_warn_threshold" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_critical_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_critical_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_critical_threshold" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_critical_threshold" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_length_minute" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="alert_length_minute" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="alert_sent_when_raise" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_when_raise" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_when_end" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_when_end" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_via_email" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_email" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_via_sms" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_sms" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_via_snmp" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_via_snmp" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="alert_sent_to_user_enable" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_user_enable" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_all" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_all" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_roles" type="text" jt="12" mandatory="y" />
-			<column name="alert_sent_alternative_email" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_roles" type="text" mandatory="y" />
+			<column name="alert_sent_alternative_email" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sent_to_emails" type="text" jt="12" />
-			<column name="alert_sent_via_slack" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sent_to_emails" type="text" />
+			<column name="alert_sent_via_slack" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
 			<index name="group_alert_settings_pkey" unique="PRIMARY_KEY" >
@@ -1619,55 +1619,55 @@
 			</index>
 		</table>
 		<table name="key_stores" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="name" type="text" jt="12" />
-			<column name="sslca" type="text" jt="12" />
-			<column name="ssl_client_cert" type="text" jt="12" />
-			<column name="ssl_client_key" type="text" jt="12" />
-			<column name="need_verify" type="boolean" jt="16" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="name" type="text" />
+			<column name="sslca" type="text" />
+			<column name="ssl_client_cert" type="text" />
+			<column name="ssl_client_key" type="text" />
+			<column name="need_verify" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="cipher" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="cipher" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="private_key" type="text" jt="12" />
-			<column name="created_at" type="timestamptz" jt="93" />
+			<column name="private_key" type="text" />
+			<column name="created_at" type="timestamptz" />
 			<index name="key_stores_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
 		<table name="maintenance_settings" row_count="0" spec="" >
-			<column name="id" type="bigserial" length="64" jt="-5" mandatory="y" />
-			<column name="start_datetime" type="timestamptz" jt="93" mandatory="y" />
-			<column name="duration_minute" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="id" type="bigserial" length="64" mandatory="y" />
+			<column name="start_datetime" type="timestamptz" mandatory="y" />
+			<column name="duration_minute" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[60]]></defo>
 			</column>
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="recurrence" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="recurrence" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="weeks_frequency" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="weeks_frequency" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[1]]></defo>
 			</column>
-			<column name="weeks_day_of_week" type="varchar" jt="12" mandatory="y" >
+			<column name="weeks_day_of_week" type="varchar" mandatory="y" >
 				<defo><![CDATA['[1]'::character varying]]></defo>
 			</column>
-			<column name="months_mode" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="months_mode" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="months_days_start" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="months_days_start" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[1]]></defo>
 			</column>
-			<column name="months_days_frequency" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="months_days_frequency" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[1]]></defo>
 			</column>
-			<column name="months_weeks_start" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="months_weeks_start" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="months_weeks_day_of_week" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="months_weeks_day_of_week" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[1]]></defo>
 			</column>
-			<column name="months_weeks_frequency" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="months_weeks_frequency" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[1]]></defo>
 			</column>
 			<index name="maintenance_settings_pkey" unique="PRIMARY_KEY" >
@@ -1675,105 +1675,105 @@
 			</index>
 		</table>
 		<table name="metadata" row_count="0" spec="" >
-			<column name="id" type="text" jt="12" mandatory="y" />
-			<column name="value" type="text" jt="12" />
+			<column name="id" type="text" mandatory="y" />
+			<column name="value" type="text" />
 			<index name="metadata_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
 		<table name="migrations" row_count="72" spec="" >
-			<column name="id" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="id" type="varchar" length="255" mandatory="y" />
 			<index name="migrations_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
 		<table name="notification_settings" row_count="0" spec="" >
-			<column name="id" type="bigserial" length="64" jt="-5" mandatory="y" />
-			<column name="email_when_system_error" type="boolean" jt="16" mandatory="y" >
+			<column name="id" type="bigserial" length="64" mandatory="y" />
+			<column name="email_when_system_error" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="email_when_alert_notification" type="boolean" jt="16" mandatory="y" >
+			<column name="email_when_alert_notification" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="email_smtp_server_host" type="text" jt="12" mandatory="y" >
+			<column name="email_smtp_server_host" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="email_smtp_server_port" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="email_smtp_server_port" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[587]]></defo>
 			</column>
-			<column name="email_secure_connection" type="boolean" jt="16" mandatory="y" >
+			<column name="email_secure_connection" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="email_smtp_require_login" type="boolean" jt="16" mandatory="y" >
+			<column name="email_smtp_require_login" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="email_smtp_username" type="text" jt="12" mandatory="y" >
+			<column name="email_smtp_username" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="email_smtp_password" type="text" jt="12" mandatory="y" >
+			<column name="email_smtp_password" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="email_smtp_from_email" type="text" jt="12" mandatory="y" >
+			<column name="email_smtp_from_email" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="snmp_when_alert_notification" type="boolean" jt="16" mandatory="y" >
+			<column name="snmp_when_alert_notification" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="snmp_target_host" type="text" jt="12" mandatory="y" >
+			<column name="snmp_target_host" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="snmp_target_port" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="snmp_target_port" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[162]]></defo>
 			</column>
-			<column name="snmp_community_string" type="text" jt="12" mandatory="y" >
+			<column name="snmp_community_string" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_when_alert_notification" type="boolean" jt="16" mandatory="y" >
+			<column name="sms_when_alert_notification" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="sms_service_provider" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="sms_service_provider" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[1]]></defo>
 			</column>
-			<column name="sms_provider_1_api_key" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_1_api_key" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_provider_2_account_sid" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_2_account_sid" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_provider_2_auth_token" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_2_auth_token" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_provider_2_use_phone_number" type="boolean" jt="16" mandatory="y" >
+			<column name="sms_provider_2_use_phone_number" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="sms_provider_2_phone_number" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_2_phone_number" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_provider_2_messaging_service_sid" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_2_messaging_service_sid" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_provider_0_api_url" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_0_api_url" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_provider_0_request_method" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_0_request_method" type="text" mandatory="y" >
 				<defo><![CDATA['POST'::text]]></defo>
 			</column>
-			<column name="sms_provider_0_key_value" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_0_key_value" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_provider_0_content_key" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_0_content_key" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="sms_provider_0_recipient_key" type="text" jt="12" mandatory="y" >
+			<column name="sms_provider_0_recipient_key" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="slack_when_alert_notification" type="boolean" jt="16" mandatory="y" >
+			<column name="slack_when_alert_notification" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="slack_web_hook" type="text" jt="12" mandatory="y" >
+			<column name="slack_web_hook" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
-			<column name="slack_channel" type="text" jt="12" mandatory="y" >
+			<column name="slack_channel" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
 			<index name="notification_settings_pkey" unique="PRIMARY_KEY" >
@@ -1781,10 +1781,10 @@
 			</index>
 		</table>
 		<table name="notifications" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="type" type="text" jt="12" />
-			<column name="content" type="text" jt="12" />
-			<column name="save_time" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="type" type="text" />
+			<column name="content" type="text" />
+			<column name="save_time" type="timestamptz" />
 			<index name="notifications_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1793,18 +1793,18 @@
 			</index>
 		</table>
 		<table name="persons" row_count="100" spec="" >
-			<column name="id" type="integer" length="32" jt="4" />
-			<column name="firstname" type="varchar" length="100" jt="12" />
-			<column name="lastname" type="varchar" length="100" jt="12" />
+			<column name="id" type="integer" length="32" />
+			<column name="firstname" type="varchar" length="100" />
+			<column name="lastname" type="varchar" length="100" />
 		</table>
 		<table name="query_policies" row_count="0" spec="" >
-			<column name="digest" type="text" jt="12" mandatory="y" />
-			<column name="name" type="text" jt="12" />
-			<column name="is_excluded" type="boolean" jt="16" mandatory="y" >
+			<column name="digest" type="text" mandatory="y" />
+			<column name="name" type="text" />
+			<column name="is_excluded" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="sql_text" type="text" jt="12" />
-			<column name="db_type" type="text" jt="12" mandatory="y" >
+			<column name="sql_text" type="text" />
+			<column name="db_type" type="text" mandatory="y" >
 				<defo><![CDATA[''::text]]></defo>
 			</column>
 			<index name="query_policies_pkey" unique="PRIMARY_KEY" >
@@ -1812,13 +1812,13 @@
 			</index>
 		</table>
 		<table name="replication_error_histories" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="error" type="text" jt="12" mandatory="y" />
-			<column name="replication_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="error_type" type="text" jt="12" mandatory="y" />
-			<column name="error_no" type="integer" length="32" jt="4" mandatory="y" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="error" type="text" mandatory="y" />
+			<column name="replication_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="error_type" type="text" mandatory="y" />
+			<column name="error_no" type="integer" length="32" mandatory="y" />
 			<index name="replication_error_histories_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1827,12 +1827,12 @@
 			</index>
 		</table>
 		<table name="replication_states" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="state" type="boolean" jt="16" mandatory="y" />
-			<column name="replication_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="start_or_end" type="text" jt="12" mandatory="y" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="state" type="boolean" mandatory="y" />
+			<column name="replication_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="start_or_end" type="text" mandatory="y" />
 			<index name="replication_states_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1844,19 +1844,19 @@
 			</index>
 		</table>
 		<table name="replications" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="state" type="boolean" jt="16" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="master_host" type="text" jt="12" mandatory="y" />
-			<column name="master_port" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="json" type="text" jt="12" />
-			<column name="type" type="text" jt="12" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="state" type="boolean" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="master_host" type="text" mandatory="y" />
+			<column name="master_port" type="integer" length="32" mandatory="y" />
+			<column name="json" type="text" />
+			<column name="type" type="text" mandatory="y" >
 				<defo><![CDATA['transactional'::text]]></defo>
 			</column>
-			<column name="identifier" type="text" jt="12" mandatory="y" />
-			<column name="master_id" type="integer" length="32" jt="4" mandatory="y" />
+			<column name="identifier" type="text" mandatory="y" />
+			<column name="master_id" type="integer" length="32" mandatory="y" />
 			<index name="replications_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1866,11 +1866,11 @@
 			</index>
 		</table>
 		<table name="role_ip_ranges" row_count="0" spec="" >
-			<column name="id" type="bigserial" length="64" jt="-5" mandatory="y" />
-			<column name="role_id" type="integer" length="32" jt="4" />
-			<column name="ip" type="text" jt="12" />
-			<column name="mask_bit" type="integer" length="32" jt="4" />
-			<column name="ipv" type="integer" length="32" jt="4" />
+			<column name="id" type="bigserial" length="64" mandatory="y" />
+			<column name="role_id" type="integer" length="32" />
+			<column name="ip" type="text" />
+			<column name="mask_bit" type="integer" length="32" />
+			<column name="ipv" type="integer" length="32" />
 			<index name="role_ip_ranges_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -1882,102 +1882,102 @@
 			</fk>
 		</table>
 		<table name="roles" row_count="0" spec="" >
-			<column name="id" type="bigserial" length="64" jt="-5" mandatory="y" />
-			<column name="name" type="text" jt="12" mandatory="y" />
-			<column name="access_configurations" type="boolean" jt="16" mandatory="y" >
+			<column name="id" type="bigserial" length="64" mandatory="y" />
+			<column name="name" type="text" mandatory="y" />
+			<column name="access_configurations" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="export_chart" type="boolean" jt="16" mandatory="y" >
+			<column name="export_chart" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="edit_instance_variables" type="boolean" jt="16" mandatory="y" >
+			<column name="edit_instance_variables" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_close_open" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_close_open" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_add_remarks" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_add_remarks" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_assign_members" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_assign_members" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_policy_edit" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_policy_edit" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_event_handler_edit" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_event_handler_edit" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="end_process" type="boolean" jt="16" mandatory="y" >
+			<column name="end_process" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_instances" type="boolean" jt="16" mandatory="y" >
+			<column name="config_instances" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_privilege" type="boolean" jt="16" mandatory="y" >
+			<column name="config_privilege" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_user_profile" type="boolean" jt="16" mandatory="y" >
+			<column name="config_user_profile" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_self_profile" type="boolean" jt="16" mandatory="y" >
+			<column name="config_self_profile" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="all_groups_access" type="boolean" jt="16" mandatory="y" >
+			<column name="all_groups_access" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_data_purge" type="boolean" jt="16" mandatory="y" >
+			<column name="config_data_purge" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_data_repository" type="boolean" jt="16" mandatory="y" >
+			<column name="config_data_repository" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="retrieve_log" type="boolean" jt="16" mandatory="y" >
+			<column name="retrieve_log" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_activate_and_license" type="boolean" jt="16" mandatory="y" >
+			<column name="config_activate_and_license" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="top_query_policy_edit" type="boolean" jt="16" mandatory="y" >
+			<column name="top_query_policy_edit" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_schedule_report" type="boolean" jt="16" mandatory="y" >
+			<column name="config_schedule_report" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_custom_metric" type="boolean" jt="16" mandatory="y" >
+			<column name="config_custom_metric" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_application_settings" type="boolean" jt="16" mandatory="y" >
+			<column name="config_application_settings" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_date_time" type="boolean" jt="16" mandatory="y" >
+			<column name="config_date_time" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_log_house_keeping" type="boolean" jt="16" mandatory="y" >
+			<column name="config_log_house_keeping" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="export_migration" type="boolean" jt="16" mandatory="y" >
+			<column name="export_migration" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_ldap_setting" type="boolean" jt="16" mandatory="y" >
+			<column name="config_ldap_setting" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_security" type="boolean" jt="16" mandatory="y" >
+			<column name="config_security" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="alert_sql_statment_show" type="boolean" jt="16" mandatory="y" >
+			<column name="alert_sql_statment_show" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="access_query_analyzer" type="boolean" jt="16" mandatory="y" >
+			<column name="access_query_analyzer" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="access_sql_profiler" type="boolean" jt="16" mandatory="y" >
+			<column name="access_sql_profiler" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="edit_trace" type="boolean" jt="16" mandatory="y" >
+			<column name="edit_trace" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
-			<column name="config_certificates" type="boolean" jt="16" mandatory="y" >
+			<column name="config_certificates" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
 			<index name="roles_pkey" unique="PRIMARY_KEY" >
@@ -1985,46 +1985,46 @@
 			</index>
 		</table>
 		<table name="schedule_reports" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="name" type="text" jt="12" />
-			<column name="instance_ids" type="text" jt="12" />
-			<column name="group_ids" type="text" jt="12" />
-			<column name="mysql_chart_names" type="text" jt="12" />
-			<column name="sqlserver_chart_names" type="text" jt="12" />
-			<column name="dpa_mysql_chart_names" type="text" jt="12" />
-			<column name="dpa_sqlserver_chart_names" type="text" jt="12" />
-			<column name="dpa_digest" type="text" jt="12" />
-			<column name="lang" type="text" jt="12" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="name" type="text" />
+			<column name="instance_ids" type="text" />
+			<column name="group_ids" type="text" />
+			<column name="mysql_chart_names" type="text" />
+			<column name="sqlserver_chart_names" type="text" />
+			<column name="dpa_mysql_chart_names" type="text" />
+			<column name="dpa_sqlserver_chart_names" type="text" />
+			<column name="dpa_digest" type="text" />
+			<column name="lang" type="text" >
 				<defo><![CDATA['en'::text]]></defo>
 			</column>
-			<column name="is_all_instances" type="boolean" jt="16" />
-			<column name="is_area_chart" type="boolean" jt="16" />
-			<column name="is_replication_shown" type="boolean" jt="16" />
-			<column name="is_up_down_chart_shown" type="boolean" jt="16" />
-			<column name="is_replication_list_shown" type="boolean" jt="16" />
-			<column name="from" type="timestamptz" jt="93" />
-			<column name="to" type="timestamptz" jt="93" />
-			<column name="period" type="integer" length="32" jt="4" />
-			<column name="mail_to" type="text" jt="12" />
-			<column name="message" type="text" jt="12" />
-			<column name="postgres_chart_names" type="text" jt="12" />
-			<column name="dpa_postgres_chart_names" type="text" jt="12" />
+			<column name="is_all_instances" type="boolean" />
+			<column name="is_area_chart" type="boolean" />
+			<column name="is_replication_shown" type="boolean" />
+			<column name="is_up_down_chart_shown" type="boolean" />
+			<column name="is_replication_list_shown" type="boolean" />
+			<column name="from" type="timestamptz" />
+			<column name="to" type="timestamptz" />
+			<column name="period" type="integer" length="32" />
+			<column name="mail_to" type="text" />
+			<column name="message" type="text" />
+			<column name="postgres_chart_names" type="text" />
+			<column name="dpa_postgres_chart_names" type="text" />
 			<index name="schedule_reports_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
 		<table name="system_performances" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="total_cpu" type="bigint" length="64" jt="-5" mandatory="y" />
-			<column name="free_cpu" type="numeric" jt="2" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="total_mem" type="bigint" length="64" jt="-5" mandatory="y" />
-			<column name="free_mem" type="bigint" length="64" jt="-5" mandatory="y" />
-			<column name="total_swap" type="bigint" length="64" jt="-5" mandatory="y" />
-			<column name="free_swap" type="bigint" length="64" jt="-5" mandatory="y" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="total_cpu" type="bigint" length="64" mandatory="y" />
+			<column name="free_cpu" type="decimal" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="total_mem" type="bigint" length="64" mandatory="y" />
+			<column name="free_mem" type="bigint" length="64" mandatory="y" />
+			<column name="total_swap" type="bigint" length="64" mandatory="y" />
+			<column name="free_swap" type="bigint" length="64" mandatory="y" />
 			<index name="system_performances_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -2034,40 +2034,40 @@
 			</index>
 		</table>
 		<table name="trace_notifications" row_count="0" spec="" >
-			<column name="user_id" type="integer" length="32" jt="4" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="notification_count" type="integer" length="32" jt="4" />
+			<column name="user_id" type="integer" length="32" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="notification_count" type="integer" length="32" />
 		</table>
 		<table name="trace_report_content_postgres" row_count="0" spec="" >
-			<column name="id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="trace_report_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="log_time" type="timestamptz" jt="93" />
-			<column name="user_name" type="text" jt="12" />
-			<column name="database_name" type="text" jt="12" />
-			<column name="process_id" type="integer" length="32" jt="4" />
-			<column name="connection_from" type="text" jt="12" />
-			<column name="session_id" type="text" jt="12" />
-			<column name="session_line_num" type="integer" length="32" jt="4" />
-			<column name="command_tag" type="text" jt="12" />
-			<column name="session_start_time" type="timestamptz" jt="93" />
-			<column name="virtual_transaction_id" type="text" jt="12" />
-			<column name="transaction_id" type="text" jt="12" />
-			<column name="error_severity" type="text" jt="12" />
-			<column name="sql_state_code" type="text" jt="12" />
-			<column name="message" type="text" jt="12" mandatory="y" />
-			<column name="detail" type="text" jt="12" />
-			<column name="hint" type="text" jt="12" />
-			<column name="internal_query" type="text" jt="12" />
-			<column name="internal_query_pos" type="integer" length="32" jt="4" />
-			<column name="context" type="text" jt="12" />
-			<column name="query" type="text" jt="12" />
-			<column name="query_pos" type="integer" length="32" jt="4" />
-			<column name="location" type="text" jt="12" />
-			<column name="application_name" type="text" jt="12" mandatory="y" />
-			<column name="backend_type" type="text" jt="12" mandatory="y" />
-			<column name="leader_pid" type="integer" length="32" jt="4" />
-			<column name="query_id" type="bigint" length="64" jt="-5" mandatory="y" />
-			<column name="duration" type="numeric" jt="2" />
+			<column name="id" type="integer" length="32" mandatory="y" />
+			<column name="trace_report_id" type="integer" length="32" mandatory="y" />
+			<column name="log_time" type="timestamptz" />
+			<column name="user_name" type="text" />
+			<column name="database_name" type="text" />
+			<column name="process_id" type="integer" length="32" />
+			<column name="connection_from" type="text" />
+			<column name="session_id" type="text" />
+			<column name="session_line_num" type="integer" length="32" />
+			<column name="command_tag" type="text" />
+			<column name="session_start_time" type="timestamptz" />
+			<column name="virtual_transaction_id" type="text" />
+			<column name="transaction_id" type="text" />
+			<column name="error_severity" type="text" />
+			<column name="sql_state_code" type="text" />
+			<column name="message" type="text" mandatory="y" />
+			<column name="detail" type="text" />
+			<column name="hint" type="text" />
+			<column name="internal_query" type="text" />
+			<column name="internal_query_pos" type="integer" length="32" />
+			<column name="context" type="text" />
+			<column name="query" type="text" />
+			<column name="query_pos" type="integer" length="32" />
+			<column name="location" type="text" />
+			<column name="application_name" type="text" mandatory="y" />
+			<column name="backend_type" type="text" mandatory="y" />
+			<column name="leader_pid" type="integer" length="32" />
+			<column name="query_id" type="bigint" length="64" mandatory="y" />
+			<column name="duration" type="decimal" />
 			<index name="trace_report_content_postgres_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 				<column name="trace_report_id" />
@@ -2077,62 +2077,62 @@
 			</index>
 		</table>
 		<table name="trace_report_content_summary_postgres" row_count="0" spec="" >
-			<column name="trace_report_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="digest" type="text" jt="12" mandatory="y" />
-			<column name="executed" type="integer" length="32" jt="4" />
-			<column name="duration" type="numeric" jt="2" />
-			<column name="rows_affected" type="bigint" length="64" jt="-5" />
-			<column name="shared_blocks_read" type="integer" length="32" jt="4" />
-			<column name="shared_blocks_written" type="integer" length="32" jt="4" />
-			<column name="shared_blocks_hit" type="integer" length="32" jt="4" />
-			<column name="local_blocks_read" type="integer" length="32" jt="4" />
-			<column name="local_blocks_written" type="integer" length="32" jt="4" />
-			<column name="local_blocks_hit" type="integer" length="32" jt="4" />
-			<column name="temporary_blocks_read" type="integer" length="32" jt="4" />
-			<column name="temporary_blocks_written" type="integer" length="32" jt="4" />
+			<column name="trace_report_id" type="integer" length="32" mandatory="y" />
+			<column name="digest" type="text" mandatory="y" />
+			<column name="executed" type="integer" length="32" />
+			<column name="duration" type="decimal" />
+			<column name="rows_affected" type="bigint" length="64" />
+			<column name="shared_blocks_read" type="integer" length="32" />
+			<column name="shared_blocks_written" type="integer" length="32" />
+			<column name="shared_blocks_hit" type="integer" length="32" />
+			<column name="local_blocks_read" type="integer" length="32" />
+			<column name="local_blocks_written" type="integer" length="32" />
+			<column name="local_blocks_hit" type="integer" length="32" />
+			<column name="temporary_blocks_read" type="integer" length="32" />
+			<column name="temporary_blocks_written" type="integer" length="32" />
 			<index name="trace_report_content_summary_postgres_pkey" unique="PRIMARY_KEY" >
 				<column name="trace_report_id" />
 				<column name="digest" />
 			</index>
 		</table>
 		<table name="trace_reports" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="trace_id" type="integer" length="32" jt="4" />
-			<column name="from" type="timestamptz" jt="93" />
-			<column name="to" type="timestamptz" jt="93" />
-			<column name="status" type="integer" length="32" jt="4" />
-			<column name="err" type="text" jt="12" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="trace_id" type="integer" length="32" />
+			<column name="from" type="timestamptz" />
+			<column name="to" type="timestamptz" />
+			<column name="status" type="integer" length="32" />
+			<column name="err" type="text" />
 			<index name="trace_reports_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
 		<table name="traces" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="name" type="text" jt="12" mandatory="y" />
-			<column name="owner_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="period" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="from" type="timestamptz" jt="93" mandatory="y" />
-			<column name="to" type="timestamptz" jt="93" mandatory="y" />
-			<column name="dow_from" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="name" type="text" mandatory="y" />
+			<column name="owner_id" type="integer" length="32" mandatory="y" />
+			<column name="period" type="integer" length="32" mandatory="y" />
+			<column name="from" type="timestamptz" mandatory="y" />
+			<column name="to" type="timestamptz" mandatory="y" />
+			<column name="dow_from" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="dow_to" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="dow_to" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="dom_from" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="dom_from" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="dom_to" type="integer" length="32" jt="4" mandatory="y" >
+			<column name="dom_to" type="integer" length="32" mandatory="y" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="db_user" type="text" jt="12" mandatory="y" />
-			<column name="db" type="text" jt="12" mandatory="y" />
-			<column name="keyword" type="text" jt="12" mandatory="y" />
-			<column name="query_id" type="text" jt="12" mandatory="y" />
-			<column name="disabled" type="boolean" jt="16" mandatory="y" />
-			<column name="mail_to" type="text" jt="12" />
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="rows_limit_million" type="numeric" jt="2" >
+			<column name="db_user" type="text" mandatory="y" />
+			<column name="db" type="text" mandatory="y" />
+			<column name="keyword" type="text" mandatory="y" />
+			<column name="query_id" type="text" mandatory="y" />
+			<column name="disabled" type="boolean" mandatory="y" />
+			<column name="mail_to" type="text" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="rows_limit_million" type="decimal" >
 				<defo><![CDATA[1]]></defo>
 			</column>
 			<index name="traces_pkey" unique="PRIMARY_KEY" >
@@ -2140,14 +2140,14 @@
 			</index>
 		</table>
 		<table name="up_down_states" row_count="2" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="state" type="boolean" jt="16" mandatory="y" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="state" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="connection_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="start_or_end" type="text" jt="12" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="start_or_end" type="text" mandatory="y" />
 			<index name="up_down_states_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -2157,11 +2157,11 @@
 			</index>
 		</table>
 		<table name="user_connection_groups" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="user_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="connection_group_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="user_id" type="integer" length="32" mandatory="y" />
+			<column name="connection_group_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
 			<index name="user_connection_groups_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -2173,12 +2173,12 @@
 			</index>
 		</table>
 		<table name="user_filter_profiles" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="profile_name" type="text" jt="12" mandatory="y" />
-			<column name="filter_data" type="text" jt="12" mandatory="y" />
-			<column name="user_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="profile_name" type="text" mandatory="y" />
+			<column name="filter_data" type="text" mandatory="y" />
+			<column name="user_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
 			<index name="user_filter_profiles_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -2187,25 +2187,25 @@
 			</index>
 		</table>
 		<table name="user_preferences" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="user_id" type="integer" length="32" jt="4" />
-			<column name="process_list" type="integer" length="32" jt="4" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="user_id" type="integer" length="32" />
+			<column name="process_list" type="integer" length="32" >
 				<defo><![CDATA[5]]></defo>
 			</column>
-			<column name="deadlock" type="integer" length="32" jt="4" >
+			<column name="deadlock" type="integer" length="32" >
 				<defo><![CDATA[5]]></defo>
 			</column>
-			<column name="dashboard_filter_sort_by" type="text" jt="12" >
+			<column name="dashboard_filter_sort_by" type="text" >
 				<defo><![CDATA['severity'::text]]></defo>
 			</column>
-			<column name="dashboard_custom_order" type="text" jt="12" mandatory="y" />
-			<column name="dashboard_view" type="text" jt="12" >
+			<column name="dashboard_custom_order" type="text" mandatory="y" />
+			<column name="dashboard_view" type="text" >
 				<defo><![CDATA['group'::text]]></defo>
 			</column>
-			<column name="dashboard_filter_shown" type="text" jt="12" >
+			<column name="dashboard_filter_shown" type="text" >
 				<defo><![CDATA['["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]'::text]]></defo>
 			</column>
-			<column name="pg_trace_report_columns" type="text" jt="12" />
+			<column name="pg_trace_report_columns" type="text" />
 			<index name="user_preferences_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -2214,11 +2214,11 @@
 			</index>
 		</table>
 		<table name="user_sessions" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="user_session_id" type="text" jt="12" mandatory="y" />
-			<column name="user_id" type="integer" length="32" jt="4" mandatory="y" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="user_session_id" type="text" mandatory="y" />
+			<column name="user_id" type="integer" length="32" mandatory="y" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
 			<index name="user_sessions_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -2230,44 +2230,44 @@
 			</fk>
 		</table>
 		<table name="users" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="name" type="text" jt="12" />
-			<column name="email" type="text" jt="12" />
-			<column name="created_at" type="timestamptz" jt="93" />
-			<column name="updated_at" type="timestamptz" jt="93" />
-			<column name="password_digest" type="text" jt="12" />
-			<column name="login_name" type="text" jt="12" />
-			<column name="auth_method" type="text" jt="12" >
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="name" type="text" />
+			<column name="email" type="text" />
+			<column name="created_at" type="timestamptz" />
+			<column name="updated_at" type="timestamptz" />
+			<column name="password_digest" type="text" />
+			<column name="login_name" type="text" />
+			<column name="auth_method" type="text" >
 				<defo><![CDATA['internal'::text]]></defo>
 			</column>
-			<column name="country_code" type="text" jt="12" />
-			<column name="mobile" type="text" jt="12" />
-			<column name="role_id" type="integer" length="32" jt="4" >
+			<column name="country_code" type="text" />
+			<column name="mobile" type="text" />
+			<column name="role_id" type="integer" length="32" >
 				<defo><![CDATA[3]]></defo>
 			</column>
-			<column name="tutorial1" type="integer" length="32" jt="4" >
+			<column name="tutorial1" type="integer" length="32" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="tutorial2" type="integer" length="32" jt="4" >
+			<column name="tutorial2" type="integer" length="32" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="tutorial3" type="integer" length="32" jt="4" >
+			<column name="tutorial3" type="integer" length="32" >
 				<defo><![CDATA[0]]></defo>
 			</column>
-			<column name="country_code_iso2" type="text" jt="12" />
-			<column name="language" type="varchar" jt="12" >
+			<column name="country_code_iso2" type="text" />
+			<column name="language" type="varchar" >
 				<defo><![CDATA['en'::character varying]]></defo>
 			</column>
-			<column name="should_show_trial_expired_bar" type="boolean" jt="16" mandatory="y" >
+			<column name="should_show_trial_expired_bar" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="should_show_activate_tokens_popover" type="boolean" jt="16" mandatory="y" >
+			<column name="should_show_activate_tokens_popover" type="boolean" mandatory="y" >
 				<defo><![CDATA[true]]></defo>
 			</column>
-			<column name="read_time" type="timestamptz" jt="93" mandatory="y" >
+			<column name="read_time" type="timestamptz" mandatory="y" >
 				<defo><![CDATA['1970-01-02 02:00:00+02'::timestamp with time zone]]></defo>
 			</column>
-			<column name="dark_mode" type="boolean" jt="16" mandatory="y" >
+			<column name="dark_mode" type="boolean" mandatory="y" >
 				<defo><![CDATA[false]]></defo>
 			</column>
 			<index name="users_pkey" unique="PRIMARY_KEY" >
@@ -2284,14 +2284,14 @@
 			</fk>
 		</table>
 		<table name="wait_instruments" row_count="0" spec="" >
-			<column name="id" type="serial" length="32" jt="4" mandatory="y" />
-			<column name="connection_id" type="integer" length="32" jt="4" />
-			<column name="event_name" type="text" jt="12" />
-			<column name="event_total_time" type="numeric" jt="2" />
-			<column name="operation" type="text" jt="12" />
-			<column name="operation_total_time" type="numeric" jt="2" />
-			<column name="save_type" type="integer" length="32" jt="4" />
-			<column name="save_time" type="timestamptz" jt="93" />
+			<column name="id" type="serial" length="32" mandatory="y" />
+			<column name="connection_id" type="integer" length="32" />
+			<column name="event_name" type="text" />
+			<column name="event_total_time" type="decimal" />
+			<column name="operation" type="text" />
+			<column name="operation_total_time" type="decimal" />
+			<column name="save_type" type="integer" length="32" />
+			<column name="save_time" type="timestamptz" />
 			<index name="wait_instruments_pkey" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -2352,26 +2352,26 @@
 		<sequence name="wait_instruments_id_seq" options="AS integer START WITH 1 INCREMENT BY 1" />
 	</schema>
 	<layout name="company" id="Layout-620" show_relation="columns" >
-		<entity schema="company" name="attendance" color="C7F4BE" x="48" y="384" />
-		<entity schema="company" name="campaign_results" color="F4DDBE" x="288" y="592" />
-		<entity schema="company" name="contracts" color="C7F4BE" x="512" y="384" />
-		<entity schema="company" name="customers" color="BEBEF4" x="1152" y="304" />
-		<entity schema="company" name="departments" color="C7F4BE" x="48" y="112" />
-		<entity schema="company" name="employee_benefits" color="C7F4BE" x="704" y="112" />
-		<entity schema="company" name="employee_projects" color="C7F4BE" x="688" y="400" />
-		<entity schema="company" name="employees" color="C7F4BE" x="288" y="112" />
-		<entity schema="company" name="inventory" color="BEBEF4" x="960" y="560" />
-		<entity schema="company" name="marketing_campaigns" color="F4DDBE" x="48" y="592" />
-		<entity schema="company" name="order_items" color="BEBEF4" x="960" y="304" />
-		<entity schema="company" name="orders" color="BEBEF4" x="1152" y="80" />
-		<entity schema="company" name="payment_methods" color="BEBEF4" x="1376" y="304" />
-		<entity schema="company" name="products" color="BEBEF4" x="1200" y="560" />
-		<entity schema="company" name="projects" color="C7F4BE" x="512" y="112" />
-		<entity schema="company" name="reviews" color="BEBEF4" x="1344" y="80" />
-		<entity schema="company" name="salaries" color="C7F4BE" x="288" y="384" />
-		<entity schema="company" name="shipping" color="D1BEF4" x="512" y="592" />
-		<entity schema="company" name="suppliers" color="D1BEF4" x="752" y="592" />
-		<entity schema="company" name="transactions" color="BEBEF4" x="928" y="80" />
+		<entity schema="company" name="attendance" color="C7F4BE" x="57" y="399" />
+		<entity schema="company" name="campaign_results" color="F4DDBE" x="285" y="608" />
+		<entity schema="company" name="customers" color="BEBEF4" x="1159" y="323" />
+		<entity schema="company" name="departments" color="C7F4BE" x="57" y="133" />
+		<entity schema="company" name="employee_benefits" color="C7F4BE" x="703" y="133" />
+		<entity schema="company" name="employee_projects" color="C7F4BE" x="684" y="418" />
+		<entity schema="company" name="employees" color="C7F4BE" x="285" y="133" />
+		<entity schema="company" name="inventory" color="BEBEF4" x="969" y="570" />
+		<entity schema="company" name="marketing_campaigns" color="F4DDBE" x="57" y="608" />
+		<entity schema="company" name="order_items" color="BEBEF4" x="969" y="323" />
+		<entity schema="company" name="orders" color="BEBEF4" x="1159" y="95" />
+		<entity schema="company" name="payment_methods" color="BEBEF4" x="1368" y="323" />
+		<entity schema="company" name="products" color="BEBEF4" x="1197" y="570" />
+		<entity schema="company" name="projects" color="C7F4BE" x="513" y="133" />
+		<entity schema="company" name="reviews" color="BEBEF4" x="1349" y="95" />
+		<entity schema="company" name="salaries" color="C7F4BE" x="285" y="399" />
+		<entity schema="company" name="shipping" color="D1BEF4" x="513" y="608" />
+		<entity schema="company" name="suppliers" color="D1BEF4" x="760" y="608" />
+		<entity schema="company" name="transactions" color="BEBEF4" x="931" y="95" />
+		<entity schema="company" name="contracts" color="C7F4BE" x="513" y="399" />
 		<group name="marketing_campaigns" color="F7F2EC" >
 			<entity schema="company" name="marketing_campaigns" />
 			<entity schema="company" name="campaign_results" />
@@ -2394,35 +2394,32 @@
 			<entity schema="company" name="attendance" />
 			<entity schema="company" name="salaries" />
 			<entity schema="company" name="projects" />
-			<entity schema="company" name="contracts" />
 			<entity schema="company" name="employee_projects" />
 			<entity schema="company" name="employee_benefits" />
 			<entity schema="company" name="departments" />
 			<entity schema="company" name="employees" />
+			<entity schema="company" name="contracts" />
 		</group>
-		<browser id="Browse-131b" name="employees" confirm_updates="y" >
-			<browse_table schema="company" entity="employees" x="20" y="20" width="358" height="348" />
-		</browser>
 	</layout>
 	<layout name="public" id="Layout-1b8e" show_relation="columns" >
-		<entity schema="public" name="cities" color="F4DDBE" x="2384" y="1104" />
-		<entity schema="public" name="connection_alert_contents" color="C7F4BE" x="2528" y="80" />
-		<entity schema="public" name="connection_alert_settings" color="C7F4BE" x="2800" y="80" />
-		<entity schema="public" name="connection_groups" color="C7F4BE" x="2528" y="608" />
-		<entity schema="public" name="connections" color="C7F4BE" x="2192" y="80" />
-		<entity schema="public" name="countries" color="F4DDBE" x="2192" y="1104" />
-		<entity schema="public" name="custom_metric_alert_settings" color="BED3F4" x="1024" y="1600" />
-		<entity schema="public" name="custom_metric_data" color="BED3F4" x="1712" y="3280" />
-		<entity schema="public" name="custom_metrics" color="BED3F4" x="1936" y="3280" />
-		<entity schema="public" name="data_performance_analyses" color="BED3F4" x="1328" y="1600" />
-		<entity schema="public" name="data_performance_analysis_files" color="C7F4BE" x="3136" y="2912" />
-		<entity schema="public" name="data_performance_analysis_infos" color="C7F4BE" x="3424" y="2912" />
-		<entity schema="public" name="data_performance_analysis_minutes" color="C7F4BE" x="2816" y="2368" />
-		<entity schema="public" name="data_performance_analysis_objects" color="C7F4BE" x="3136" y="2656" />
-		<entity schema="public" name="data_performance_analysis_query_plans" color="C7F4BE" x="2480" y="2912" />
-		<entity schema="public" name="data_performance_analysis_wait_types" color="C7F4BE" x="2816" y="2912" />
-		<entity schema="public" name="database_performance_postgres" color="C7F4BE" x="2192" y="2144" />
-		<entity schema="public" name="database_performance_sql_servers" color="C7F4BE" x="2480" y="2592" >
+		<entity schema="public" name="cities" color="F4DDBE" x="2375" y="1121" />
+		<entity schema="public" name="connection_alert_contents" color="C7F4BE" x="2527" y="95" />
+		<entity schema="public" name="connection_alert_settings" color="C7F4BE" x="2793" y="95" />
+		<entity schema="public" name="connection_groups" color="C7F4BE" x="2527" y="627" />
+		<entity schema="public" name="connections" color="C7F4BE" x="2185" y="95" />
+		<entity schema="public" name="countries" color="F4DDBE" x="2185" y="1121" />
+		<entity schema="public" name="custom_metric_alert_settings" color="BED3F4" x="1026" y="1615" />
+		<entity schema="public" name="custom_metric_data" color="BED3F4" x="1710" y="3306" />
+		<entity schema="public" name="custom_metrics" color="BED3F4" x="1938" y="3306" />
+		<entity schema="public" name="data_performance_analyses" color="BED3F4" x="1330" y="1615" />
+		<entity schema="public" name="data_performance_analysis_files" color="C7F4BE" x="3135" y="2926" />
+		<entity schema="public" name="data_performance_analysis_infos" color="C7F4BE" x="3420" y="2926" />
+		<entity schema="public" name="data_performance_analysis_minutes" color="C7F4BE" x="2812" y="2394" />
+		<entity schema="public" name="data_performance_analysis_objects" color="C7F4BE" x="3135" y="2679" />
+		<entity schema="public" name="data_performance_analysis_query_plans" color="C7F4BE" x="2489" y="2926" />
+		<entity schema="public" name="data_performance_analysis_wait_types" color="C7F4BE" x="2812" y="2926" />
+		<entity schema="public" name="database_performance_postgres" color="C7F4BE" x="2185" y="2166" />
+		<entity schema="public" name="database_performance_sql_servers" color="C7F4BE" x="2489" y="2603" >
 			<column name="id" />
 			<column name="connection_id" />
 			<column name="created_at" />
@@ -2435,7 +2432,7 @@
 			<column name="free_cpu" />
 			<column name="total_cpu" />
 		</entity>
-		<entity schema="public" name="database_performances" color="C7F4BE" x="2480" y="2144" >
+		<entity schema="public" name="database_performances" color="C7F4BE" x="2489" y="2166" >
 			<column name="id" />
 			<column name="connection_id" />
 			<column name="created_at" />
@@ -2448,41 +2445,41 @@
 			<column name="qcache_hits_rate" />
 			<column name="com_select_rate" />
 		</entity>
-		<entity schema="public" name="deadlocks" color="BED3F4" x="1328" y="2128" />
-		<entity schema="public" name="dpa_login_names" color="BED3F4" x="1024" y="2128" />
-		<entity schema="public" name="dpa_machine_names" color="BED3F4" x="496" y="1648" />
-		<entity schema="public" name="dpa_program_names" color="BED3F4" x="272" y="1648" />
-		<entity schema="public" name="dpa_schema_names" color="BED3F4" x="48" y="1872" />
-		<entity schema="public" name="general_settings" color="BED3F4" x="704" y="2128" />
-		<entity schema="public" name="global_alert_settings" color="BED3F4" x="720" y="1648" />
-		<entity schema="public" name="group_alert_settings" color="BED3F4" x="720" y="1104" />
-		<entity schema="public" name="key_stores" color="BED3F4" x="1024" y="1312" />
-		<entity schema="public" name="maintenance_settings" color="BED3F4" x="1328" y="1248" />
-		<entity schema="public" name="metadata" color="BED3F4" x="1600" y="1600" />
-		<entity schema="public" name="migrations" color="BED3F4" x="1600" y="1968" />
-		<entity schema="public" name="notification_settings" color="BED3F4" x="1600" y="2128" />
-		<entity schema="public" name="notifications" color="BED3F4" x="1968" y="2128" />
-		<entity schema="public" name="persons" color="BED3F4" x="1328" y="2384" />
-		<entity schema="public" name="query_policies" color="BED3F4" x="1120" y="2384" />
-		<entity schema="public" name="replication_error_histories" color="BED3F4" x="1024" y="2720" />
-		<entity schema="public" name="replication_states" color="D1BEF4" x="2192" y="3280" />
-		<entity schema="public" name="replications" color="D1BEF4" x="2416" y="3280" />
-		<entity schema="public" name="role_ip_ranges" color="BEBEF4" x="1344" y="832" />
-		<entity schema="public" name="roles" color="BEBEF4" x="1040" y="368" />
-		<entity schema="public" name="schedule_reports" color="BED3F4" x="704" y="2720" />
-		<entity schema="public" name="system_performances" color="BED3F4" x="464" y="2720" />
-		<entity schema="public" name="trace_notifications" color="BED3F4" x="464" y="2528" />
-		<entity schema="public" name="trace_report_content_postgres" color="F4DDBE" x="48" y="3280" />
-		<entity schema="public" name="trace_report_content_summary_postgres" color="F4DDBE" x="336" y="3280" />
-		<entity schema="public" name="trace_reports" color="F4DDBE" x="336" y="3648" />
-		<entity schema="public" name="traces" color="F4DDBE" x="528" y="3648" />
-		<entity schema="public" name="up_down_states" color="BED3F4" x="480" y="2128" />
-		<entity schema="public" name="user_connection_groups" color="BED3F4" x="448" y="1904" />
-		<entity schema="public" name="user_filter_profiles" color="BEBEF4" x="1936" y="368" />
-		<entity schema="public" name="user_preferences" color="BEBEF4" x="1424" y="80" />
-		<entity schema="public" name="user_sessions" color="BEBEF4" x="1712" y="368" />
-		<entity schema="public" name="users" color="BEBEF4" x="1344" y="368" />
-		<entity schema="public" name="wait_instruments" color="BED3F4" x="464" y="1376" />
+		<entity schema="public" name="deadlocks" color="BED3F4" x="1330" y="2147" />
+		<entity schema="public" name="dpa_login_names" color="BED3F4" x="1026" y="2147" />
+		<entity schema="public" name="dpa_machine_names" color="BED3F4" x="494" y="1672" />
+		<entity schema="public" name="dpa_program_names" color="BED3F4" x="266" y="1672" />
+		<entity schema="public" name="dpa_schema_names" color="BED3F4" x="57" y="1900" />
+		<entity schema="public" name="general_settings" color="BED3F4" x="703" y="2147" />
+		<entity schema="public" name="global_alert_settings" color="BED3F4" x="722" y="1672" />
+		<entity schema="public" name="group_alert_settings" color="BED3F4" x="722" y="1121" />
+		<entity schema="public" name="key_stores" color="BED3F4" x="1026" y="1330" />
+		<entity schema="public" name="maintenance_settings" color="BED3F4" x="1330" y="1273" />
+		<entity schema="public" name="metadata" color="BED3F4" x="1596" y="1615" />
+		<entity schema="public" name="migrations" color="BED3F4" x="1596" y="1995" />
+		<entity schema="public" name="notification_settings" color="BED3F4" x="1596" y="2147" />
+		<entity schema="public" name="notifications" color="BED3F4" x="1976" y="2147" />
+		<entity schema="public" name="persons" color="BED3F4" x="1330" y="2394" />
+		<entity schema="public" name="query_policies" color="BED3F4" x="1121" y="2394" />
+		<entity schema="public" name="replication_error_histories" color="BED3F4" x="1026" y="2736" />
+		<entity schema="public" name="replication_states" color="D1BEF4" x="2185" y="3306" />
+		<entity schema="public" name="replications" color="D1BEF4" x="2413" y="3306" />
+		<entity schema="public" name="role_ip_ranges" color="BEBEF4" x="1349" y="855" />
+		<entity schema="public" name="roles" color="BEBEF4" x="1045" y="380" />
+		<entity schema="public" name="schedule_reports" color="BED3F4" x="703" y="2736" />
+		<entity schema="public" name="system_performances" color="BED3F4" x="456" y="2736" />
+		<entity schema="public" name="trace_notifications" color="BED3F4" x="456" y="2546" />
+		<entity schema="public" name="trace_report_content_postgres" color="F4DDBE" x="57" y="3306" />
+		<entity schema="public" name="trace_report_content_summary_postgres" color="F4DDBE" x="342" y="3306" />
+		<entity schema="public" name="trace_reports" color="F4DDBE" x="342" y="3667" />
+		<entity schema="public" name="traces" color="F4DDBE" x="532" y="3667" />
+		<entity schema="public" name="up_down_states" color="BED3F4" x="475" y="2147" />
+		<entity schema="public" name="user_connection_groups" color="BED3F4" x="456" y="1919" />
+		<entity schema="public" name="user_filter_profiles" color="BEBEF4" x="1938" y="380" />
+		<entity schema="public" name="user_preferences" color="BEBEF4" x="1425" y="95" />
+		<entity schema="public" name="user_sessions" color="BEBEF4" x="1710" y="380" />
+		<entity schema="public" name="users" color="BEBEF4" x="1349" y="380" />
+		<entity schema="public" name="wait_instruments" color="BED3F4" x="456" y="1387" />
 		<group name="custom_metric_alert_settings" color="ECF0F7" >
 			<entity schema="public" name="custom_metric_alert_settings" />
 			<entity schema="public" name="data_performance_analyses" />
