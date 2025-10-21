@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="DynamoDB" database="DynamoDB" id="0b456dbc-90ba-4c76-aa72-b2949281075e" >
+	<schema name="Default" >
+		<table name="OrderItems" prior="OrderItem" >
+			<column name="OrderId" type="VARCHAR" length="0" decimal="0" mandatory="y" />
+			<column name="Subtotal" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="Quantity" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="ProductId" type="JSON" length="0" decimal="0" mandatory="y" />
+			<index name="pk_OrderItems" unique="PRIMARY_KEY" >
+				<column name="OrderId" />
+			</index>
+			<fk name="fk_OrderItems_Orders" virtual="y" to_schema="Default" to_table="Orders" >
+				<fk_column name="OrderId" pk="OrderId" />
+			</fk>
+			<fk name="fk_OrderItems_Products" virtual="y" to_schema="Default" to_table="Products" >
+				<fk_column name="ProductId" pk="ProductId" />
+			</fk>
+		</table>
+		<table name="Orders" prior="Order s" >
+			<column name="OrderId" type="VARCHAR" length="0" decimal="0" mandatory="y" />
+			<column name="UserId" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="Total" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="OrderDate" type="JSON" length="0" decimal="0" mandatory="y" />
+			<index name="pk_Orders" unique="PRIMARY_KEY" >
+				<column name="OrderId" />
+			</index>
+			<fk name="fk_Orders_Users" virtual="y" to_schema="Default" to_table="Users" >
+				<fk_column name="UserId" pk="UserId" />
+			</fk>
+		</table>
+		<table name="Products" prior="Product" >
+			<column name="ProductId" type="VARCHAR" length="0" decimal="0" mandatory="y" />
+			<column name="Price" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="Product" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="Category" type="JSON" length="0" decimal="0" mandatory="y" />
+			<index name="pk_Products" unique="PRIMARY_KEY" >
+				<column name="ProductId" />
+			</index>
+		</table>
+		<table name="Reviews" prior="Revie" >
+			<column name="ReviewId" type="VARCHAR" length="0" decimal="0" mandatory="y" />
+			<column name="Comment" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="ProductId" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="UserId" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="Rating" type="JSON" length="0" decimal="0" mandatory="y" />
+			<index name="pk_Reviews" unique="PRIMARY_KEY" >
+				<column name="ReviewId" />
+			</index>
+			<fk name="fk_Reviews_Products" virtual="y" to_schema="Default" to_table="Products" >
+				<fk_column name="ProductId" pk="ProductId" />
+			</fk>
+			<fk name="fk_Reviews_Users" virtual="y" to_schema="Default" to_table="Users" >
+				<fk_column name="UserId" pk="UserId" />
+			</fk>
+		</table>
+		<table name="Users" prior="Use" >
+			<column name="UserId" type="VARCHAR" length="0" decimal="0" mandatory="y" />
+			<column name="Age" type="JSON" length="0" decimal="0" mandatory="y" />
+			<column name="Name" type="JSON" length="0" decimal="0" mandatory="y" />
+			<index name="pk_Users" unique="PRIMARY_KEY" >
+				<column name="UserId" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Diagram" id="1ee94e6e-c92d-4862-bf85-f134779d5437" hide_fks="fk_Reviews_Users," show_column_type="y" show_relation="fk_name" >
+		<entity schema="Default" name="Reviews" color="3986C1" x="57" y="57" />
+		<entity schema="Default" name="Users" color="3986C1" x="969" y="57" />
+	</layout>
+	<layout name="Main Diagram" id="670fd182-6d09-444f-a38c-6181e3027716" show_column_type="y" show_relation="columns" >
+		<entity schema="Default" name="Users" color="C1D8EE" x="57" y="57" />
+		<entity schema="Default" name="Orders" color="C1D8EE" x="323" y="57" />
+		<entity schema="Default" name="OrderItems" color="C1D8EE" x="589" y="57" />
+		<entity schema="Default" name="Reviews" color="C1D8EE" x="323" y="266" />
+		<entity schema="Default" name="Products" color="C1D8EE" x="589" y="266" />
+		<script name="SQL_Editor" id="15ee77a1-3ca3-488b-8748-716a92732c75" language="SQL" >
+			<string><![CDATA[INSERT INTO Reviews VALUE {'ReviewId': 'r200', 'ProductId': 'p101', 'UserId': 'u001', 'Rating': 5, 'Comment': 'Excellent product!'}
+INSERT INTO Reviews VALUE {'ReviewId': 'r201', 'ProductId': 'p102', 'UserId': 'u002', 'Rating': 4, 'Comment': 'Solid build, slightly loud keys.'}
+
+
+
+
+ ]]></string>
+		</script>
+		<browser id="dd0109b5-4786-43cb-9a78-23ef5022f36f" name="Products" confirm_updates="y" >
+			<browse_table schema="Default" entity="Products" fk_out="n" x="20" y="20" width="416" height="406" />
+		</browser>
+		<query id="10e93cf9-8346-4ab4-9326-a2d773bac05e" name="Users_001" >
+			<query_table schema="Default" name="Users" alias="" x="57" y="57" >
+				<column name="UserId" />
+				<column name="Age" />
+				<column name="Name" />
+			</query_table>
+		</query>
+	</layout>
+</project>
